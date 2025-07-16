@@ -1,0 +1,338 @@
+/* Import Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+
+    --White: #fff;
+
+    --BG-Light: #fffdfe;
+    --BG-Light-Hover: #fffbfd;
+    --BG-Light-Active: #fef7fc;
+    --BG-Normal: #fde6f4;
+
+    --Red-1: #fde6f4;
+    --Red-2: #fac2e3;
+    --Red-3: #f791ce;
+    --Red-4: #f35eb7;
+    --Red-5: #ef2ea1;
+    --Red-6: #ec008c;
+    --Red-7: #c90077;
+    --Red-8: #a80063;
+    --Red-9: #870050;
+    --Red-10: #6a003f;
+
+    --Gray-1: #f4f4f5;
+    --Gray-2: #e5e6e6;
+    --Gray-3: #d1d1d3;
+    --Gray-4: #bbbcbe;
+    --Gray-5: #a6a8ab;
+    --Gray-6: #939598;
+    --Gray-7: #7d7f81;
+    --Gray-8: #686a6c;
+    --Gray-9: #545557;
+    --Gray-10: #424344;
+
+    --Black-1: #e6e6e6;
+    --Black-2: #c2c2c2;
+    --Black-3: #919191;
+    --Black-4: #5e5e5e;
+    --Black-5: #2e2e2e;
+    --Black-6: #000000;
+
+    --bs-primary: var(--Red-6);
+
+}
+
+.text-pri {
+    color: var(--Red-6) !important;
+}
+
+.btn-primary {
+    background-color: var(--Red-6) !important;
+    border: none !important;
+    transition: ease-in-out 0.3s !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--Red-5) !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.navbar {
+    background-color: var(--White);
+
+    .navbar-brand img {
+        max-height: 3.5rem;
+    }
+
+    .navbar-collapse {
+        .navbar-nav {
+            .nav-link {
+                transition: color 0.3s ease;
+            }
+
+            .nav-link.active {
+                color: var(--Red-6);
+                font-weight: 700;
+            }
+
+            .nav-link:hover {
+                color: var(--Red-6);
+            }
+        }
+
+        .btn-login {
+            background: #EC008C;
+            display: flex;
+            padding: 0.5rem 1rem;
+            justify-content: center;
+            align-items: center;
+            gap: 0.625rem;
+            border-radius: 0.3125rem;
+            background: var(--Red-6);
+            transition: 0.3s ease-in-out;
+
+        }
+
+        .btn-login:hover {
+            background: var(--Red-5);
+        }
+    }
+}
+
+.landingPage-content {
+
+    .btn-login {
+        display: flex;
+        width: 7.875rem;
+        height: 2.75rem;
+        padding: 0.7rem 1.2rem;
+        justify-content: center;
+        align-items: center;
+        gap: 0.77275rem;
+        background-color: var(--Red-6);
+        color: var(--White);
+        border-radius: 0.3rem;
+        transition: 0.3s ease-in-out;
+    }
+
+    .btn-login:hover {
+        background-color: var(--Red-5);
+        color: var(--White);
+    }
+
+    .btn-readMore {
+        display: flex;
+        width: 9rem;
+        height: 2.75rem;
+        padding: 0.7rem 1.2rem;
+        justify-content: center;
+        align-items: center;
+        gap: 0.77275rem;
+        background-color: transparent;
+        border: var(--Red-6) 1px solid;
+        color: var(--Red-6);
+        border-radius: 0.3rem;
+        transition: 0.3s ease-in-out;
+    }
+
+    .btn-readMore:hover {
+        background-color: var(--Red-5);
+        color: var(--White);
+    }
+
+    .hero-content {
+
+        height: 100vh;
+
+        h2 {
+            color: #000;
+            font-size: 3rem;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .desc {
+            color: var(--Gray-10);
+            font-family: Poppins;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+        }
+    }
+
+
+    .coverage {
+
+        height: max-content;
+
+        .card .card-body {
+            border-radius: 1.25rem;
+            background: linear-gradient(94deg, #FFD8FB -35.29%, #FFE2D2 109.06%);
+            padding: 3.3rem 5rem;
+
+            .title {
+                font-size: 1.9rem;
+                color: var(--Gray-9);
+                font-weight: 700;
+                line-height: 2.5rem;
+            }
+
+            i {
+                color: var(--Red-6);
+            }
+        }
+    }
+
+
+    .about {
+        height: 100vh;
+        margin-bottom: 3rem;
+    }
+
+    .text-pink {
+        color: var(--Red-6) !important;
+    }
+
+    .text-gray {
+        color: var(--Gray-10) !important;
+
+    }
+
+    .btn-primary {
+        background-color: var(--Red-6);
+        border-color: var(--Red-6);
+    }
+
+    .btn-outline-primary {
+        color: var(--Red-6);
+        border-color: var(--Red-6);
+    }
+
+    .hero-gradient {
+        background: linear-gradient(135deg, #fff 0%, #fce4ec 50%, #f8bbd9 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-gradient::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 150%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(236, 0, 140, 0.1) 0%, transparent 70%);
+        z-index: 1;
+    }
+
+    .stats-card {
+        background: linear-gradient(135deg, #fff 0%, #fce4ec 100%);
+        border-radius: 2rem !important;
+        margin-top: -60px;
+        z-index: 10;
+    }
+
+    .about-pattern {
+        background-image: radial-gradient(circle at 70% 50%, rgba(200, 200, 200, 0.3) 0%, transparent 50%);
+    }
+
+    .offer-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--Red-6);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+    }
+
+    .career-section {
+        background: linear-gradient(135deg, #FFD8FB 0%, #FFDFDD  100%);
+    }
+
+    .job-card {
+        border: none;
+        border-radius: 12px;
+    }
+
+    .ratio-16x9 .img-fluid{
+        border-radius: 0.625rem 0.625rem 0px 0px;
+    }
+
+    .What-We-Offer{
+        padding: 5rem 0;
+    }
+
+
+    .footer-gradient {
+        background: linear-gradient(#FDE6F4 0%, #FDE6F4 100%);
+    }
+
+    .footer-bottom {
+        background-color: var(--Red-6);
+    }
+
+    .accordion-button{
+        background-color: var(--Gray-1);
+        border-radius: 5px;
+    }
+
+    .accordion-button:not(.collapsed) {
+        background-color: var(--BG-Normal);
+        color: var(--Red-6);
+    }
+
+    .accordion-collapse:not(.collapsed){
+        background-color: var(--BG-Normal);
+    }
+
+    .accordion-button:focus {
+        box-shadow: 0 0 0 0.25rem rgba(236, 0, 140, 0.25);
+    }
+}
+
+
+@media screen and (max-width: 764px) {
+    .landingPage-content {
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+        }
+
+        .coverage .card .card-body {
+            padding: 3rem 1.5rem;
+        }
+
+        .coverage .card .title {
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+
+        .about {
+            .col-md-5 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 100%;
+                    height: auto;
+
+                }
+            }
+        }
+    }
+
+}

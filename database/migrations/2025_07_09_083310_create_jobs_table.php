@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->foreignUlid('category_id')->constrained('job_category')->onDelete('cascade');
             $table->string('jobs_name');
             $table->string('store_name');
             $table->string('type_work')->default('WFO - Full Time');
@@ -21,8 +20,8 @@ return new class extends Migration
             $table->string('city');
             $table->integer('open_position');
             $table->string('experience')->nullable();
-            $table->integer('age');
             $table->string('education');
+            $table->string('category');
             $table->date('close_date');
             $table->string('status')->default('Open');
             $table->string('description')->nullable();

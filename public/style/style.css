@@ -1,0 +1,397 @@
+:root {
+  --red-3: #f791ce;
+  --red-6: #ec008c;
+  /* Ini adalah warna pink gelap untuk highlight */
+  --black-4: #5e5e5e;
+  --grey-10: #242434;
+  --grey-1: #f4f4f5;
+  --white-1: #ffffff;
+  /* Ini adalah warna putih */
+  --bg-normal: #fde6f4;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--red-3);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* Tetap pada overflow-x hidden */
+}
+
+.main-container {
+  display: flex;
+  flex-wrap: nowrap;
+  /* Penting: cegah wrap di desktop */
+  min-height: 100vh;
+  /* Pastikan container utama mengisi seluruh tinggi viewport */
+}
+
+.hero-section {
+  flex: 1;
+  /* Akan mengisi sisa ruang yang tersedia */
+  color: var(--white-1);
+  display: flex;
+  /* Menggunakan flexbox untuk hero-section */
+  flex-direction: column;
+  justify-content: center;
+  /* Memusatkan secara vertikal jika tidak ada posisi absolut */
+  align-items: flex-start;
+  /* Memusatkan secara horizontal jika tidak ada posisi absolut */
+  background-color: var(--red-3);
+  position: relative;
+  /* Penting untuk positioning logo dan teks anak */
+  overflow: hidden;
+  /* Pertahankan ini untuk clipping logo */
+}
+
+/* Modifikasi untuk Wrapper Teks */
+.hero-content-wrapper {
+  max-width: 620px;
+  /* Lebar teks sesuai Figma */
+  /* top dan left akan memposisikan relatif terhadap hero-section */
+  position: absolute;
+  /* Posisikan teks secara absolut */
+  top: 107px;
+  /* Y: 107 dari Figma */
+  left: 90px;
+  /* X: 90 dari Figma */
+  z-index: 1;
+  /* Pastikan teks di atas logo */
+}
+
+/* Penyesuaian Style untuk Masing-masing Baris Teks dan Span di dalamnya */
+.hero-text-line {
+  font-size: 52px;
+  /* Font size 52 dari Figma */
+  line-height: 1.2;
+  /* Mengurangi spasi antar baris */
+  margin: 0;
+  /* Hapus margin default pada p tag */
+  /* white-space: nowrap; */
+  /* Ini bisa menyebabkan overflow. Lebih baik biarkan default atau gunakan flexbox. */
+  /* Jika Anda bersikeras nowrap, pastikan lebar hero-content-wrapper cukup lebar atau handle overflow */
+}
+
+
+.hero-text-line span.white-text {
+  color: var(--white-1);
+  /* Warna putih */
+  font-weight: 200;
+}
+
+.hero-text-line span.highlight-text {
+  color: var(--red-6);
+  /* Warna pink gelap */
+  font-weight: 800;
+  /* Tampak lebih tebal untuk highlight */
+}
+
+
+/* --- Bagian Logo --- */
+.logo-container {
+  position: absolute;
+  /* Sesuaikan posisi ini agar sesuai dengan X: -72, Y: 379 di Figma
+     X: -72px -> left: -72px
+     Y: 379px -> top: 379px
+     Ini adalah posisi relatif terhadap .hero-section
+  */
+  left: -72px;
+  /* X: -72 dari Figma */
+  top: 329px;
+  /* Y: 379 dari Figma */
+  z-index: 0;
+  /* Pastikan logo di bawah teks */
+}
+
+.logo-container img {
+  width: 611px;
+  /* W: 611 dari Figma */
+  height: 611px;
+  /* H: 611 dari Figma */
+  opacity: 0.25;
+  /* Opacity 25% dari Figma */
+  transform: rotate(0deg);
+  transform: scaleX(-1);
+  /* Rotation 0 dari Figma */
+  display: block;
+  /* Penting: menghilangkan margin bawah default pada img */
+}
+
+/* --- Akhir Bagian Logo --- */
+
+/* --- Login Section --- */
+.login-section {
+  width: 100%;
+  max-width: 611px;
+  /* Lebar max disesuaikan agar pas dengan ruang kanan */
+  background-color: var(--white-1);
+  padding: 3rem;
+  border-radius: 3.75rem 0 0 3.75rem;
+  /* radius 60px di kiri */
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Memusatkan konten login secara vertikal */
+}
+
+.login-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--grey-10);
+  /* Tambahan: Pastikan tidak ada padding-left atau text-indent aneh,
+     atau berikan padding-left yang sama dengan input field jika perlu.
+     Biasanya, cukup reset margin default browser jika ada. */
+  margin-left: 0;
+  /* Pastikan tidak ada margin kiri ekstra */
+  padding-left: 0;
+  /* Pastikan tidak ada padding kiri ekstra */
+}
+
+.login-subtitle {
+  font-size: 0.95rem;
+  color: var(--black-4);
+  /* margin-bottom: 6rem; */
+  /* Tambahan: Pastikan sejajar dengan title di atasnya dan input di bawahnya */
+  margin-left: 0;
+  /* Pastikan tidak ada margin kiri ekstra */
+  padding-left: 0;
+  /* Pastikan tidak ada padding kiri ekstra */
+}
+
+/* Untuk input form (Email dan Password) */
+.form-control {
+  background-color: var(--bg-normal);
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  /* Padding internal */
+  margin-bottom: 1rem;
+  width: 100%;
+  /* Mengisi lebar penuh dari parent */
+  box-sizing: border-box;
+  /* Penting: agar padding tidak menambah lebar total */
+  font-size: 1rem;
+  /* Tambahkan ini agar teks di input memiliki ukuran standar */
+  color: var(--black-4);
+  /* Agar teks input tidak terlalu gelap atau terang */
+}
+
+/* Untuk button Login */
+.btn-login {
+  width: 100%;
+  /* Tetap 100% */
+  background-color: var(--red-6);
+  border: none;
+  padding: 0.75rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  /* Sesuaikan ukuran font agar seragam dengan input */
+}
+
+.btn-login:hover {
+  background-color: #c9007a;
+}
+
+.register-link {
+  height: auto;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+  /* Tambahan: Pastikan tidak ada margin bawah ekstra */
+  color: var(--black-4);
+  text-align: start;;
+  top: 20;
+}
+
+.register-link a {
+  color: var(--red-6);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* --- Akhir Login Section --- */
+
+/* --- Register Section --- */
+.register-section {
+  width: 100%;
+  max-width: 611px;
+  /* Lebar max disesuaikan agar pas dengan ruang kanan */
+  background-color: var(--white-1);
+  padding: 3rem;
+  border-radius: 3.75rem 0 0 3.75rem;
+  /* radius 60px di kiri */
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Memusatkan konten login secara vertikal */
+}
+
+.register-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--grey-10);
+  /* Tambahan: Pastikan tidak ada padding-left atau text-indent aneh,
+     atau berikan padding-left yang sama dengan input field jika perlu.
+     Biasanya, cukup reset margin default browser jika ada. */
+  margin-left: 0;
+  /* Pastikan tidak ada margin kiri ekstra */
+  padding-left: 0;
+  /* Pastikan tidak ada padding kiri ekstra */
+}
+
+.register-subtitle {
+  font-size: 0.95rem;
+  color: var(--black-4);
+  margin-bottom: 2rem;
+  /* Tambahan: Pastikan sejajar dengan title di atasnya dan input di bawahnya */
+  margin-left: 0;
+  /* Pastikan tidak ada margin kiri ekstra */
+  padding-left: 0;
+  /* Pastikan tidak ada padding kiri ekstra */
+}
+
+/* Untuk input form (Email dan Password) */
+.form-control {
+  background-color: var(--bg-normal);
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  /* Padding internal */
+  margin-bottom: 1rem;
+  width: 100%;
+  /* Mengisi lebar penuh dari parent */
+  box-sizing: border-box;
+  /* Penting: agar padding tidak menambah lebar total */
+  font-size: 1rem;
+  /* Tambahkan ini agar teks di input memiliki ukuran standar */
+  color: var(--black-4);
+  /* Agar teks input tidak terlalu gelap atau terang */
+}
+
+/* Untuk button Login */
+.btn-Register {
+  width: 100%;
+  /* Tetap 100% */
+  background-color: var(--red-6);
+  border: none;
+  padding: 0.75rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  /* Sesuaikan ukuran font agar seragam dengan input */
+}
+
+.btn-Register:hover {
+  background-color: #c9007a;
+}
+
+.Login-link {
+  height: auto;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+  /* Tambahan: Pastikan tidak ada margin bawah ekstra */
+  color: var(--black-4);
+  text-align: start;;
+  top: 20;
+}
+
+.Login-link a {
+  color: var(--red-6);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.Login-link a:hover {
+  text-decoration: underline;
+}
+
+/* --- Akhir Register Section --- */
+
+/* --- Media Queries (Responsiveness) --- */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    /* Ubah ke kolom untuk mobile */
+    align-items: center;
+    /* Pusatkan item secara horizontal */
+  }
+
+  .hero-section {
+    width: 100%;
+    /* Hero section mengisi penuh lebar untuk mobile */
+    /* padding: 2rem; */
+    /* padding-bottom: 5rem; */
+    /* Tambahkan padding bawah agar logo terlihat */
+    text-align: center;
+    /* Pusatkan teks */
+    align-items: center;
+    /* Pusatkan konten flexbox */
+  }
+
+  .hero-content-wrapper {
+    position: static;
+    /* Kembali ke posisi normal flow untuk mobile */
+    top: auto;
+    left: auto;
+    max-width: 100%;
+    /* Lebar penuh */
+    padding: 0 1rem;
+    /* Padding samping untuk teks */
+  }
+
+  .hero-text-line {
+    font-size: 32px;
+    /* Ukuran lebih kecil untuk mobile, sesuaikan */
+    white-space: normal;
+    /* Izinkan teks wrap di mobile */
+  }
+
+  .hero-text-line span {
+    display: inline;
+    /* Pastikan span tetap inline di mobile */
+  }
+
+  .logo-container {
+    position: absolute;
+    /* Tetap absolute untuk penempatan di bawah */
+    bottom: 20px;
+    /* Sesuaikan posisi bawah */
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg);
+    /* Pusatkan dan tanpa rotasi */
+    width: 150px;
+    /* Ukuran logo lebih kecil untuk mobile */
+    height: 150px;
+  }
+
+  .login-section {
+    border-radius: 20px;
+    /* Radius lebih kecil untuk mobile */
+    margin: 2rem auto;
+    /* Margin atas/bawah dan pusatkan horizontal */
+    max-width: 90%;
+    /* Lebar max 90% dari viewport width */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text-line {
+    font-size: 28px;
+    /* Lebih kecil lagi untuk ponsel sangat kecil */
+  }
+}

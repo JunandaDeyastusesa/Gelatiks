@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top py-md-3">
     <div class="container-fluid px-3 px-md-5">
         <a class="navbar-brand" href="#"><img class="w-100" src="{{ asset('img/icon/logo-gelatik-full.png')}}" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -11,10 +11,10 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="{{ route("home")}}">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Career</a>
+                    <a class="nav-link" href="{{ route("customer.carrer")}}">Career</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">News</a>
@@ -25,8 +25,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn-login text-light px-3" href="#">Login</a>
+                <li class="nav-item ms-3">
+                    <a class="nav-link btn-login text-light px-3" href="{{ Route('login')}}">Login</a>
                 </li>
             </ul>
         </div>

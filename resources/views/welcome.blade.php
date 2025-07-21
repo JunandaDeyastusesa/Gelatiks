@@ -30,6 +30,8 @@
         <div class="container">
             <div class="card border-0">
                 <div class="card-body">
+                    <img class="position-absolute top-0 end-0 d-none d-md-block" src="{{ asset('img/icon/top-right.png') }}" alt="">
+
                     <div class="row pb-3">
                         <div
                             class="col-12 col-md-9 d-flex flex-column justify-content-center align-items-center align-items-md-start text-start">
@@ -42,7 +44,7 @@
                         </div>
                     </div>
 
-                    <div class="row row-cols-1 row-cols-md-3 g-md-4 g-2">
+                    <div class="row row-cols-1 row-cols-md-3 g-md-4 g-2  z-3">
                         <div class="col d-flex flex-column align-items-center align-items-md-start text-start">
                             <div class="text-start">
                                 <div class="d-flex justify-content-center justify-content-md-start align-items-center pb-2">
@@ -71,9 +73,7 @@
                                 </div>
                                 <p class="mb-0">Province Coverage</p>
                             </div>
-
                         </div>
-
                     </div>
 
                 </div>
@@ -82,8 +82,8 @@
     </section>
 
 
-    <div class="about d-flex align-items-center pt-5">
-        <div class="container">
+    <div class="about d-flex align-items-center pt-5 my-5 my-md-0">
+        <div class="container my-5 my-md-0">
             <div class="row">
                 <div class="col-md-5 d-none d-md-block">
                     <img src="{{ asset('img/ofice-3 1.png') }}" alt="">
@@ -99,7 +99,7 @@
                         <img src="{{ asset('img/ofice-3 1.png') }}" alt="">
                     </div>
 
-                    <div class="content">
+                    <div class="content mb-5 mb-md-0">
                         <p class="mb-5">Since it was founded by Hadi and Susie Suprapto, in 1995, our vision remain
                             unchanged that is to
                             serve our clients as their extended arms, giving the best value of money through its best
@@ -109,7 +109,7 @@
                             develop our people in matters of their skill, knowledge and attitude while at the same time
                             maintaining a happy learning atmosphere.</p>
 
-                        <a class="btn btn-readMore" href="">Lihat Lanjut</a>
+                        <a class="btn btn-readMore" href="{{ route('customer.about')}}">Lihat Lanjut</a>
                     </div>
                 </div>
             </div>
@@ -117,13 +117,9 @@
     </div>
 
 
-
-
-
-
     <!-- What We Offer -->
-    <section class="What-We-Offer bg-light">
-        <div class="container py-5">
+    <section class="What-We-Offer bg-light mt-5 mt-md-0">
+        <div class="container py-3 pb-5">
             <div class="text-center mb-5">
                 <h2 class="fw-bold text-gray mb-3">What We Offer</h2>
                 <p class="lead">Layanan profesional yang dapat kami berikan untuk mendukung bisnis Anda</p>
@@ -131,8 +127,8 @@
 
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border-0 shadow-sm text-center p-4">
-                        <div class="offer-icon mx-auto mb-3">
+                    <div class="card h-100 border-0 shadow-sm text-center py-5 px-4">
+                        <div class="offer-icon mx-auto mb-4">
                             <i class="bi bi-shop"></i>
                         </div>
                         <h5 class="fw-bold mb-3">Retail Services</h5>
@@ -141,8 +137,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border-0 shadow-sm text-center p-4">
-                        <div class="offer-icon mx-auto mb-3">
+                    <div class="card h-100 border-0 shadow-sm text-center py-5 px-4">
+                        <div class="offer-icon mx-auto mb-4">
                             <i class="bi bi-calendar-event"></i>
                         </div>
                         <h5 class="fw-bold mb-3">Event & Activation</h5>
@@ -151,8 +147,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border-0 shadow-sm text-center p-4">
-                        <div class="offer-icon mx-auto mb-3">
+                    <div class="card h-100 border-0 shadow-sm text-center py-5 px-4">
+                        <div class="offer-icon mx-auto mb-4">
                             <i class="bi bi-building"></i>
                         </div>
                         <h5 class="fw-bold mb-3">Building Material Services</h5>
@@ -165,9 +161,9 @@
     </section>
 
     <!-- Career Section -->
-    <section class="career-section">
+    <section class="career-section py-3">
         <div class="container py-5">
-            <div class="row align-items-center">
+            <div class="row py-md-5 align-items-center">
                 <div class="col-lg-6">
                     <h2 class="fw-bold text-gray mb-4">Grow With <span class="text-pink">Gelatik Supra</span></h2>
                     <p class="mb-4">We are a people-focused company committed to delivering exceptional value through
@@ -198,47 +194,87 @@
                         </div>
                     </div>
 
-                    <a href="#" class="btn btn-login w-50 d-none d-md-block">Lihat Semua Lowongan</a>
+                    <a href="#" class="btn btn-login text-center w-50 d-none d-md-block">Lihat Semua Lowongan</a>
                 </div>
                 <div class="col-lg-6">
                     <div class="row g-3">
                         <div class="col-12">
-                            <div class="job-card card p-4">
-                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                    <div>
-                                        <h5 class="fw-bold text-gray mb-1">Sales Manager</h5>
-                                        <p class="text-muted mb-0">Jakarta, Indonesia</p>
+                            <a href="#" class="text-decoration-none">
+                                <div class="job-card card py-3 px-4">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2">
+                                            <img src="{{ asset('img/ofice-3 1.png') }}" alt=""
+                                                class="rounded-circle me-3" width="75" height="75">
+                                        </div>
+                                        <div class="col-10 ps-4">
+                                            <div class="ps-3 ps-md-0 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <h5 class="fw-bold text-gray mb-0"> Sales Manager</h5>
+                                                    <p class="text-success fst-italic small mb-2"> Dibuat : 15 Jul 2025
+                                                    </p>
+                                                    <p class="text-muted mb-0"><i class="bi bi-pin-map-fill pe-2"></i>
+                                                        Jakarta, Indonesia</p>
+                                                    <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> 3
+                                                        Orang</p>
+                                                </div>
+                                                <span class="badge bg-success">12 Ags 2025</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span class="badge bg-success">Full time</span>
                                 </div>
-                                <p class="text-muted small mb-0">Mencari Sales Manager berpengalaman untuk memimpin tim
-                                    penjualan</p>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-12">
-                            <div class="job-card card p-4">
-                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                    <div>
-                                        <h5 class="fw-bold text-gray mb-1">Sales Manager</h5>
-                                        <p class="text-muted mb-0">Surabaya, Indonesia</p>
+                            <a href="#" class="text-decoration-none">
+                                <div class="job-card card py-3 px-4">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2">
+                                            <img src="{{ asset('img/ofice-3 1.png') }}" alt=""
+                                                class="rounded-circle me-3" width="75" height="75">
+                                        </div>
+                                        <div class="col-10 ps-4">
+                                            <div class="ps-3 ps-md-0 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <h5 class="fw-bold text-gray mb-0"> Sales Manager</h5>
+                                                    <p class="text-success fst-italic small  mb-2"> Dibuat : 15 Jul 2025
+                                                    </p>
+                                                    <p class="text-muted mb-0"><i class="bi bi-pin-map-fill pe-2"></i>
+                                                        Jakarta, Indonesia</p>
+                                                    <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> 3
+                                                        Orang</p>
+                                                </div>
+                                                <span class="badge bg-success">12 Ags 2025</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span class="badge bg-success">Full time</span>
                                 </div>
-                                <p class="text-muted small mb-0">Peluang karir untuk Sales Manager di wilayah Jawa Timur
-                                </p>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-12">
-                            <div class="job-card card p-4">
-                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                    <div>
-                                        <h5 class="fw-bold text-gray mb-1">Sales Manager</h5>
-                                        <p class="text-muted mb-0">Bandung, Indonesia</p>
+                            <a href="#" class="text-decoration-none">
+                                <div class="job-card card py-3 px-4">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-2">
+                                            <img src="{{ asset('img/ofice-3 1.png') }}" alt=""
+                                                class="rounded-circle me-3" width="75" height="75">
+                                        </div>
+                                        <div class="col-10 ps-4">
+                                            <div class="ps-3 ps-md-0 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <h5 class="fw-bold text-gray mb-0"> Sales Manager</h5>
+                                                    <p class="text-success fst-italic small  mb-2"> Dibuat : 15 Jul 2025
+                                                    </p>
+                                                    <p class="text-muted mb-0"><i class="bi bi-pin-map-fill pe-2"></i>
+                                                        Jakarta, Indonesia</p>
+                                                    <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> 3
+                                                        Orang</p>
+                                                </div>
+                                                <span class="badge bg-success">12 Ags 2025</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span class="badge bg-success">Full time</span>
                                 </div>
-                                <p class="text-muted small mb-0">Kesempatan berkarir sebagai Sales Manager di Bandung</p>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -304,7 +340,7 @@
     </section>
 
     <!-- Happy Clients -->
-    <section class="py-5" style="background-color: #f8f9fa;">
+    <section class="HappyClients py-5" style="background-color: #f8f9fa;">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <h2 class="fw-bold text-gray mb-3">Happy Clients</h2>
@@ -313,13 +349,13 @@
 
             <div class="row g-4">
                 <div class="col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm p-4">
+                    <div class="card h-100 border-0 shadow-sm px-4 py-5">
                         <div class="mb-3">
                             <i class="bi bi-quote text-pink" style="font-size: 2rem;"></i>
                         </div>
                         <p class="mb-4">"Pelayanan yang sangat profesional dan tenaga kerja yang berkualitas. Sangat
                             membantu dalam mengembangkan bisnis kami."</p>
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center pb-4">
                             <img src="{{ asset('img/team 2.png') }}" alt="Client 1" class="rounded-circle me-3"
                                 width="50" height="50">
                             <div>
@@ -330,13 +366,13 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm p-4">
+                    <div class="card h-100 border-0 shadow-sm px-4 py-5">
                         <div class="mb-3">
                             <i class="bi bi-quote text-pink" style="font-size: 2rem;"></i>
                         </div>
                         <p class="mb-4">"Tim yang handal dan berpengalaman. Proses rekrutmen yang cepat dan sesuai dengan
                             kebutuhan perusahaan."</p>
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center pb-4">
                             <img src="{{ asset('img/team 2.png') }}" alt="Client 2" class="rounded-circle me-3"
                                 width="50" height="50">
                             <div>
@@ -347,13 +383,13 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm p-4">
+                    <div class="card h-100 border-0 shadow-sm px-4 py-5">
                         <div class="mb-3">
                             <i class="bi bi-quote text-pink" style="font-size: 2rem;"></i>
                         </div>
                         <p class="mb-4">"Kemitraan yang sangat menguntungkan. Gelatik Supra selalu memberikan solusi
                             terbaik untuk kebutuhan SDM kami."</p>
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center pb-4">
                             <img src="{{ asset('img/team 2.png') }}" alt="Client 3" class="rounded-circle me-3"
                                 width="50" height="50">
                             <div>
@@ -368,7 +404,7 @@
     </section>
 
     <!-- Client Logos -->
-    <section class="py-5 bg-white">
+    <section class="py-5 bg-white mt-5">
         <div class="px-4 px-md-0">
             <div class="row g-4 align-items-center justify-content-center">
                 <div class=" col-md-2 col-4 text-center">
@@ -407,42 +443,42 @@
                 <p class="lead">Dokumentasi kegiatan dan pencapaian kami</p>
             </div>
 
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
+            <div class="row row-cols-2 row-cols-md-4 g-4">
+                <div class="col">
                     <div class="ratio ratio-4x3">
                         <img src="{{ asset('img/News-2.webp') }}" alt="Gallery 1"
                             class="img-fluid object-fit-cover rounded-3">
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col">
                     <div class="ratio ratio-4x3">
                         <img src="{{ asset('img/News-1.webp') }}" alt="Gallery 2"
                             class="img-fluid object-fit-cover rounded-3">
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col">
                     <div class="ratio ratio-4x3">
                         <img src="{{ asset('img/news-3.avif') }}" alt="Gallery 3"
                             class="img-fluid object-fit-cover rounded-3">
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col">
                     <div class="ratio ratio-4x3">
                         <img src="{{ asset('img/News-1.webp') }}" alt="Gallery 4"
                             class="img-fluid object-fit-cover rounded-3">
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col">
                     <div class="ratio ratio-4x3">
                         <img src="{{ asset('img/News-2.webp') }}" alt="Gallery 5"
                             class="img-fluid object-fit-cover rounded-3">
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col">
                     <div class="card h-100 border-0 shadow-sm d-flex align-items-center justify-content-center text-center"
-                        style="min-height: 200px;">
+                        style="min-height: 90px;">
                         <div class="card-body">
-                            <i class="bi bi-images text-pink mb-3" style="font-size: 3rem;"></i>
+                            <i class="bi bi-images text-pink mb-3 d-none d-md-block" style="font-size: 3rem;"></i>
                             <h5 class="fw-bold mb-3">View All</h5>
                             <a href="#" class="btn btn-primary">Lihat Semua</a>
                         </div>
@@ -545,8 +581,10 @@
         <div class="container py-5">
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
+                    <h3 class="fw-bolder text-dark mb-3">Let’s Connect There</h3>
                     <div class="d-flex align-items-center mb-4">
-                        <img src="{{ asset('img/icon/logo-gelatik-full.png') }}" alt="Gelatik Supra" height="40" class="me-3">
+                        <img src="{{ asset('img/icon/logo-gelatik-full.png') }}" alt="Gelatik Supra" height="40"
+                            class="me-3">
                     </div>
                     <p class="mb-4 pe-md-5">
                         PT. Gelatik Supra adalah mitra terpercaya dalam menyediakan solusi outsourcing profesional untuk
@@ -618,7 +656,5 @@
             <p class="mb-0 text-white">© 2024 All right reserved — PT Gelatik Supra</p>
         </div>
     </div>
-
-
 
 @endsection

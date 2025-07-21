@@ -14,6 +14,7 @@ class Job extends Model
     protected $keyType = 'string';
 
     protected $fillable = [
+        'id',
         'jobs_name',
         'store_name',
         'type_work',
@@ -23,6 +24,7 @@ class Job extends Model
         'experience',
         'education',
         'close_date',
+        'category',
         'status',
         'description',
     ];

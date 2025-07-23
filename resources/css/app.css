@@ -506,6 +506,30 @@ body {
         background-color: #cf5252;
     }
 
+    .btn-review {
+        background-color: #F3BF5E;
+        color: #784E00;
+        border: none !important;
+    }
+
+    .btn-review:hover{
+        background-color: #e2ac47;
+        color: #784E00;
+        transition: 0.3s ease-in;
+    }
+
+    .btn-interview {
+        background-color: #5EEEF3;
+        color: #006F7C;
+        border: none !important;
+    }
+
+    .btn-interview:hover{
+        background-color: #45dadf;
+        color: #006F7C;
+        transition: 0.3s ease-in;
+    }
+
     .head-table th {
         border: 2.5px solid #fff;
         background-color: var(--Red-2) !important;

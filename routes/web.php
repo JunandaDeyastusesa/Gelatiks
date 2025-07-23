@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicantsController;
 use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,23 +31,24 @@ Route::get('about', function () {
     return view('customer.about');
 })->name('customer.about');
 
-Route::get('applicants', function () {
-    return view('admin.applicants.index');
-})->name('admin.applicants');
+// Route::get('applicants', function () {
+//     return view('admin.applicants.index');
+// })->name('admin.applicants');
 
-Route::get('jobs', function () {
-    return view('admin.jobs.index');
-})->name('admin.jobs');
-Route::get('jobs/applicants', function () {
-    return view('admin.jobs.applicants');
-})->name('admin.jobs/applicants');
+// Route::get('jobs', function () {
+//     return view('admin.jobs.index');
+// })->name('admin.jobs');
 
 
 // Route::resource('jobs', JobController::class);
-Route::post('jobs/create', [JobController::class, 'store']);
+// Route::post('jobs/create', [JobController::class, 'store']);
 Route::get('carrer', function () {
     return view('customer.carrer');
 })->name('customer.carrer');
 
 
 Route::resource('jobs', JobController::class);
+Route::get('jobs/{id}/applicants', [JobController::class, 'showApplicants'])->name('jobs.applicants');
+
+Route::resource('applicants', ApplicantsController::class);
+

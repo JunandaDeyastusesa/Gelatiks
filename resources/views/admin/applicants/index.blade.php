@@ -7,9 +7,6 @@
     <div class="container-fluid">
         <div class="row">
             <main class="col-md-12 ms-sm-auto col-lg-12 py-1">
-                {{-- <div class="d-flex justify-content-end mb-3">
-                    <a href="#" class="btn btn-primary btn-create">Tambah</a>
-                </div> --}}
 
                 <div class="table-responsive">
                     <table class="table table-borderless my-2" id="applicantsTable">
@@ -24,51 +21,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="body-table">
-                                <td class="text-center align-middle">001</td>
-                                <td class="align-middle">Junanda Deyastusesa</td>
-                                <td class="align-middle">Sales</td>
-                                <td class="align-middle text-start">082143216321</td>
-                                <td class="align-middle">junanda@example.com</td>
-                                <td class="text-center px-1 d-flex justify-content-center">
-                                    <a href="#" class="btn btn-sm btn-detail">
-                                        <i class="bi bi-info-square"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-sm btn-edit">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="body-table">
-                                <td class="text-center align-middle">002</td>
-                                <td class="align-middle">Jujoe Deyastusesa</td>
-                                <td class="align-middle">Sales</td>
-                                <td class="align-middle text-start">082143216321</td>
-                                <td class="align-middle">Jujoe@example.com</td>
-                                <td class="text-center px-1 d-flex justify-content-center">
-                                    <a href="#" class="btn btn-sm btn-detail">
-                                        <i class="bi bi-info-square"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-sm btn-edit">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="body-table">
-                                <td class="text-center align-middle">002</td>
-                                <td class="align-middle">Jujoe Deyastusesa</td>
-                                <td class="align-middle">MD</td>
-                                <td class="align-middle text-start">082143216321</td>
-                                <td class="align-middle">Jujoe@example.com</td>
-                                <td class="text-center px-1 d-flex justify-content-center">
-                                    <a href="#" class="btn btn-sm btn-detail">
-                                        <i class="bi bi-info-square"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-sm btn-edit">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            @foreach ($applys as $index => $applicant)
+                                <tr>
+                                    <td class="text-center align-middle">
+                                        {{ str_pad($loop->iteration, 3, '0', STR_PAD_LEFT) }}</td>
+                                    <td class="align-middle col-2">{{ $applicant->profile->namaLengkap ?? '-' }}</td>
+                                    <td class="align-middle">{{ $applicant->profile->category }}</td>
+                                    <td class="align-middle text-start">{{ $applicant->profile->telp ?? '-' }}</td>
+                                    <td class="align-middle">{{ $applicant->email }}</td>
+                                    <td class="align-middle text-center px-1">
+                                        <div class="d-flex justify-content-center">
+                                            <a href="#" class="btn btn-sm btn-detail" data-id="{{ $applicant->id }}">
+                                                <i class="bi bi-info-square"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-sm btn-edit">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -76,12 +48,33 @@
         </div>
     </div>
 
-    @push('scripts')
-        <script type="module">
-            $(document).ready(function() {
-                $('#applicantsTable').DataTable();
-            });
-        </script>
-    @endpush
+    <div id="showModalContainer"></div>
 
 @endsection
+
+@push('scripts')
+    <script type="module">
+        $(document).ready(function() {
+            $('#applicantsTable').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.btn-detail').on('click', function(e) {
+                e.preventDefault();
+                let id = $(this).data('id');
+                $.get('/applicants/' + id, function(data) {
+                    $('#showModalContainer').html(data);
+                    setTimeout(() => {
+                        let modalElement = document.getElementById('showModal');
+                        if (modalElement) {
+                            let myModal = new bootstrap.Modal(modalElement);
+                            myModal.show();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+@endpush

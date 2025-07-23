@@ -15,6 +15,8 @@ class User extends Authenticatable
     public $incrementing = false;
     protected $keyType = 'string';
 
+    protected $table = 'users';
+
     protected $fillable = [
         'fullname',
         'username',
@@ -31,4 +33,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_roles', 'user_id', 'role_id');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(ProfileApplicant::class);
+    }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('title', 'Gelatik Supra')
-@section('nav-title', 'Jobs/Internship sales for Aqua - Royal Plaza Surabaya')
+@section('nav-title', 'Jobs/' . ($navTitle->jobs_name ?? 'Unknown Job') . ' - ' . $navTitle->store_name)
 
 @section('content')
     <div class="container-fluid">
@@ -25,24 +25,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="body-table">
-                                <td class="text-center align-middle">001</td>
-                                <td class="align-middle col-2">Junanda Deyastusesa </td>
-                                <td class="align-middle text-start">Pria</td>
-                                <td class="align-middle text-center">22</td>
-                                <td class="align-middle text-start">junanda@gmail.com</td>
-                                <td class="align-middle col-3">Jl Keitntang Barat Indah, No 27, Surabaya</td>
-                                <td class="align-middle text-center px-1 ">
-                                    <div class="d-flex justify-content-center">
-                                        <a href="#"
-                                            class="fw-medium btn btn-sm btn-primary ms-2 d-flex align-items-center justify-content-center">
-                                            Review
-                                        </a>
-                                    </div>
+                            @foreach ($viewApplicants as $applicant)
+                                <tr class="body-table">
+                                    <td class="text-center align-middle">
+                                        {{ str_pad($loop->iteration, 3, '0', STR_PAD_LEFT) }}</td>
+                                    <td class="align-middle col-2">{{ $applicant->user->profile->namaLengkap ?? '-' }}</td>
+                                    <td class="align-middle text-start">{{ $applicant->user->profile->kelamin ?? '-' }}</td>
+                                    <td class="align-middle text-center">
+                                        {{ $applicant->user->profile?->kelahiran ? \Carbon\Carbon::parse($applicant->user->profile->kelahiran)->age : '-' }}
+                                    </td>
+                                    <td class="align-middle text-start">{{ $applicant->user->email }}</td>
+                                    <td class="align-middle col-3">{{ $applicant->user->profile->domisili ?? '-' }}</td>
+                                    <td class="align-middle text-center px-1">
+                                        <div class="d-flex justify-content-center">
+                                            @if ($applicant->status == 'Review')
+                                                <a href="#"
+                                                    class="fw-medium btn btn-sm btn-review ms-2 d-flex align-items-center justify-content-center">
+                                                    Review
+                                                </a>
+                                            @elseif($applicant->status == 'Interview')
+                                                <a href="#"
+                                                    class="fw-medium btn btn-sm btn-interview ms-2 d-flex align-items-center justify-content-center">
+                                                    Interview
+                                                </a>
+                                            @endif
 
-                                </td>
-                            </tr>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
+
                     </table>
                 </div>
             </main>

@@ -19,15 +19,15 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ $currentRouteName == 'admin.applicants' ? 'active' : '' }}"
-                        href="{{ route('admin.applicants') }}">
+                    <a class="nav-link {{ $currentRouteName == 'applicants.index' ? 'active' : '' }}"
+                        href="{{ route('applicants.index') }}">
                         <i class="pe-2 fs-5 bi bi-people"></i>
                         Applicants
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ in_array($currentRouteName, ['admin.jobs', 'admin.jobs/applicants']) ? 'active' : '' }}"
+                    <a class="nav-link {{ in_array($currentRouteName, ['jobs.index', 'admin.jobs/applicants']) ? 'active' : '' }}"
                         href="{{ route('jobs.index') }}">
                         <i class="pe-2 fs-5 bi bi-suitcase-lg"></i>
                         Jobs

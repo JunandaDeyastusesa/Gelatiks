@@ -25,7 +25,7 @@ class ProfileApplicants extends Seeder
         ProfileApplicant::create([
             'id' => Str::ulid(),
             'user_id' => User::first()->id,
-            'category_id' => JobCategory::first()->id,
+            'category' => 'Sales',
             'namaLengkap' => 'Junanda',
             'kelahiran' => '1990-01-01',
             'kelamin' => 'Laki-laki',

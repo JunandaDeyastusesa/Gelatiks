@@ -7,10 +7,19 @@ use App\Models\JobApply;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\JobApplicantsExport;
 
 class JobController extends Controller
 {
-    // Tampilkan semua data pekerjaan
+
+    public function exportApplicants(Request $request, $id)
+    {
+        $status = $request->get('status'); // Ambil status dari query string
+        return Excel::download(new JobApplicantsExport($id, $status), 'job_applicants_' . $status . '.xlsx');
+    }
+
+
     public function index()
     {
         $jobs = Job::withCount('applies')->get();

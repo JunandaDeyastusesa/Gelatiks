@@ -52,3 +52,4 @@ Route::get('jobs/{id}/applicants', [JobController::class, 'showApplicants'])->na
 
 Route::resource('applicants', ApplicantsController::class);
 
+Route::get('/jobs/{id}/export-applicants', [JobController::class, 'exportApplicants'])->name('jobs.exportApplicants');

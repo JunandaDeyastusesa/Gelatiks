@@ -17,7 +17,7 @@ class JobApplySeeder extends Seeder
         JobApply::create([
             'id' => \Illuminate\Support\Str::ulid(),
             'job_id' => \App\Models\Job::first()->id,
-            'user_id' => \App\Models\User::where('username', 'budisantoso')->first()->id,
+            'user_id' => \App\Models\User::where('username', 'antok')->first()->id,
             'status' => 'Review',
         ]);
 

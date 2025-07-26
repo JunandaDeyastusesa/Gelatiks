@@ -22,19 +22,25 @@ class ProfileApplicants extends Seeder
 
         // --- IGNORE ---
         // Example:
-        ProfileApplicant::create([
-            'id' => Str::ulid(),
-            'user_id' => User::first()->id,
-            'category' => 'Sales',
-            'namaLengkap' => 'Junanda',
-            'kelahiran' => '1990-01-01',
-            'kelamin' => 'Laki-laki',
-            'telp' => '1234567890',
-            'pendidikan' => 'S1 Teknik Informatika',
-            'domisili' => 'Jakarta',
-            'pengKerja1' => 'Perusahaan A',
-            'pengKerja2' => 'Perusahaan B',
-            'pengKerja3' => 'Perusahaan C',
-        ]);
+        $usersApplicants = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Applicants');
+        })->take(2)->get();
+
+        foreach ($usersApplicants as $key => $user) {
+            ProfileApplicant::create([
+                'id' => Str::ulid(),
+                'user_id' => $user->id,
+                'category' => $key == 0 ? 'Sales' : 'MD',
+                'namaLengkap' => $key == 0 ? 'anilestari' : 'antok',
+                'kelahiran' => $key == 0 ? '1990-01-01' : '2000-01-01',
+                'kelamin' => $key == 0 ? 'Wanita' : 'Pria',
+                'telp' => '1234567890',
+                'pendidikan' => $key == 0 ? 'S1 Marketing' : 'S2 Marketing',
+                'domisili' => $key == 0 ? 'Jakarta' : 'Surabaya',
+                'pengKerja1' => 'Perusahaan A',
+                'pengKerja2' => 'Perusahaan B',
+                'pengKerja3' => 'Perusahaan C',
+            ]);
+        }
     }
 }

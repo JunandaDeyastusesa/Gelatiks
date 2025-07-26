@@ -18,68 +18,69 @@
                     <!-- Jobs Name -->
                     <div class="col-md-6">
                         <label class="form-label mb-1 text-muted">Jobs Name</label>
-                        <div class="fw-semibold">{{ $job->jobs_name }}</div>
+                        <div class="fw-semibold">{{ $job->jobs_name ?? '-' }}</div>
                     </div>
 
                     <!-- Category -->
                     <div class="col-md-6">
                         <label class="form-label mb-1 text-muted">Category</label>
-                        <div class="fw-semibold">{{ $job->category }}</div>
+                        <div class="fw-semibold">{{ $job->category ?? '-' }}</div>
                     </div>
 
                     <!-- City -->
                     <div class="col-md-6">
                         <label class="form-label mb-1 text-muted">City</label>
-                        <div class="fw-semibold">{{ $job->city }}</div>
+                        <div class="fw-semibold">{{ $job->city ?? '-' }}</div>
                     </div>
 
                     <!-- Store Name -->
                     <div class="col-md-6">
                         <label class="form-label mb-1 text-muted">Store Name</label>
-                        <div class="fw-semibold">{{ $job->store_name }}</div>
+                        <div class="fw-semibold">{{ $job->store_name ?? '-' }}</div>
                     </div>
 
                     <!-- Min School -->
                     <div class="col-md-4">
                         <label class="form-label mb-1 text-muted">Minimum School</label>
-                        <div class="fw-semibold">{{ $job->education }}</div>
+                        <div class="fw-semibold">{{ $job->education ?? '-' }}</div>
                     </div>
 
                     <!-- Qty Applicants -->
                     <div class="col-md-4">
                         <label class="form-label mb-1 text-muted">Quota</label>
-                        <div class="fw-semibold">{{ $job->open_position }}</div>
+                        <div class="fw-semibold">{{ $job->open_position ?? '-' }}</div>
                     </div>
 
                     <!-- Type Work -->
                     <div class="col-md-4">
                         <label class="form-label mb-1 text-muted">Type Work</label>
-                        <div class="fw-semibold">{{ $job->type_work }}</div>
+                        <div class="fw-semibold">{{ $job->type_work ?? '-' }}</div>
                     </div>
 
                     <!-- Min Experience -->
                     <div class="col-md-4">
                         <label class="form-label mb-1 text-muted">Min Experience</label>
-                        <div class="fw-semibold">{{ $job->experience }}</div>
+                        <div class="fw-semibold">{{ $job->experience ?? '-' }}</div>
                     </div>
 
                     <!-- Gender -->
                     <div class="col-md-4">
                         <label class="form-label mb-1 text-muted">Gender</label>
-                        <div class="fw-semibold">{{ $job->gender }}</div>
+                        <div class="fw-semibold">{{ $job->gender ?? '-' }}</div>
                     </div>
 
                     <!-- Close Date -->
                     <div class="col-md-4">
                         <label class="form-label mb-1 text-muted">Close Date</label>
                         <div class="fw-semibold"><i
-                                class="bi bi-calendar-event me-1 text-muted"></i>{{ \Carbon\Carbon::parse($job->close_date)->format('d M Y') }}</div>
+                                class="bi bi-calendar-event me-1 text-muted"></i>{{ \Carbon\Carbon::parse($job->close_date)->format('d M Y') }}
+                        </div>
                     </div>
 
                     <!-- Description -->
                     <div class="col-12">
                         <label class="form-label mb-1 text-muted">Description</label>
-                        <div class="fw-normal">{{ $job->description }}</div>
+                        <div class="fw-normal">{{ $job->description ?? '-' }}</div>
                     </div>
 
                 </div>

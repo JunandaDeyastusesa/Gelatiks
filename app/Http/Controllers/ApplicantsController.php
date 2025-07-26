@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserRoles;
+use App\Models\Roles;
 use Illuminate\Http\Request;
 
 class ApplicantsController extends Controller
@@ -15,12 +16,13 @@ class ApplicantsController extends Controller
     {
         $applys = User::with(['roles', 'profile'])
             ->whereHas('roles', function ($query) {
-                $query->where('role_id', '01K0SJ3PP4NE62PG77K65KDEW8'); // atau ULID kalau id pakai ULID
+                $query->where('name', 'Applicants');
             })
             ->get();
 
         return view('admin.applicants.index', compact('applys'));
     }
+
 
     /**
      * Show the form for creating a new resource.

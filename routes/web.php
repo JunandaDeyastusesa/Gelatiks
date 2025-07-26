@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ApplicantsController;
 use App\Http\Controllers\JobController;
+use App\Exports\JobsExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,13 +65,20 @@ Route::get('partnership', function () {
 //     return view('admin.jobs.index');
 // })->name('admin.jobs');
 
-
 // Route::resource('jobs', JobController::class);
 // Route::post('jobs/create', [JobController::class, 'store']);
+
 Route::get('carrer', function () {
     return view('customer.carrer');
 })->name('customer.carrer');
 
+// Route untuk export excel manual dengan closure
+Route::get('/export-jobs', function () {
+    return Excel::download(new JobsExport, 'jobs.xlsx');
+});
+
+// Route untuk export excel via controller
+Route::get('/jobs/export-excel', [JobController::class, 'exportExcel'])->name('jobs.exportExcel');
 
 Route::resource('jobs', JobController::class);
 Route::get('jobs/{id}/applicants', [JobController::class, 'showApplicants'])->name('jobs.applicants');

@@ -22,10 +22,12 @@ class ProfileApplicant extends Model
         'pengKerja3',
     ];
 
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
     public function jobCategory()
     {
         return $this->belongsTo(JobCategory::class, 'category_id');

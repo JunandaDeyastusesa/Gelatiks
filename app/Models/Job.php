@@ -20,7 +20,7 @@ class Job extends Model
         'type_work',
         'gender',
         'city',
-        'qty',
+        'open_position',
         'experience',
         'education',
         'close_date',
@@ -32,4 +32,14 @@ class Job extends Model
     protected $casts = [
         'close_date' => 'date',
     ];
+
+    public function applies()
+    {
+        return $this->hasMany(JobApply::class);
+    }
+
+    public function applicants()
+    {
+        return $this->belongsToMany(User::class, 'job_applies', 'job_id', 'user_id');
+    }
 }

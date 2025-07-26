@@ -506,6 +506,30 @@ body {
         background-color: #cf5252;
     }
 
+    .btn-review {
+        background-color: #F3BF5E;
+        color: #784E00;
+        border: none !important;
+    }
+
+    .btn-review:hover{
+        background-color: #e2ac47;
+        color: #784E00;
+        transition: 0.3s ease-in;
+    }
+
+    .btn-interview {
+        background-color: #5EEEF3;
+        color: #006F7C;
+        border: none !important;
+    }
+
+    .btn-interview:hover{
+        background-color: #45dadf;
+        color: #006F7C;
+        transition: 0.3s ease-in;
+    }
+
     .head-table th {
         border: 2.5px solid #fff;
         background-color: var(--Red-2) !important;
@@ -532,7 +556,7 @@ body {
 
 
     .sidebar {
-        background-color: var(--White);
+        background: linear-gradient(175deg, #FFF3F3 -13.53%, #FFBAD4 107.06%);
         min-height: 100vh;
 
         .side-logo {
@@ -554,9 +578,10 @@ body {
         }
 
         .nav-item:hover {
+            transform: translateX(4px);
             margin-bottom: 12px;
             margin-bottom: 12px;
-            background-color: var(--Red-2);
+            background-color: var(--Red-3);
             border-radius: 0.5rem;
 
             a {
@@ -568,7 +593,8 @@ body {
         }
 
         .nav-link.active {
-            background-color: var(--Red-2) !important;
+            transform: translateX(4px);
+            background-color: var(--Red-3) !important;
             color: var(--Red-10) !important;
             border-radius: 0.5rem;
             font-weight: 600;
@@ -602,6 +628,10 @@ body {
             border: none !important;
             color: #000 !important;
         }
+
+    }
+    .img-gallery-admin{
+        max-width: 150px;
     }
 
     .apexcharts-graphical .apexcharts-line-series {

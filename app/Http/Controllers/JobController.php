@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\JobApply;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+
 
 class JobController extends Controller
 {
     // Tampilkan semua data pekerjaan
     public function index()
     {
-        $jobs = Job::all();
+        $jobs = Job::withCount('applies')->get();
         return view('admin.jobs.index', compact('jobs'));
     }
 
@@ -39,9 +41,7 @@ class JobController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        $validated['id'] = Str::ulid(); // Buat ULID secara manual
-        $validated['type_work'] = $validated['type_work'] ?? 'WFO - Full Time';
-        $validated['status'] = $validated['status'] ?? 'Open';
+        $validated['id'] = (string) Str::ulid();
 
         Job::create($validated);
 
@@ -52,14 +52,25 @@ class JobController extends Controller
     public function show($id)
     {
         $job = Job::findOrFail($id);
-        return view('jobs.show', compact('job'));
+        return view('admin.jobs.show', compact('job'));
     }
+
+    public function showApplicants($id)
+    {
+        $viewApplicants = JobApply::with(['user.profile'])
+            ->where('job_id', $id) // $jobId bisa didapat dari route param atau lainnya
+            ->get();
+        $navTitle = Job::find($id);
+
+        return view('admin.jobs.applicants', compact('viewApplicants', 'navTitle'));
+    }
+
 
     // Tampilkan form edit
     public function edit($id)
     {
         $job = Job::findOrFail($id);
-        return view('jobs.edit', compact('job'));
+        return view('admin.jobs.edit', compact('job'));
     }
 
     // Update data pekerjaan

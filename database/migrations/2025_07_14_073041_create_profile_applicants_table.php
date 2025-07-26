@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('profile_applicants', function (Blueprint $table) {
             $table->ulid('id')->primary();
             $table->foreignUlid('user_id')->constrained('users')->onDelete('restrict');
-            $table->foreignUlid('category_id')->constrained('job_category')->onDelete('cascade');
+            $table->string('category');
             $table->string('namaLengkap');
             $table->string('kelahiran');
             $table->string('kelamin');

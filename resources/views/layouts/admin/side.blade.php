@@ -10,7 +10,7 @@
         </div>
         <div class="managae-jobs mt-3">
             <p class="fw-medium mb-2">Manage Jobs</p>
-            <ul class="nav flex-column ms-1">
+            <ul class="nav flex-column ms-1 me-4">
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="pe-2 fs-5 bi bi-columns-gap"></i>
@@ -19,15 +19,15 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ $currentRouteName == 'admin.applicants' ? 'active' : '' }}"
-                        href="{{ route('admin.applicants') }}">
+                    <a class="nav-link {{ $currentRouteName == 'applicants.index' ? 'active' : '' }}"
+                        href="{{ route('applicants.index') }}">
                         <i class="pe-2 fs-5 bi bi-people"></i>
                         Applicants
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ in_array($currentRouteName, ['admin.jobs', 'admin.jobs/applicants']) ? 'active' : '' }}"
+                    <a class="nav-link {{ in_array($currentRouteName, ['jobs.index', 'admin.jobs/applicants']) ? 'active' : '' }}"
                         href="{{ route('jobs.index') }}">
                         <i class="pe-2 fs-5 bi bi-suitcase-lg"></i>
                         Jobs
@@ -38,32 +38,44 @@
 
         <div class="managae-landingPage mt-3">
             <p class="fw-medium mb-2">Manage Landing Page</p>
-            <ul class="nav flex-column ms-1">
+            <ul class="nav flex-column ms-1 me-4">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="pe-2 fs-5 bi bi-map"></i>
-                        Coverage
+                    <a class="nav-link {{ $currentRouteName == 'admin.partnership' ? 'active' : '' }}"
+                        href="{{ route('admin.partnership') }}">
+                        <i class="pe-2 fs-5 bi bi-person-check"></i>
+                        Partnership
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{ $currentRouteName == 'admin.newsEvent' ? 'active' : '' }}"
+                        href="{{ route('admin.newsEvent') }}">
                         <i class="pe-2 fs-5 bi bi-newspaper"></i>
                         News & Event
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{ $currentRouteName == 'admin.testimoni' ? 'active' : '' }}"
+                        href={{ route('admin.testimoni') }}>
                         <i class="pe-2 fs-5 bi bi-chat-right-text"></i>
                         Testimoni
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{ $currentRouteName == 'admin.gallery' ? 'active' : '' }}"
+                        href="{{ route('admin.gallery') }}">
                         <i class="pe-2 fs-5 bi bi-images"></i>
                         Gallery
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ $currentRouteName == 'admin.coverage' ? 'active' : '' }}"
+                        href="{{ route('admin.coverage') }}">
+                        <i class="pe-2 fs-5 bi bi-map"></i>
+                        Coverage
                     </a>
                 </li>
             </ul>

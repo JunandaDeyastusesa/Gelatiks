@@ -7,9 +7,29 @@
     <div class="container-fluid">
         <div class="row">
             <main class="col-md-12 ms-sm-auto col-lg-12 py-1">
-                {{-- <div class="d-flex justify-content-end mb-3">
-                    <a href="#" class="btn btn-primary btn-create">Tambah</a>
-                </div> --}}
+                <div class="d-flex justify-content-end mb-3">
+                    <div class="dropdown">
+                        <a class="btn btn-success dropdown-toggle" href="#" role="button" id="exportDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-download me-1"></i> Export Excel
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="exportDropdown">
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('jobs.exportApplicants', ['id' => $navTitle->id, 'status' => 'interview']) }}">
+                                    Export Interview
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('jobs.exportApplicants', ['id' => $navTitle->id, 'status' => 'accepted']) }}">
+                                    Export Accepted
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
                 <div class="table">
                     <table class="table table-borderless" id="applicantsTable">
@@ -49,13 +69,11 @@
                                                     Interview
                                                 </a>
                                             @endif
-
                                         </div>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
-
                     </table>
                 </div>
             </main>

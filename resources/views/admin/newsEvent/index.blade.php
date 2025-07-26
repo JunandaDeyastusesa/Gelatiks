@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('title', 'Gelatik Supra')
-@section('nav-title', 'Applicants')
+@section('nav-title', 'News & Event')
 
 @section('content')
     <div class="container-fluid">
@@ -9,29 +9,28 @@
             <main class="col-md-12 ms-sm-auto col-lg-12 py-1">
 
                 <div class="table-responsive">
-                    <table class="table table-borderless my-2" id="applicantsTable">
+                    <table class="table table-borderless my-2" id="newsEventTable">
                         <thead class="head-table">
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">Applicant Name</th>
-                                <th class="text-center">Category</th>
-                                <th class="text-center">Phone</th>
-                                <th class="text-center">Email</th>
+                                <th class="text-center">Title</th>
+                                <th class="text-center">Date</th>
+                                <th class="text-center">Description</th>
+                                <th class="text-center">Status</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($applys as $applicant)
+                            {{-- @foreach ($applys as $applicant) --}}
                                 <tr>
-                                    <td class="text-center align-middle">
-                                        {{ str_pad($loop->iteration, 3, '0', STR_PAD_LEFT) }}</td>
-                                    <td class="align-middle col-2">{{ $applicant->profile->namaLengkap ?? '-' }}</td>
-                                    <td class="align-middle">{{ $applicant->profile->category ?? '-' }}</td>
-                                    <td class="align-middle text-start">{{ $applicant->profile->telp ?? '-' }}</td>
-                                    <td class="align-middle">{{ $applicant->email }}</td>
+                                    <td class="text-center align-middle">1</td>
+                                    <td class="align-middle col-2">Marketing Event PRJ</td>
+                                    <td class="align-middle">12 June 2025</td>
+                                    <td class="align-middle text-start">Memasarkan produk dalam event PRJ (Pekan Raya Jakarta)</td>
+                                    <td class="align-middle">Publish</td>
                                     <td class="align-middle text-center px-1">
                                         <div class="d-flex justify-content-center">
-                                            <a href="#" class="btn btn-sm btn-detail" data-id="{{ $applicant->id }}">
+                                            <a href="#" class="btn btn-sm btn-detail">
                                                 <i class="bi bi-info-square"></i>
                                             </a>
                                             <a href="#" class="btn btn-sm btn-edit">
@@ -40,7 +39,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach
+                            {{-- @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -55,7 +54,7 @@
 @push('scripts')
     <script type="module">
         $(document).ready(function() {
-            $('#applicantsTable').DataTable();
+            $('#newsEventTable').DataTable();
         });
     </script>
 

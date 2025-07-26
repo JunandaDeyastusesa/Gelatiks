@@ -30,7 +30,7 @@
                     <!-- City -->
                     <div class="col-md-6">
                         <label class="form-label mb-1 text-muted">City</label>
-                        <div class="fw-semibold">{{ $applicant->city }}</div>
+                        <div class="fw-semibold">{{ $applicant->profile->domisili }}</div>
                     </div>
 
                     <!-- Store Name -->

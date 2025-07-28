@@ -8,8 +8,6 @@ use App\Exports\JobsExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-
-use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\JobApplicantsExport;
 
 class JobController extends Controller

@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\ApplicantsController;
 use App\Http\Controllers\JobController;
+
 use App\Exports\JobsExport;
 use Maatwebsite\Excel\Facades\Excel;
+
+use App\Http\Controllers\NewsEventController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,9 +44,9 @@ Route::get('coverage', function () {
     return view('admin.coverage.index');
 })->name('admin.coverage');
 
-Route::get('newsEvent', function () {
-    return view('admin.newsEvent.index');
-})->name('admin.newsEvent');
+// Route::get('newsEvent', function () {
+//     return view('admin.newsEvent.index');
+// })->name('admin.newsEvent');
 
 Route::get('gallery', function () {
     return view('admin.gallery.index');
@@ -84,5 +87,8 @@ Route::resource('jobs', JobController::class);
 Route::get('jobs/{id}/applicants', [JobController::class, 'showApplicants'])->name('jobs.applicants');
 
 Route::resource('applicants', ApplicantsController::class);
+
 Route::get('/jobs/{id}/export-applicants', [JobController::class, 'exportApplicants'])->name('jobs.exportApplicants');
+
+Route::resource('newsEvent', NewsEventController::class);
 

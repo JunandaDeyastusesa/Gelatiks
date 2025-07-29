@@ -14,7 +14,7 @@
                         brand Anda.</p>
 
                     <div class="d-flex justify-content-center justify-content-md-start gap-3">
-                        <a href="#" class="btn btn-login">Lihat Karir</a>
+                        <a href="{{route('customer.carrer')}}" class="btn btn-login">Lihat Karir</a>
                         <a href="#" class="btn btn-readMore">Selengkapnya</a>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
 
 
     <!-- What We Offer -->
-    <section class="What-We-Offer bg-light mt-5 mt-md-0">
+    <section class="What-We-Offer bg-light mt-5 mt-md-0" id="what-we-offer">
         <div class="container py-3 pb-5">
             <div class="text-center mb-5">
                 <h2 class="fw-bold text-gray mb-3">What We Offer</h2>
@@ -161,7 +161,7 @@
     </section>
 
     <!-- Career Section -->
-    <section class="career-section py-3">
+    <section class="career-section py-3" id="career">
         <div class="container py-5">
             <div class="row py-md-5 align-items-center">
                 <div class="col-lg-6">
@@ -194,7 +194,7 @@
                         </div>
                     </div>
 
-                    <a href="#" class="btn btn-login text-center w-50 d-none d-md-block">Lihat Semua Lowongan</a>
+                    <a href="{{route('customer.carrer')}}" class="btn btn-login text-center w-50 d-none d-md-block">Lihat Semua Lowongan</a>
                 </div>
                 <div class="col-lg-6">
                     <div class="row g-3">
@@ -288,7 +288,7 @@
     </section>
 
     <!-- News & Event -->
-    <section class="py-5 bg-light">
+    <section class="py-5 bg-light newsEvent" id="news-event">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <h2 class="fw-bold text-gray mb-3">News & Event</h2>
@@ -436,7 +436,7 @@
     </section>
 
     <!-- Gallery -->
-    <section class="py-5 bg-light">
+    <section class="py-5 bg-light gallery" id="gallery">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <h2 class="fw-bold text-gray mb-3">Gallery</h2>

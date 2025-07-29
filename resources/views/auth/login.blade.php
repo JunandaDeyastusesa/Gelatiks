@@ -28,22 +28,23 @@
                 <h2 class="login-title">Login</h2>
                 <p class="login-subtitle pb-2">You can login for apply</p>
 
-                <form>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
                     <div class="mb-5">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" value="jhondoe@gmail.com" />
+                        <input type="email" name="email" class="form-control" id="email" value="jhondoe@gmail.com" />
                     </div>
 
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" value="••••••••••••" />
+                        <input type="password" name="password" class="form-control" id="password" value="••••••••••••" />
                     </div>
 
                     <div class="register-link">
                         You don’t have account?, <a href="{{ route('register') }}">Register Here</a>
                     </div>
 
-                    <a href="{{ route('home') }}" class="btn btn-login">Login</a>
+                    <button type="submit" class="btn btn-login">Login</button>
                 </form>
             </div>
         </div>

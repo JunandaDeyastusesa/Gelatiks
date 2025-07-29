@@ -18,15 +18,7 @@
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="{{ asset('img/icon/logo-gelatik-full.png') }}" alt="Logo" width="150" class="me-2" />
             </a>
-            <form class="d-none d-lg-flex flex-grow-1 mx-3 align-items-center">
-                <div class="input-group me-2" style="max-width: 200px">
-                    <input class="form-control" type="search" placeholder="Cari Lokasi/Kota" />
-                </div>
-                <div class="input-group me-3" style="max-width: 300px">
-                    <input class="form-control" type="search" placeholder="Cari Nama Pekerjaan, Perusahaan" />
-                </div>
-                <button class="btn btn-pink" type="submit">Search</button>
-            </form>
+           
             <a class="btn btn-pink" href="#">Login</a>
         </div>
     </nav>

@@ -18,7 +18,7 @@ class JobsTableSeeder extends Seeder
             'type_work'    => 'WFO - Full Time',
             'gender'       => 'Pria',
             'city'         => 'Jakarta',
-            'open_position'          => 5,
+            'open_position' => 5,
             'experience'   => '1 Tahun',
             'education'    => 'S1',
             'category'    => 'Sales',

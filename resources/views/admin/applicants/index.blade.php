@@ -21,12 +21,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($applys as $index => $applicant)
+                            @foreach ($applys as $applicant)
                                 <tr>
                                     <td class="text-center align-middle">
                                         {{ str_pad($loop->iteration, 3, '0', STR_PAD_LEFT) }}</td>
                                     <td class="align-middle col-2">{{ $applicant->profile->namaLengkap ?? '-' }}</td>
-                                    <td class="align-middle">{{ $applicant->profile->category }}</td>
+                                    <td class="align-middle">{{ $applicant->profile->category ?? '-' }}</td>
                                     <td class="align-middle text-start">{{ $applicant->profile->telp ?? '-' }}</td>
                                     <td class="align-middle">{{ $applicant->email }}</td>
                                     <td class="align-middle text-center px-1">

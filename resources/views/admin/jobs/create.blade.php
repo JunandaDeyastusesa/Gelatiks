@@ -17,15 +17,15 @@
                         <div class="col-md-6">
                             <label class="form-label mb-1">Jobs name</label>
                             <input type="text" class="form-control py-2" name="jobs_name"
-                                placeholder="Input jobs name">
+                                placeholder="Input jobs name" required>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label mb-1">Category</label>
-                            <select class="form-select py-2" name="category">
-                                <option selected disabled>Choose category</option>
+                            <select class="form-select py-2" name="category" required>
+                                <option value="" selected disabled>Choose category</option>
                                 <option value="Sales">Sales</option>
-                                <option value="Marketing">Marketing</option>
+                                <option value="MD">MD</option>
                                 <option value="Admin">Admin</option>
                             </select>
                         </div>
@@ -33,43 +33,50 @@
                         <div class="col-md-6">
                             <label class="form-label mb-1">City</label>
                             <input type="text" class="form-control py-2" name="city"
-                                placeholder="Input your city">
+                                placeholder="Input your city" required>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label mb-1">Store name</label>
                             <input type="text" class="form-control py-2" name="store_name"
-                                placeholder="Input store name">
+                                placeholder="Input store name" required>
                         </div>
 
                         <div class="col-md-4">
                             <label class="form-label mb-1">Minimum school</label>
-                            <input type="text" class="form-control py-2" name="education"
-                                placeholder="Input min school">
+                            <select class="form-select py-2" name="education" required>
+                                <option value="" selected disabled>Choose Minimum school</option>
+                                <option value="S1">S1</option>
+                                <option value="SMA/SMK">SMA/SMK</option>
+                                <option value="Fresh Graduate">Fresh Graduate</option>
+                            </select>
                         </div>
 
                         <div class="col-md-4">
-                            <label class="form-label mb-1">Minimum school</label>
-                            <input type="text" class="form-control py-2" name="open_position"
-                                placeholder="Input min school">
+                            <label class="form-label mb-1">Quota</label>
+                            <input type="number" class="form-control py-2" name="open_position"
+                                placeholder="Input min school" required>
                         </div>
 
                         <div class="col-md-4">
                             <label class="form-label mb-1">Type work</label>
-                            <input type="text" class="form-control py-2" name="type_work"
-                                placeholder="Input type work">
+                            <select class="form-select py-2" name="type_work" required>
+                                <option value="" selected disabled>Choose Type Work</option>
+                                <option value="WFO - Full Time">WFO - Full Time</option>
+                                <option value="WFO - Part Time">WFO - Part Time</option>
+                            </select>
                         </div>
 
                         <div class="col-md-4">
                             <label class="form-label mb-1">Minimum experience</label>
-                            <input type="text" class="form-control py-2" name="experience"
+                            <input type="number" class="form-control py-2" name="experience"
                                 placeholder="Input min experience">
                         </div>
 
                         <div class="col-md-4">
                             <label class="form-label mb-1">Gender</label>
-                            <select class="form-select py-2" name="gender">
-                                <option selected disabled>Choose gender</option>
+                            <select class="form-select py-2" name="gender" required>
+                                <option value="" selected disabled>Choose gender</option>
                                 <option value="Pria">Pria</option>
                                 <option value="Wanita">Wanita</option>
                             </select>
@@ -78,7 +85,7 @@
                         <div class="col-md-4">
                             <label class="form-label mb-1">Close date</label>
                             <div class="input-group">
-                                <input type="date" class="form-control py-2" name="close_date">
+                                <input type="date" class="form-control py-2" name="close_date" required>
                             </div>
                         </div>
 

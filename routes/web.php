@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApplicantsController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\NewsEventController;
+use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,9 +45,6 @@ Route::get('coverage', function () {
 //     return view('admin.newsEvent.index');
 // })->name('admin.newsEvent');
 
-Route::get('gallery', function () {
-    return view('admin.gallery.index');
-})->name('admin.gallery');
 
 Route::get('testimoni', function () {
     return view('admin.testimoni.index');
@@ -79,4 +77,8 @@ Route::resource('applicants', ApplicantsController::class);
 
 
 Route::get('/jobs/{id}/export-applicants', [JobController::class, 'exportApplicants'])->name('jobs.exportApplicants');
+
+Route::resource('newsEvent', NewsEventController::class);
+
+Route::resource('gallery', GalleryController::class);
 

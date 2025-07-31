@@ -64,7 +64,7 @@
                                             </form>
 
                                         </div>
-                                    </td> 
+                                    </td>
                                 </tr>
                             @endforeach
 
@@ -84,7 +84,7 @@
 @push('scripts')
     <script type="module">
         $(document).ready(function() {
-            $('#newsEventTable').DataTable();
+            $('#galleryTable').DataTable();
         });
     </script>
 

@@ -72,8 +72,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ $currentRouteName == 'admin.coverage' ? 'active' : '' }}"
-                        href="{{ route('admin.coverage') }}">
+                    <a class="nav-link {{ $currentRouteName == 'coverage.index' ? 'active' : '' }}"
+                        href="{{ route('coverage.index') }}">
                         <i class="pe-2 fs-5 bi bi-map"></i>
                         Coverage
                     </a>

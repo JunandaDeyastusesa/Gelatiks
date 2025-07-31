@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApplicantsController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\CoverageController;
 
 use App\Exports\JobsExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -41,9 +42,9 @@ Route::get('about', function () {
 
 // Manual
 
-Route::get('coverage', function () {
-    return view('admin.coverage.index');
-})->name('admin.coverage');
+// Route::get('coverage', function () {
+//     return view('admin.coverage.index');
+// })->name('admin.coverage');
 
 // Route::get('newsEvent', function () {
 //     return view('admin.newsEvent.index');
@@ -93,6 +94,6 @@ Route::get('/jobs/{id}/export-applicants', [JobController::class, 'exportApplica
 
 Route::resource('newsEvent', NewsEventController::class);
 
-Route::put('/coverage/{coverage}', [CoverageController::class, 'update'])->name('coverage.update');
+Route::resource('coverage', CoverageController::class);
 
 Route::resource('partnership', PartnershipController::class);

@@ -20,20 +20,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($applys as $applicant) --}}
+
+                             @foreach ($cover as $p)
                             <tr>
-                                <td class="align-middle text-center">34</td>
-                                <td class="align-middle text-center">114</td>
-                                <td class="align-middle text-center">23</td>
+                                <td class="align-middle text-center">{{$p->qty_province}}</td>
+                                <td class="align-middle text-center">{{$p->qty_clients}}</td>
+                                <td class="align-middle text-center">{{$p->qty_experience}}</td>
                                 <td class="align-middle text-center px-1">
                                     <div class="d-flex justify-content-center">
-                                        <a href="#" class="btn btn-sm btn-edit">
+                                        <a href="#" class="btn btn-sm btn-edit" data-id="{{ $p->id }}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
                                     </div>
                                 </td>
                             </tr>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -42,6 +43,8 @@
     </div>
 
     <div id="showModalContainer"></div>
+    <div id="editModalContainer"></div>
+
 
 @endsection
 
@@ -49,6 +52,27 @@
     <script type="module">
         $(document).ready(function() {
             $('#applicantsTable').DataTable();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $(".btn-edit").on("click", function(e) {
+                e.preventDefault();
+                let id = $(this).data("id");
+                $.get("/coverage/" + id + "/edit", function(data) {
+                    $("#editModalContainer").html(data);
+                    setTimeout(() => {
+                        let modalElement = document.getElementById("editModal");
+                        if (modalElement) {
+                            let myModal = new bootstrap.Modal(modalElement);
+                            myModal.show();
+                        }
+                    });
+                }).fail(function(xhr) {
+                    alert("Gagal mengambil data!");
+                });
+            });
         });
     </script>
 

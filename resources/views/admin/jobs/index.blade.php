@@ -9,6 +9,9 @@
             <main class="col-md-12 ms-sm-auto col-lg-12">
                 <div class="d-flex justify-content-end mb-3">
                     <a class="btn btn-create"><i class="bi bi-plus-square-fill"></i>Add Jobs</a>
+                    <a href="{{ route('jobs.exportExcel') }}" class="btn btn-outline-success ms-2">
+                        <i class="bi bi-download me-1"></i> Export Excel
+                    </a>
                 </div>
 
                 <div class="table">

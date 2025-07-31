@@ -56,6 +56,14 @@
                     </div>
                 </div>
             </div>
+             <form action="{{ route('newsEvent.destroy', $n->id) }}" method="POST"
+                                                onsubmit="return confirm('Yakin ingin menghapus item ini?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-hapus ms-2">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
 
             <div class="modal-footer bg-light rounded-bottom-4">
                 <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">

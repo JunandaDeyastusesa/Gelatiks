@@ -77,9 +77,9 @@
 
 @push('scripts')
     <script type="module">
-        $(document).ready(function() {
-            $('#newsEventTable').DataTable();
-        });
+      wsEventTable').DataTable();
+        });  $(document).ready(function() {
+            $('#ne
     </script>
     <script>
         $(document).ready(function() {

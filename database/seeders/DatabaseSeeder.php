@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             JobApplySeeder::class,
             ProfileApplicants::class,
             NewsEventSeeder::class,
+            PartnershipSeeder::class,
         ]);
     }
 }

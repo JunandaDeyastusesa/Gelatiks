@@ -5,6 +5,7 @@ use App\Http\Controllers\JobController;
 
 use App\Exports\JobsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\PartnershipController;
 
 use App\Http\Controllers\NewsEventController;
 use Illuminate\Support\Facades\Route;
@@ -56,9 +57,9 @@ Route::get('testimoni', function () {
     return view('admin.testimoni.index');
 })->name('admin.testimoni');
 
-Route::get('partnership', function () {
-    return view('admin.partnership.index');
-})->name('admin.partnership');
+// Route::get('partnership', function () {
+//     return view('admin.partnership.index');
+// })->name('admin.partnership');
 
 // Route::get('applicants', function () {
 //     return view('admin.applicants.index');
@@ -92,3 +93,6 @@ Route::get('/jobs/{id}/export-applicants', [JobController::class, 'exportApplica
 
 Route::resource('newsEvent', NewsEventController::class);
 
+Route::put('/coverage/{coverage}', [CoverageController::class, 'update'])->name('coverage.update');
+
+Route::resource('partnership', PartnershipController::class);

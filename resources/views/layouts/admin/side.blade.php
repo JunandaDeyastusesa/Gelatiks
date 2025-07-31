@@ -48,8 +48,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ $currentRouteName == 'admin.newsEvent' ? 'active' : '' }}"
-                        href="{{ route('admin.newsEvent') }}">
+                    <a class="nav-link {{ $currentRouteName == 'newsEvent.index' ? 'active' : '' }}"
+                        href="{{ route('newsEvent.index') }}">
                         <i class="pe-2 fs-5 bi bi-newspaper"></i>
                         News & Event
                     </a>

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             JobsTableSeeder::class,
             JobApplySeeder::class,
             ProfileApplicants::class,
+            NewsEventSeeder::class,
         ]);
     }
 }

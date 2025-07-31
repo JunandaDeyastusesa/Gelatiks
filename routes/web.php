@@ -5,7 +5,9 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ApplicantsController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\CoverageController;
 use App\Exports\JobsExport;
+use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\NewsEventController;
 use App\Http\Controllers\TestimoniController;
 
@@ -41,9 +43,9 @@ Route::get('gallery', function () {
 //     return view('admin.testimoni.index');
 // })->name('admin.testimoni');
 
-Route::get('partnership', function () {
-    return view('admin.partnership.index');
-})->name('admin.partnership');
+// Route::get('partnership', function () {
+//     return view('admin.partnership.index');
+// })->name('admin.partnership');
 
 Route::get('carrer', function () {
     return view('customer.carrer');
@@ -64,7 +66,10 @@ Route::resource('jobs', JobController::class);
 Route::get('jobs/{id}/applicants', [JobController::class, 'showApplicants'])->name('jobs.applicants');
 
 Route::resource('applicants', ApplicantsController::class);
+
 Route::get('/jobs/{id}/export-applicants', [JobController::class, 'exportApplicants'])->name('jobs.exportApplicants');
 Route::resource('newsEvent', NewsEventController::class);
 
+Route::resource('coverage', CoverageController::class);
+Route::resource('partnership', PartnershipController::class);
 Route::resource('testimoni', TestimoniController::class);

@@ -27,7 +27,7 @@
                                 <span class="badge bg-danger p-2 fw-medium"
                                     style="font-size: 14px">{{ $gallery->status }}</span>
                             @endif
-                        </div>
+                        </div> 
                     </div>
 
                     <div class="col-md-3">

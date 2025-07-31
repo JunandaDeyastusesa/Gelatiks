@@ -32,7 +32,7 @@
                             <div class="input-group">
                                 <input type="file" class="form-control py-2" name="image" required>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
 

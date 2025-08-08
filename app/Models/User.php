@@ -34,13 +34,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function profile()
+    {
+        return $this->hasOne(ProfileApplicant::class);
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_roles', 'user_id', 'role_id');
     }
 
-    public function profile()
+    public function hasRole($roleName)
     {
-        return $this->hasOne(ProfileApplicant::class);
+        return $this->roles()->where('name', $roleName)->exists();
+    }
+
+    public function getUserRoleAttribute()
+    {
+        return $this->roles()->first(); // atau pakai ->pluck('name')->first()
     }
 }

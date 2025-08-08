@@ -4,13 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 
 class ProfileApplicant extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUlids;
+
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $table = 'profile_applicants';
     protected $fillable = [
         'user_id',
+        'category',
         'namaLengkap',
         'kelahiran',
         'kelamin',
@@ -20,6 +25,8 @@ class ProfileApplicant extends Model
         'pengKerja1',
         'pengKerja2',
         'pengKerja3',
+        'docCV',
+        'photo'
     ];
 
 
@@ -28,8 +35,4 @@ class ProfileApplicant extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function jobCategory()
-    {
-        return $this->belongsTo(JobCategory::class, 'category_id');
-    }
 }

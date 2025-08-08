@@ -1,14 +1,18 @@
 <?php
 
 use App\Http\Controllers\CarrerController;
+use App\Http\Controllers\JobController;
+use App\Exports\JobsExport;
 use App\Http\Controllers\HistoryApplicantController;
 use App\Http\Controllers\JobApplyController;
 use App\Http\Controllers\ProfileApplicantController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplicantsController;
-use App\Http\Controllers\JobController;
 use App\Http\Controllers\NewsEventController;
 use App\Http\Controllers\AuthController;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -49,12 +53,19 @@ Route::post('carrer/{id}/apply', [CarrerController::class, 'submitApplyNow'])->n
 
 Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
     Route::resource('applicants', ApplicantsController::class);
-    Route::resource('jobs', JobController::class);
     Route::get('jobs/{id}/applicants', [JobController::class, 'showApplicants'])->name('jobs.applicants');
 
     Route::resource('jobApplies', JobApplyController::class);
     Route::put('jobApplies/{jobApply}/reject', [JobApplyController::class, 'RejectStatus'])->name('jobApplies.reject');
 
+    Route::get('/export-jobs', function () {
+        return Excel::download(new JobsExport, 'jobs.xlsx');
+    });
+
+    Route::get('/jobs/export-excel', [JobController::class, 'exportExcel'])->name('jobs.exportExcel');
+    Route::get('/jobs/{id}/export-applicants', [JobController::class, 'exportApplicants'])->name('jobs.exportApplicants');
+
+    Route::resource('jobs', JobController::class);
 });
 
 // =================== ADMIN ONLY ===================

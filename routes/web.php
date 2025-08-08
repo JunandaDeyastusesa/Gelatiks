@@ -80,6 +80,21 @@
         return Excel::download(new JobsExport, 'jobs.xlsx');
     });
 
+    // Route untuk menampilkan halaman error 500
+    Route::get('/500', function () {
+        return response()->view('errors.500', [], 500);
+    });
+
+    // Route untuk menampilkan halaman error 403
+    Route::get('/403', function () {
+        return response()->view('errors.403', [], 403);
+    });
+
+    // Route untuk menampilkan halaman error 404
+    Route::get('/404', function () {
+        return response()->view('errors.404', [], 404);
+    });
+
     // Route untuk export excel via controller
     Route::get('/jobs/export-excel', [JobController::class, 'exportExcel'])->name('jobs.exportExcel');
 

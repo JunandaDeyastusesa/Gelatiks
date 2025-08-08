@@ -1,3 +1,9 @@
+@php
+    $pengKerja1 = explode(' | ', $applicant->profile->pengKerja1 ?? '');
+    $pengKerja2 = explode(' | ', $applicant->profile->pengKerja2 ?? '');
+    $pengKerja3 = explode(' | ', $applicant->profile->pengKerja3 ?? '');
+@endphp
+
 <!-- Modal Detail Job -->
 <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -18,80 +24,104 @@
                     <!-- Jobs Name -->
                     <div class="col-md-6">
                         <label class="form-label mb-1 text-muted">Nama Lengkap</label>
-                        <div class="fw-semibold">{{ $applicant->profile->namaLengkap }}</div>
+                        <div class="fw-semibold">{{ $applicant->profile->namaLengkap ?? '-' }}</div>
                     </div>
 
                     <!-- Gender -->
                     <div class="col-md-3">
                         <label class="form-label mb-1 text-muted">Gender</label>
-                        <div class="fw-semibold">{{ $applicant->profile->kelamin }}</div>
+                        <div class="fw-semibold">{{ $applicant->profile->kelamin ?? '-' }}</div>
                     </div>
 
                     <!-- Kelahiran -->
                     <div class="col-md-3">
                         <label class="form-label mb-1 text-muted">Kelahiran</label>
                         <div class="fw-semibold">
-                            {{ \Carbon\Carbon::parse($applicant->profile->kelahiran)->format('d M Y') }}</div>
+                            {{ \Carbon\Carbon::parse($applicant->profile->kelahiran)->format('d M Y') ?? '-' }}</div>
                     </div>
 
                     <!-- Email -->
                     <div class="col-md-6">
                         <label class="form-label mb-1 text-muted">Email</label>
-                        <div class="fw-semibold">{{ $applicant->email }}</div>
+                        <div class="fw-semibold">{{ $applicant->email ?? '-' }}</div>
                     </div>
 
                     <!-- No Telp -->
                     <div class="col-md-3">
                         <label class="form-label mb-1 text-muted">No Telp</label>
-                        <div class="fw-semibold">{{ $applicant->profile->telp }}</div>
+                        <div class="fw-semibold">{{ $applicant->profile->telp ?? '-' }}</div>
                     </div>
 
                     <!-- Category -->
                     <div class="col-md-3">
                         <label class="form-label mb-1 text-muted">Category</label>
-                        <div class="fw-semibold">{{ $applicant->profile->category }}</div>
+                        <div class="fw-semibold">{{ $applicant->profile->category ?? '-' }}</div>
                     </div>
 
 
                     <!-- City -->
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <label class="form-label mb-1 text-muted">Domisili</label>
-                        <div class="fw-semibold">{{ $applicant->profile->domisili }}</div>
+                        <div class="fw-semibold">{{ $applicant->profile->domisili ?? '-' }}</div>
                     </div>
 
                     <!-- Pendidikan -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label mb-1 text-muted">Pendidikan</label>
-                        <div class="fw-semibold">{{ $applicant->profile->pendidikan }}</div>
+                        <div class="fw-semibold">{{ $applicant->profile->pendidikan ?? '-' }}</div>
+                    </div>
+
+                    <!-- CV -->
+                    <div class="col-md-3">
+                        <label class="form-label mb-1 text-muted">CV</label>
+                        <div class="fw-semibold"><a class="btn btn-success btn-sm"
+                                href="{{ asset('storage/' . $applicant->profile->docCV) }}" target="_blank"><i
+                                    class="bi bi-eye-fill me-2"></i> Lihat CV</a></div>
                     </div>
 
                     <hr>
-                    <!-- Pengalaman Kerja -->
-                    <div class="col-md-4">
-                        <label class="form-label mb-1 text-muted">Pengalaman Kerja 1</label>
-                        <div class="fw-semibold">{{ $applicant->profile->pengKerja1 }}</div>
+                    <p class="fs-5 fw-semibold mb-0">Pengalaman Kerja</p>
+                    <div class="col-md-12 mt-2 table-responsive">
+                        <table class="table">
+                            <thead class="head-table">
+                                <tr>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Nama Perusahaan</th>
+                                    <th class="text-center">Tahun</th>
+                                    <th class="text-center">Posisi</th>
+                                    <th class="text-center">Produk</th>
+                                    <th class="text-center">Alasan</th>
+                                </tr>
+                            </thead>
+                            <tbody class="body-table">
+                                <tr>
+                                    <td>01</td>
+                                    <td>{{ $pengKerja1[0] ?? '-' }}</td>
+                                    <td>{{ $pengKerja1[1] ?? '-' }}</td>
+                                    <td>{{ $pengKerja1[2] ?? '-' }}</td>
+                                    <td>{{ $pengKerja1[3] ?? '-' }}</td>
+                                    <td>{{ $pengKerja1[4] ?? '-' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>02</td>
+                                    <td>{{ $pengKerja2[0] ?? '-' }}</td>
+                                    <td>{{ $pengKerja2[1] ?? '-' }}</td>
+                                    <td>{{ $pengKerja2[2] ?? '-' }}</td>
+                                    <td>{{ $pengKerja2[3] ?? '-' }}</td>
+                                    <td>{{ $pengKerja2[4] ?? '-' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>03</td>
+                                    <td>{{ $pengKerja3[0] ?? '-' }}</td>
+                                    <td>{{ $pengKerja3[1] ?? '-' }}</td>
+                                    <td>{{ $pengKerja3[2] ?? '-' }}</td>
+                                    <td>{{ $pengKerja3[3] ?? '-' }}</td>
+                                    <td>{{ $pengKerja3[4] ?? '-' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-
-                    <!-- Pengalaman Kerja -->
-                    <div class="col-md-4">
-                        <label class="form-label mb-1 text-muted">Pengalaman Kerja 2</label>
-                        <div class="fw-semibold">{{ $applicant->profile->pengKerja2 }}</div>
-                    </div>
-
-                    <!-- Pengalaman Kerja -->
-                    <div class="col-md-4">
-                        <label class="form-label mb-1 text-muted">Pengalaman Kerja 3</label>
-                        <div class="fw-semibold">{{ $applicant->profile->pengKerja3 }}</div>
-                    </div>
-
                 </div>
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="modal-footer bg-light rounded-bottom-4">
-                <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">
-                    Tutup
-                </button>
             </div>
         </div>
     </div>

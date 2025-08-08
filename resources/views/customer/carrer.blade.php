@@ -21,114 +21,37 @@
             </div>
 
             <div class="row row-cols-1 row-cols-md-3 mt-2 g-4">
-                <div class="col">
-                    <a href="#" class="text-decoration-none">
-                        <div class="job-card card py-4 px-4">
-                            <div class="row d-flex align-items-center">
-                                <div class="">
-                                    <div>
-                                        <h5 class="fw-bold text-gray mb-1"> Sales Manager Produk Aqua</h5>
-                                        <p class="text-success fst-italic small mb-3"> Dibuat : 15 Jul 2025
-                                        </p>
-                                        <p class="text-muted mb-1"><i class="bi bi-pin-map-fill pe-2"></i>
-                                            Jakarta, Indonesia</p>
-                                        <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> 3
-                                            Orang</p>
-                                    </div>
-                                    <div class="ps-md-0 d-flex justify-content-between align-items-center mt-2">
-                                        <span class="badge bg-success">12 Ags 2025</span>
+                @foreach ($viewCarrer as $carrer)
+                    <div class="col">
+                        <a href="{{ route('carrer.show', $carrer->id) }}" class="text-decoration-none">
+                            <div class="job-card card py-4 px-4">
+                                <div class="row d-flex align-items-center">
+                                    <div class="">
                                         <div>
-                                            <img src="{{ asset('img/ofice-3 1.png') }}" alt=""
-                                                class="logo-companny rounded-circle">
+                                            <h5 class="fw-bold text-gray mb-1"> {{ $carrer->jobs_name }}</h5>
+                                            <p class="text-success fst-italic small mb-3"> Dibuat :
+                                                {{ \Carbon\Carbon::parse($carrer->created_at)->format('d M Y') }}
+                                            </p>
+                                            <p class="text-muted mb-1"><i class="bi bi-pin-map-fill pe-2"></i>
+                                                {{ $carrer->city }}</p>
+                                            <p class="text-muted mb-0"><i
+                                                    class="bi bi-person-add pe-2"></i>{{ $carrer->open_position }} Orang</p>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#" class="text-decoration-none">
-                        <div class="job-card card py-4 px-4">
-                            <div class="row d-flex align-items-center">
-                                <div class="">
-                                    <div>
-                                        <h5 class="fw-bold text-gray mb-1"> Sales Manager Produk Aqua</h5>
-                                        <p class="text-success fst-italic small mb-3"> Dibuat : 15 Jul 2025
-                                        </p>
-                                        <p class="text-muted mb-1"><i class="bi bi-pin-map-fill pe-2"></i>
-                                            Jakarta, Indonesia</p>
-                                        <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> 3
-                                            Orang</p>
-                                    </div>
-                                    <div class="ps-md-0 d-flex justify-content-between align-items-center mt-2">
-                                        <span class="badge bg-success">12 Ags 2025</span>
-
-                                        <div>
-                                            <img src="{{ asset('img/ofice-3 1.png') }}" alt=""
-                                                class="logo-companny rounded-circle">
+                                        <div class="ps-md-0 d-flex justify-content-between align-items-center mt-2">
+                                            <span
+                                                class="badge bg-success px-3">{{ \Carbon\Carbon::parse($carrer->close_date)->format('d M Y') }}</span>
+                                            <div>
+                                                <img src="{{ asset('img/ofice-3 1.png') }}" alt=""
+                                                    class="logo-companny rounded-circle">
+                                            </div>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#" class="text-decoration-none">
-                        <div class="job-card card py-4 px-4">
-                            <div class="row d-flex align-items-center">
-                                <div class="">
-                                    <div>
-                                        <h5 class="fw-bold text-gray mb-1"> Sales Manager Produk Aqua</h5>
-                                        <p class="text-success fst-italic small mb-3"> Dibuat : 15 Jul 2025
-                                        </p>
-                                        <p class="text-muted mb-1"><i class="bi bi-pin-map-fill pe-2"></i>
-                                            Jakarta, Indonesia</p>
-                                        <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> 3
-                                            Orang</p>
-                                    </div>
-                                    <div class="ps-md-0 d-flex justify-content-between align-items-center mt-2">
-                                        <span class="badge bg-success">12 Ags 2025</span>
-
-                                        <div>
-                                            <img src="{{ asset('img/ofice-3 1.png') }}" alt=""
-                                                class="logo-companny rounded-circle">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#" class="text-decoration-none">
-                        <div class="job-card card py-4 px-4">
-                            <div class="row d-flex align-items-center">
-                                <div class="">
-                                    <div>
-                                        <h5 class="fw-bold text-gray mb-1"> Sales Manager Produk Aqua</h5>
-                                        <p class="text-success fst-italic small mb-3"> Dibuat : 15 Jul 2025
-                                        </p>
-                                        <p class="text-muted mb-1"><i class="bi bi-pin-map-fill pe-2"></i>
-                                            Jakarta, Indonesia</p>
-                                        <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> 3
-                                            Orang</p>
-                                    </div>
-                                    <div class="ps-md-0 d-flex justify-content-between align-items-center mt-2">
-                                        <span class="badge bg-success">12 Ags 2025</span>
-
-                                        <div>
-                                            <img src="{{ asset('img/ofice-3 1.png') }}" alt=""
-                                                class="logo-companny rounded-circle">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

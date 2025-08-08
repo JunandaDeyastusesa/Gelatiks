@@ -80,7 +80,7 @@
                     <!-- Description -->
                     <div class="col-12">
                         <label class="form-label mb-1 text-muted">Description</label>
-                        <div class="fw-normal">{{ $job->description ?? '-' }}</div>
+                        <div class="fw-normal">{!! nl2br(e($job->description ?? '-')) !!}</div>
                     </div>
 
                 </div>

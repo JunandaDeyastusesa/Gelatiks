@@ -77,8 +77,51 @@
 
 @push('scripts')
     <script type="module">
+      wsEventTable').DataTable();
+        });  $(document).ready(function() {
+            $('#ne
+    </script>
+    <script>
         $(document).ready(function() {
-            $('#newsEventTable').DataTable();
+            $('.btn-create').on('click', function(e) {
+                e.preventDefault();
+
+                $.get('/newsEvent/create', function(data) {
+                    $('#addModalContainer').html(data);
+
+                    setTimeout(() => {
+                        let modalElement = document.getElementById('addModal');
+                        if (modalElement) {
+                            let myModal = new bootstrap.Modal(modalElement);
+                            myModal.show();
+                        } else {
+                            console.error('Modal tidak ditemukan.');
+                        }
+                    });
+                }).fail(function() {
+                    alert('Gagal memuat modal. Coba lagi.');
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".btn-edit").on("click", function(e) {
+                e.preventDefault();
+                let id = $(this).data("id");
+                $.get("/newsEvent/" + id + "/edit", function(data) {
+                    $("#editModalContainer").html(data);
+                    setTimeout(() => {
+                        let modalElement = document.getElementById("editModal");
+                        if (modalElement) {
+                            let myModal = new bootstrap.Modal(modalElement);
+                            myModal.show();
+                        }
+                    });
+                }).fail(function(xhr) {
+                    alert("Gagal mengambil data!");
+                });
+            });
         });
     </script>
     <script>

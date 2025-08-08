@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TestimoniController extends Controller
 {
@@ -12,7 +13,8 @@ class TestimoniController extends Controller
      */
     public function index()
     {
-        //
+        $testimoni = Testimoni::all();
+        return view('admin.testimoni.index', compact('testimoni'));
     }
 
     /**
@@ -20,7 +22,7 @@ class TestimoniController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.testimoni.create');
     }
 
     /**
@@ -28,23 +30,35 @@ class TestimoniController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'job_title' => 'required|string|max:255',
+            'testimony' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048', // <-- Ubah 'nullable' menjadi 'required'
+            'status' => 'required|in:Published,Draft',
+        ]);
 
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('testimonis', 'public');
+        }
+
+        Testimoni::create($validated);
+
+        return redirect()->route('testimoni.index')->with('success', 'Testimoni berhasil ditambahkan!');
+    }
     /**
      * Display the specified resource.
      */
     public function show(Testimoni $testimoni)
     {
-        //
+        // Pastikan view ada di resources/views/admin/testimoni/show.blade.php
+        return view('admin.testimoni.show', compact('testimoni'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Testimoni $testimoni)
     {
-        //
+        // Pastikan view ada di resources/views/admin/testimoni/edit.blade.php
+        return view('admin.testimoni.edit', compact('testimoni'));
     }
 
     /**
@@ -52,14 +66,50 @@ class TestimoniController extends Controller
      */
     public function update(Request $request, Testimoni $testimoni)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'job_title' => 'required|string|max:255',
+            'testimony' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'status' => 'required|in:Published,Draft',
+        ]);
+
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama (jika ada)
+            if ($testimoni->image && \Storage::disk('public')->exists($testimoni->image)) {
+                \Storage::disk('public')->delete($testimoni->image);
+            }
+
+            // Simpan gambar baru
+            $imagePath = $request->file('image')->store('testimoni_images', 'public');
+            $validated['image'] = $imagePath; // <--- Perbaikan di sini
+        } else {
+            // Jika tidak upload gambar baru, tetap gunakan gambar lama, tapi jangan hapus dari $validated jika tidak ada perubahan
+            // Anda bisa menghapus baris ini atau pastikan $validated tidak menimpa nilai 'image' jika tidak ada upload baru.
+            // Sebenarnya, jika tidak ada file baru, nilai 'image' dari $testimoni sebelumnya akan tetap ada di database,
+            // jadi tidak perlu unset jika tidak ada file baru yang diunggah.
+        }
+
+        $testimoni->update($validated); // Ini akan menggunakan nilai $validated yang sudah diperbarui
+
+        return redirect()->route('testimoni.index')->with('success', 'Testimoni berhasil diperbarui!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Testimoni $testimoni)
     {
-        //
+        // Hapus file gambar dari storage jika ada
+        if ($testimoni->image && Storage::disk('public')->exists($testimoni->image)) {
+            Storage::disk('public')->delete($testimoni->image);
+        } else {
+            // Jika tidak ada gambar, lakukan sesuatu (misalnya, log atau beri tahu)
+            // Anda bisa log ini untuk debugging, misalnya:
+            // \Log::info('Image not found or path is null for testimoni ID: ' . $testimoni->id);
+        }
+
+        // Hapus data dari database
+        $testimoni->delete();
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('testimoni.index')->with('success', 'Testimoni berhasil dihapus.');
     }
 }

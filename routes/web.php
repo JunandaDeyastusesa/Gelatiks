@@ -27,7 +27,6 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::get('about', fn() => view('customer.about'))->name('customer.about');
 // Route::get('profile', fn() => view('customer.profile'))->name('customer.profile');
 
-
 // Profile Applicant
 Route::resource('profile', ProfileApplicantController::class);
 Route::get('profile/{id}/account', [ProfileApplicantController::class, 'editAccount'])->name('edit.account');
@@ -45,11 +44,7 @@ Route::get('job-details', fn() => view('customer.carrer.show'))->name('customer.
 Route::resource('carrer', CarrerController::class);
 Route::get('carrer/{id}/apply', [CarrerController::class, 'applyNow'])->name('carrer.apply');
 Route::post('carrer/{id}/apply', [CarrerController::class, 'submitApplyNow'])->name('carrer.submit');
-
 // End Carrer
-
-
-// Route::get('jobApply', fn() => view('customer.jobApply'))->name('customer.jobApply');
 
 
 Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
@@ -70,14 +65,6 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('partnership', fn() => view('admin.partnership.index'))->name('admin.partnership');
     Route::resource('newsEvent', NewsEventController::class);
 });
-
-
-
-// =================== APPLICANT ONLY ===================
-// Route::middleware(['auth', 'role:Applicants'])->group(function () {
-//     Route::resource('carrer', CarrerController::class);
-// });
-
 
 // =================== LOGOUT ===================
 Route::post('/logout', function () {

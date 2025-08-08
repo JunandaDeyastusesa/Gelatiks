@@ -55,7 +55,7 @@
                         <div class="col-md-4">
                             <label class="form-label mb-1">Quota</label>
                             <input type="number" class="form-control py-2" name="open_position"
-                                placeholder="Input min school" required>
+                                placeholder="Input min school" min="1" required>
                         </div>
 
                         <div class="col-md-4">
@@ -70,7 +70,7 @@
                         <div class="col-md-4">
                             <label class="form-label mb-1">Minimum experience</label>
                             <input type="number" class="form-control py-2" name="experience"
-                                placeholder="Input min experience">
+                                placeholder="Input min experience" min="0">
                         </div>
 
                         <div class="col-md-4">

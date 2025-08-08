@@ -4,7 +4,7 @@
         <div class="modal-content rounded-4 border-0 shadow-lg">
             <div class="modal-header bg-pink text-white rounded-top-4 p-4">
                 <h5 class="modal-title fw-semibold" id="showModalLabel">
-                    <i class="bi bi-briefcase-fill me-2"></i>News & Event Details
+                    <i class="bi bi-briefcase-fill me-2"></i>Testimoni Details
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                     aria-label="Close"></button>
@@ -14,37 +14,35 @@
                 <div class="row g-4 p-2">
 
                     <div class="col-md-6">
-                        <label class="form-label mb-1 text-muted">Title</label>
-                        <div class="fw-medium">{{ $newsEvent->title ?? '-' }}</div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <label class="form-label mb-1 text-muted">Date</label>
-                        <div class="fw-medium"><i
-                                class="bi bi-calendar-event me-1 text-muted"></i>{{ \Carbon\Carbon::parse($newsEvent->event_date)->format('d M Y') }}
-                        </div>
+                        <label class="form-label mb-1 text-muted">Name</label>
+                        <div class="fw-medium">{{ $testimoni->name ?? '-' }}</div>
                     </div>
 
                     <div class="col-md-3">
                         <label class="form-label mb-1 text-muted">Status</label>
                         <div class="fw-medium">
-                            @if ($newsEvent->status == 'Published')
+                            @if ($testimoni->status == 'Published')
                                 <span class="badge bg-success p-2 fw-medium"
-                                    style="font-size: 14px">{{ $newsEvent->status }}</span>
+                                    style="font-size: 14px">{{ $testimoni->status }}</span>
                             @else
                                 <span class="badge bg-danger p-2 fw-medium"
-                                    style="font-size: 14px">{{ $newsEvent->status }}</span>
+                                    style="font-size: 14px">{{ $testimoni->status }}</span>
                             @endif
                         </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label mb-1">Job Title</label>
+                        <div class="fw-medium">{{ $testimoni->job_title ?? '-' }}</div>
                     </div>
 
                     <div class="col-md-4">
                         <label class="form-label mb-1 text-muted">Image</label>
                         <div class="fw-medium">
-                            @if (empty($newsEvent->image))
+                            @if (empty($testimoni->image))
                                 <p class="text-danger">Anda belum upload image!</p>
                             @else
-                                <img src="{{ asset('storage/' . $newsEvent->image) }}" alt="Cover Image"
+                                <img src="{{ asset('storage/' . $testimoni->image) }}" alt="Cover Image"
                                     class="img-fluid">
                             @endif
                         </div>
@@ -52,10 +50,12 @@
 
                     <div class="col-8">
                         <label class="form-label mb-1 text-muted">Description</label>
-                        <div class="fw-medium">{!! nl2br(e($newsEvent->content)) !!}</div>
+                        <div class="fw-medium">{!! nl2br(e($testimoni->testimony)) !!}</div>
                     </div>
                 </div>
             </div>
+
+
             <div class="modal-footer bg-light rounded-bottom-4">
                 <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">
                     Tutup

@@ -9,29 +9,38 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
-<!-- Form Edit Coverage -->
-<form action="{{ route('coverage.update', $cover->id) }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
 
-    <div class="mb-3">
-        <label for="provinsi" class="form-label">Province Coverage</label>
-        <input type="number" class="form-control" id="provinsi" name="qty_province" value="{{ $cover->qty_province }}" required>
-    </div>
+            <form action="{{ route('coverage.update', $cover->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="modal-body">
+                    <div class="row g-4 p-2">
+                        <div class="mb-3 col-md-4">
+                            <label for="provinsi" class="form-label">Province Coverage</label>
+                            <input type="number" class="form-control" id="provinsi" name="qty_province"
+                                value="{{ $cover->qty_province }}" required>
+                        </div>
 
-    <div class="mb-3">
-        <label for="happy_client" class="form-label">Happy Client</label>
-        <input type="number" class="form-control" id="qty_clients" name="qty_clients" value="{{ $cover->qty_clients }}" min="0" required>
-    </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="happy_client" class="form-label">Happy Client</label>
+                            <input type="number" class="form-control" id="qty_clients" name="qty_clients"
+                                value="{{ $cover->qty_clients }}" min="0" required>
+                        </div>
 
-    <div class="mb-3">
-        <label for="years_experience" class="form-label">Years Experience</label>
-        <input type="number" class="form-control" id="qty_experience" name="qty_experience" value="{{ $cover->qty_experience }}" min="0" required>
-    </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="years_experience" class="form-label">Years Experience</label>
+                            <input type="number" class="form-control" id="qty_experience" name="qty_experience"
+                                value="{{ $cover->qty_experience }}" min="0" required>
+                        </div>
+                    </div>
+                </div>
 
-    <button type="submit" class="btn btn-primary">Update Coverage</button>
-</form>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
 
-</div>
+        </div>
     </div>
 </div>

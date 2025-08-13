@@ -43,8 +43,8 @@
                     <p class="fw-medium mb-2">Manage Landing Page</p>
                     <ul class="nav flex-column ms-1 me-4">
                         <li class="nav-item">
-                            <a class="nav-link {{ $currentRouteName == 'admin.partnership' ? 'active' : '' }}"
-                                href="{{ route('admin.partnership') }}">
+                            <a class="nav-link {{ $currentRouteName == 'partnership.index' ? 'active' : '' }}"
+                                href="{{ route('partnership.index') }}">
                                 <i class="pe-2 fs-5 bi bi-person-check"></i>
                                 Partnership
                             </a>
@@ -59,24 +59,24 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ $currentRouteName == 'admin.testimoni' ? 'active' : '' }}"
-                                href={{ route('admin.testimoni') }}>
+                            <a class="nav-link {{ $currentRouteName == 'testimoni.index' ? 'active' : '' }}"
+                                href={{ route('testimoni.index') }}>
                                 <i class="pe-2 fs-5 bi bi-chat-right-text"></i>
                                 Testimoni
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ $currentRouteName == 'admin.gallery' ? 'active' : '' }}"
-                                href="{{ route('admin.gallery') }}">
+                            <a class="nav-link {{ $currentRouteName == 'gallery.index' ? 'active' : '' }}"
+                                href="{{ route('gallery.index') }}">
                                 <i class="pe-2 fs-5 bi bi-images"></i>
                                 Gallery
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ $currentRouteName == 'admin.coverage' ? 'active' : '' }}"
-                                href="{{ route('admin.coverage') }}">
+                            <a class="nav-link {{ $currentRouteName == 'coverage.index' ? 'active' : '' }}"
+                                href="{{ route('coverage.index') }}">
                                 <i class="pe-2 fs-5 bi bi-map"></i>
                                 Coverage
                             </a>

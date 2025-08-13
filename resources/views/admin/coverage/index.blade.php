@@ -7,8 +7,6 @@
     <div class="container-fluid">
         <div class="row">
             <main class="col-md-12 ms-sm-auto col-lg-12 py-1">
-                
-
                 <div class="table-responsive">
                     <table class="table table-borderless my-2">
                         <thead class="head-table">
@@ -95,7 +93,3 @@
         });
     </script>
 @endpush
-
-
-
-

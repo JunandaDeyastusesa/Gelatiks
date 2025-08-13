@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
             RolesTableSeeder::class,
             UsersTableSeeder::class,
             UserRolesTableSeeder::class,
-            JobCategoryTableSeeder::class,
             JobsTableSeeder::class,
             JobApplySeeder::class,
             ProfileApplicants::class,

@@ -10,37 +10,38 @@
                     aria-label="Close"></button>
             </div>
 
-<form action="{{ route('partnership.store') }}" enctype="multipart/form-data" method="POST">
-    @csrf
-    <div class="modal-body">
-        <div class="row g-4 p-2">
-            <div class="col-md-12">
-                <label class="form-label mb-1">Name</label>
-                <input type="text" class="form-control py-2" name="name" placeholder="Input name" required>
-            </div>
+            <form action="{{ route('partnership.store') }}" enctype="multipart/form-data" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="row g-4 p-2">
+                        <div class="col-md-12">
+                            <label class="form-label mb-1">Name</label>
+                            <input type="text" class="form-control py-2" name="name" placeholder="Input name"
+                                required>
+                        </div>
 
-            <div class="col-md-6">
-                <label class="form-label mb-1">Start Contract</label>
-                <input type="date" class="form-control py-2" name="start_contract" required>
-            </div>
+                        <div class="col-md-6">
+                            <label class="form-label mb-1">Start Contract</label>
+                            <input type="date" class="form-control py-2" name="start_contract" required>
+                        </div>
 
-            <div class="col-md-6">
-                <label class="form-label mb-1">End Contract</label>
-                <input type="date" class="form-control py-2" name="end_contract" required>
-            </div>
+                        <div class="col-md-6">
+                            <label class="form-label mb-1">End Contract</label>
+                            <input type="date" class="form-control py-2" name="end_contract" required>
+                        </div>
 
-            <div class="col-md-12">
-                <label class="form-label mb-1">Image</label>
-                <input type="file" class="form-control py-2" name="image" required>
-            </div>
-        </div>
-    </div>
+                        <div class="col-md-12">
+                            <label class="form-label mb-1">Image</label>
+                            <input type="file" class="form-control py-2" name="image" required>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="modal-footer d-flex justify-content-between">
-        <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-    </div>
-</form>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

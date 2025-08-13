@@ -9,7 +9,7 @@
             <main class="col-md-12 ms-sm-auto col-lg-12 py-1">
                 <div class="d-flex justify-content-end mb-3">
                     <a class="btn btn-create"><i class="bi bi-plus-square-fill"></i>Add Partnership</a>
-                </div>
+                </div>
 
                 <div class="table-responsive">
                     <table class="table table-borderless my-2" id="newsEventTable">

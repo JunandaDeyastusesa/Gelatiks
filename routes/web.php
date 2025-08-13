@@ -1,17 +1,20 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Exports\JobsExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\CarrerController;
 use App\Http\Controllers\JobController;
-use App\Exports\JobsExport;
 use App\Http\Controllers\HistoryApplicantController;
 use App\Http\Controllers\JobApplyController;
 use App\Http\Controllers\ProfileApplicantController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplicantsController;
 use App\Http\Controllers\NewsEventController;
 use App\Http\Controllers\AuthController;
-use Maatwebsite\Excel\Facades\Excel;
-
+use App\Http\Controllers\CoverageController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\PartnershipController;
 
 
 Route::get('/', function () {
@@ -50,6 +53,10 @@ Route::get('carrer/{id}/apply', [CarrerController::class, 'applyNow'])->name('ca
 Route::post('carrer/{id}/apply', [CarrerController::class, 'submitApplyNow'])->name('carrer.submit');
 // End Carrer
 
+// Report Interview
+Route::get('reportInterview', fn() => view('admin.reportInterview.create'))->name('admin.reportInterview');
+//END
+
 
 Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
     Route::resource('applicants', ApplicantsController::class);
@@ -70,11 +77,15 @@ Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
 
 // =================== ADMIN ONLY ===================
 Route::middleware(['auth', 'role:Admin'])->group(function () {
-    Route::get('coverage', fn() => view('admin.coverage.index'))->name('admin.coverage');
-    Route::get('gallery', fn() => view('admin.gallery.index'))->name('admin.gallery');
-    Route::get('testimoni', fn() => view('admin.testimoni.index'))->name('admin.testimoni');
-    Route::get('partnership', fn() => view('admin.partnership.index'))->name('admin.partnership');
+    // Route::get('coverage', fn() => view('admin.coverage.index'))->name('admin.coverage');
+    // Route::get('gallery', fn() => view('admin.gallery.index'))->name('admin.gallery');
+    // Route::get('testimoni', fn() => view('admin.testimoni.index'))->name('admin.testimoni');
+    // Route::get('partnership', fn() => view('admin.partnership.index'))->name('admin.partnership');
     Route::resource('newsEvent', NewsEventController::class);
+    Route::resource('coverage', CoverageController::class);
+    Route::resource('gallery', GalleryController::class);
+    Route::resource('testimoni', TestimoniController::class);
+    Route::resource('partnership', PartnershipController::class);
 });
 
 // =================== LOGOUT ===================

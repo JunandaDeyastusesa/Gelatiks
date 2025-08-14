@@ -2,24 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JobApply;
-use App\Models\User;
+use App\Models\ReportInterview;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class HistoryApplicantController extends Controller
+class ReportInterviewController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function viewFormPCTL()
     {
-        $jobApplicant = JobApply::where('user_id', Auth::id())->get(); // gunakan get()
-        $user = User::findOrFail(Auth::id());
 
-        return view('customer.jobApply', compact('jobApplicant', 'user'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -40,7 +34,7 @@ class HistoryApplicantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(ReportInterview $reportInterview)
     {
         //
     }
@@ -48,7 +42,7 @@ class HistoryApplicantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(ReportInterview $ReportInterview)
     {
         //
     }
@@ -56,7 +50,7 @@ class HistoryApplicantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, ReportInterview $ReportInterview)
     {
         //
     }
@@ -64,7 +58,7 @@ class HistoryApplicantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy()
+    public function destroy(ReportInterview $ReportInterview)
     {
         //
     }

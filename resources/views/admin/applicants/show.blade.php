@@ -5,7 +5,7 @@
             <!-- Modal Header -->
             <div class="modal-header bg-pink text-white rounded-top-4 p-4">
                 <h5 class="modal-title fw-semibold" id="showModalLabel">
-                    <i class="bi bi-briefcase-fill me-2"></i>Job Details
+                    <i class="bi bi-briefcase-fill me-2"></i>Details Applicant
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                     aria-label="Close"></button>
@@ -21,65 +21,67 @@
                         <div class="fw-semibold">{{ $applicant->profile->namaLengkap }}</div>
                     </div>
 
-                    <!-- Category -->
+                    <!-- Gender -->
+                    <div class="col-md-3">
+                        <label class="form-label mb-1 text-muted">Gender</label>
+                        <div class="fw-semibold">{{ $applicant->profile->kelamin }}</div>
+                    </div>
+
+                    <!-- Kelahiran -->
+                    <div class="col-md-3">
+                        <label class="form-label mb-1 text-muted">Kelahiran</label>
+                        <div class="fw-semibold">
+                            {{ \Carbon\Carbon::parse($applicant->profile->kelahiran)->format('d M Y') }}</div>
+                    </div>
+
+                    <!-- Email -->
                     <div class="col-md-6">
+                        <label class="form-label mb-1 text-muted">Email</label>
+                        <div class="fw-semibold">{{ $applicant->email }}</div>
+                    </div>
+
+                    <!-- No Telp -->
+                    <div class="col-md-3">
+                        <label class="form-label mb-1 text-muted">No Telp</label>
+                        <div class="fw-semibold">{{ $applicant->profile->telp }}</div>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="col-md-3">
                         <label class="form-label mb-1 text-muted">Category</label>
                         <div class="fw-semibold">{{ $applicant->profile->category }}</div>
                     </div>
 
+
                     <!-- City -->
-                    <div class="col-md-6">
-                        <label class="form-label mb-1 text-muted">City</label>
+                    <div class="col-md-8">
+                        <label class="form-label mb-1 text-muted">Domisili</label>
                         <div class="fw-semibold">{{ $applicant->profile->domisili }}</div>
                     </div>
 
-                    <!-- Store Name -->
-                    <div class="col-md-6">
-                        <label class="form-label mb-1 text-muted">Store Name</label>
-                        <div class="fw-semibold">{{ $applicant->store_name }}</div>
-                    </div>
-
-                    <!-- Min School -->
+                    <!-- Pendidikan -->
                     <div class="col-md-4">
-                        <label class="form-label mb-1 text-muted">Minimum School</label>
-                        <div class="fw-semibold">{{ $applicant->education }}</div>
+                        <label class="form-label mb-1 text-muted">Pendidikan</label>
+                        <div class="fw-semibold">{{ $applicant->profile->pendidikan }}</div>
                     </div>
 
-                    <!-- Qty Applicants -->
+                    <hr>
+                    <!-- Pengalaman Kerja -->
                     <div class="col-md-4">
-                        <label class="form-label mb-1 text-muted">Quota</label>
-                        <div class="fw-semibold">{{ $applicant->open_position }}</div>
+                        <label class="form-label mb-1 text-muted">Pengalaman Kerja 1</label>
+                        <div class="fw-semibold">{{ $applicant->profile->pengKerja1 }}</div>
                     </div>
 
-                    <!-- Type Work -->
+                    <!-- Pengalaman Kerja -->
                     <div class="col-md-4">
-                        <label class="form-label mb-1 text-muted">Type Work</label>
-                        <div class="fw-semibold">{{ $applicant->type_work }}</div>
+                        <label class="form-label mb-1 text-muted">Pengalaman Kerja 2</label>
+                        <div class="fw-semibold">{{ $applicant->profile->pengKerja2 }}</div>
                     </div>
 
-                    <!-- Min Experience -->
+                    <!-- Pengalaman Kerja -->
                     <div class="col-md-4">
-                        <label class="form-label mb-1 text-muted">Min Experience</label>
-                        <div class="fw-semibold">{{ $applicant->experience }}</div>
-                    </div>
-
-                    <!-- Gender -->
-                    <div class="col-md-4">
-                        <label class="form-label mb-1 text-muted">Gender</label>
-                        <div class="fw-semibold">{{ $applicant->gender }}</div>
-                    </div>
-
-                    <!-- Close Date -->
-                    <div class="col-md-4">
-                        <label class="form-label mb-1 text-muted">Close Date</label>
-                        <div class="fw-semibold"><i
-                                class="bi bi-calendar-event me-1 text-muted"></i>{{ \Carbon\Carbon::parse($applicant->close_date)->format('d M Y') }}</div>
-                    </div>
-
-                    <!-- Description -->
-                    <div class="col-12">
-                        <label class="form-label mb-1 text-muted">Description</label>
-                        <div class="fw-normal">{{ $applicant->description }}</div>
+                        <label class="form-label mb-1 text-muted">Pengalaman Kerja 3</label>
+                        <div class="fw-semibold">{{ $applicant->profile->pengKerja3 }}</div>
                     </div>
 
                 </div>

@@ -56,16 +56,16 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ $currentRouteName == 'admin.testimoni' ? 'active' : '' }}"
-                        href={{ route('admin.testimoni') }}>
+                    <a class="nav-link {{ $currentRouteName == 'testimoni.index' ? 'active' : '' }}"
+                        href={{ route('testimoni.index') }}>
                         <i class="pe-2 fs-5 bi bi-chat-right-text"></i>
                         Testimoni
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ $currentRouteName == 'admin.gallery' ? 'active' : '' }}"
-                        href="{{ route('admin.gallery') }}">
+                    <a class="nav-link {{ $currentRouteName == 'gallery.index' ? 'active' : '' }}"
+                        href="{{ route('gallery.index') }}">
                         <i class="pe-2 fs-5 bi bi-images"></i>
                         Gallery
                     </a>

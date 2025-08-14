@@ -1,26 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ApplicantsController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\CoverageController;
-
 use App\Exports\JobsExport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\PartnershipController;
-
 use App\Http\Controllers\NewsEventController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestimoniController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,37 +31,21 @@ Route::get('about', function () {
 
 
 // Manual
-
-// Route::get('coverage', function () {
-//     return view('admin.coverage.index');
-// })->name('admin.coverage');
-
-// Route::get('newsEvent', function () {
-//     return view('admin.newsEvent.index');
-// })->name('admin.newsEvent');
+Route::get('coverage', function () {
+    return view('admin.coverage.index');
+})->name('admin.coverage');
 
 Route::get('gallery', function () {
     return view('admin.gallery.index');
 })->name('admin.gallery');
 
-Route::get('testimoni', function () {
-    return view('admin.testimoni.index');
-})->name('admin.testimoni');
+// Route::get('testimoni', function () {
+//     return view('admin.testimoni.index');
+// })->name('admin.testimoni');
 
 // Route::get('partnership', function () {
 //     return view('admin.partnership.index');
 // })->name('admin.partnership');
-
-// Route::get('applicants', function () {
-//     return view('admin.applicants.index');
-// })->name('admin.applicants');
-
-// Route::get('jobs', function () {
-//     return view('admin.jobs.index');
-// })->name('admin.jobs');
-
-// Route::resource('jobs', JobController::class);
-// Route::post('jobs/create', [JobController::class, 'store']);
 
 Route::get('carrer', function () {
     return view('customer.carrer');
@@ -85,15 +59,17 @@ Route::get('/export-jobs', function () {
 // Route untuk export excel via controller
 Route::get('/jobs/export-excel', [JobController::class, 'exportExcel'])->name('jobs.exportExcel');
 
+
+Route::resource('gallery', GalleryController::class);
+
 Route::resource('jobs', JobController::class);
 Route::get('jobs/{id}/applicants', [JobController::class, 'showApplicants'])->name('jobs.applicants');
 
 Route::resource('applicants', ApplicantsController::class);
 
 Route::get('/jobs/{id}/export-applicants', [JobController::class, 'exportApplicants'])->name('jobs.exportApplicants');
-
 Route::resource('newsEvent', NewsEventController::class);
 
 Route::resource('coverage', CoverageController::class);
-
 Route::resource('partnership', PartnershipController::class);
+Route::resource('testimoni', TestimoniController::class);

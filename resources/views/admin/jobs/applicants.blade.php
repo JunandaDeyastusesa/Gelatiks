@@ -7,6 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             <main class="col-md-12 ms-sm-auto col-lg-12 py-1">
+
                 <div class="d-flex justify-content-end mb-3">
                     <div class="dropdown">
                         <a class="btn btn-success dropdown-toggle" href="#" role="button" id="exportDropdown"
@@ -31,6 +32,7 @@
                     </div>
                 </div>
 
+                {{-- <a class="text-decoration-none text-secondary" href="{{ route('jobs.applicants', $viewApplicants->job->id) }}"><i class="bi bi-arrow-left"></i> Back to Applicant</a> --}}
                 <div class="table">
                     <table class="table table-borderless" id="applicantsTable">
                         <thead class="head-table">
@@ -41,7 +43,7 @@
                                 <th class="text-center">Age</th>
                                 <th class="text-center">Email</th>
                                 <th class="text-center">Address</th>
-                                <th class="text-center">Manage</th>
+                                <th class="text-center">Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,22 +60,43 @@
                                     <td class="align-middle col-3">{{ $applicant->user->profile->domisili ?? '-' }}</td>
                                     <td class="align-middle text-center px-1">
                                         <div class="d-flex justify-content-center">
-                                            @if ($applicant->status == 'Review')
-                                                <a href="#"
-                                                    class="fw-medium btn btn-sm btn-review ms-2 d-flex align-items-center justify-content-center">
-                                                    Review
+                                            @if ($applicant->status == 'In Review')
+                                                <a href="{{ route('jobApplies.show', $applicant->id) }}"
+                                                    class="btn btn-sm btn-review px-2">
+                                                    Done Review
                                                 </a>
-                                            @elseif($applicant->status == 'Interview')
-                                                <a href="#"
-                                                    class="fw-medium btn btn-sm btn-interview ms-2 d-flex align-items-center justify-content-center">
+                                            @elseif ($applicant->status == 'Interview')
+                                                <a href="{{ route('jobApplies.show', $applicant->id) }}"
+                                                    class="btn btn-sm btn-interview px-2">
                                                     Interview
                                                 </a>
+                                            @elseif ($applicant->status == 'Accepted')
+                                                <a href="{{ route('jobApplies.show', $applicant->id) }}"
+                                                    class="btn btn-sm btn-accepted px-2">
+                                                    Accepted
+                                                </a>
+                                            @elseif ($applicant->status == 'Rejected')
+                                                <a href="{{ route('jobApplies.show', $applicant->id) }}"
+                                                    class="btn btn-sm btn-rejected px-2">
+                                                    Rejected
+                                                </a>
+                                            @else
+                                                <form action="{{ route('jobApplies.update', $applicant->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status" value="In Review">
+                                                    <button type="submit" class="btn btn-sm btn-wait-review">Waiting
+                                                        Review</button>
+                                                </form>
                                             @endif
+
                                         </div>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
+
                     </table>
                 </div>
             </main>

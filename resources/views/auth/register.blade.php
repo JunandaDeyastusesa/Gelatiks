@@ -29,36 +29,48 @@
                 <h2 class="register-title">Register</h2>
                 <p class="register-subtitle">You can register for an account</p>
 
-                <form>
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+
                     <div class="mb-4">
-                        <label for="FullName" class="form-label">Full Name</label>
-                        <input type="text" class="form-control" id="FullName" value="John Doe" />
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" name="username" id="username" required />
                     </div>
 
                     <div class="mb-4">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" value="jhondoe@gmail.com" />
+                        <input type="email" class="form-control" name="email" id="email" required />
                     </div>
 
                     <div class="mb-4">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" value="••••••••••••" />
+                        <input type="password" class="form-control" name="password" id="password" required />
                     </div>
 
                     <div class="mb-3">
-                        <label for="cpassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="cpassword" value="••••••••••••" />
+                        <label for="password_confirmation" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" name="password_confirmation"
+                            id="password_confirmation" required />
                     </div>
 
                     <div class="Login-link">
-                        You have account?, <a href="{{ route('login')}}">Login Here</a>
+                        You have account? <a href="{{ route('login') }}">Login Here</a>
                     </div>
 
-                    <a href="{{route('login')}}" class="btn btn-Register">Register</a>
+                    <button type="submit" class="btn btn-Register">Register</button>
                 </form>
             </div>
         </div>
     </div>
 </body>
+@if ($errors->any())
+    <div class="alert alert-danger mt-2">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 </html>

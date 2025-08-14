@@ -15,7 +15,8 @@ return new class extends Migration
             $table->ulid('id')->primary();
             $table->foreignUlid('job_id')->constrained('jobs')->onDelete('cascade');
             $table->foreignUlid('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('status')->default('Review');
+            $table->string('status')->default('Waiting Review');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@
                         brand Anda.</p>
 
                     <div class="d-flex justify-content-center justify-content-md-start gap-3">
-                        <a href="{{route('customer.carrer')}}" class="btn btn-login">Lihat Karir</a>
+                        <a href="{{route('carrer.index')}}" class="btn btn-login">Lihat Karir</a>
                         <a href="#" class="btn btn-readMore">Selengkapnya</a>
                     </div>
                 </div>
@@ -194,7 +194,7 @@
                         </div>
                     </div>
 
-                    <a href="{{route('customer.carrer')}}" class="btn btn-login text-center w-50 d-none d-md-block">Lihat Semua Lowongan</a>
+                    <a href="{{route('carrer.index')}}" class="btn btn-login text-center w-50 d-none d-md-block">Lihat Semua Lowongan</a>
                 </div>
                 <div class="col-lg-6">
                     <div class="row g-3">

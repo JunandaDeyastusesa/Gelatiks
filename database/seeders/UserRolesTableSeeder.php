@@ -52,13 +52,13 @@ class UserRolesTableSeeder extends Seeder
                         'user_id' => $user->id,
                         'role_id' => $role->id,
                     ]);
-                    echo "✅ Berhasil assign role $roleName ke $email.\n";
+                    // echo "✅ Berhasil assign role $roleName ke $email.\n";
                 }
             } else {
-                echo "⚠️  User atau Role tidak ditemukan: $email / $roleName\n";
+                // echo "⚠️  User atau Role tidak ditemukan: $email / $roleName\n";
             }
         }
 
-        echo "✅ UserRoleSeeder selesai.\n";
+        // echo "✅ UserRoleSeeder selesai.\n";
     }
 }

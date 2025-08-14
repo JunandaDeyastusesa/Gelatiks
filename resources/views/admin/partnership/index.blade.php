@@ -8,8 +8,8 @@
         <div class="row">
             <main class="col-md-12 ms-sm-auto col-lg-12 py-1">
                 <div class="d-flex justify-content-end mb-3">
-                    <a class="btn btn-create"><i class="bi bi-plus-square-fill"></i>Add Partnership</a>
-                </div>
+                    <a class="btn btn-create"><i class="bi bi-plus-square-fill"></i>Partnership</a>
+                </div>
 
                 <div class="table-responsive">
                     <table class="table table-borderless my-2" id="newsEventTable">
@@ -24,29 +24,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                           @foreach ($partnerships as $index => $partnership)
-            <tr>
-                <td class="text-center align-middle">{{ str_pad($index + 1, 3, '0', STR_PAD_LEFT) }}</td>
-                <td class="align-middle col-2">{{ $partnership->name }}</td>
-                <td class="align-middle">{{ \Carbon\Carbon::parse($partnership->start_contract)->format('d M Y') }}</td>
-                <td class="align-middle text-start">{{ \Carbon\Carbon::parse($partnership->end_contract)->format('d M Y') }}</td>
-                <td class="align-middle text-center">
-    @if ($partnership->image)
-        <img class="img-gallery-admin" src="{{ asset('storage/' . $partnership->image) }}" alt="Image" style="max-height: 50px;">
-    @else
-        <span class="text-muted">No image</span>
-    @endif
-</td>
+                            @foreach ($partnerships as $index => $partnership)
+                                <tr>
+                                    <td class="text-center align-middle">{{ str_pad($index + 1, 3, '0', STR_PAD_LEFT) }}
+                                    </td>
+                                    <td class="align-middle col-2">{{ $partnership->name }}</td>
+                                    <td class="align-middle">
+                                        {{ \Carbon\Carbon::parse($partnership->start_contract)->format('d M Y') }}</td>
+                                    <td class="align-middle text-start">
+                                        {{ \Carbon\Carbon::parse($partnership->end_contract)->format('d M Y') }}</td>
+                                    <td class="align-middle text-center">
+                                        @if ($partnership->image)
+                                            <img class="img-gallery-admin"
+                                                src="{{ asset('storage/' . $partnership->image) }}" alt="Image"
+                                                style="max-height: 50px;">
+                                        @else
+                                            <span class="text-muted">No image</span>
+                                        @endif
+                                    </td>
 
-                <td class="align-middle text-center px-1">
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn btn-sm btn-edit" data-id="{{ $partnership->id }}">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
+                                    <td class="align-middle text-center px-1">
+                                        <div class="d-flex justify-content-center">
+                                            <a href="#" class="btn btn-sm btn-edit" data-id="{{ $partnership->id }}">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>

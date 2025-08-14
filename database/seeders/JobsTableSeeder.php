@@ -22,7 +22,7 @@ class JobsTableSeeder extends Seeder
             'experience'   => '1 Tahun',
             'education'    => 'S1',
             'category'    => 'Sales',
-            '   '   => now()->addDays(30),
+            'close_date'   => now()->addDays(30),
             'status'       => 'Open',
             'description'  => 'Bertanggung jawab atas penjualan produk.'
         ]);

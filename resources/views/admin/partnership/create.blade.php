@@ -10,29 +10,32 @@
                     aria-label="Close"></button>
             </div>
 
-            <form action="{{ route('partnership.store') }}" enctype="multipart/form-data" method="POST">
+                        <form action="{{ route('partnership.store') }}" enctype="multipart/form-data" method="POST" class="needs-validation" novalidate>
                 @csrf
                 <div class="modal-body">
                     <div class="row g-4 p-2">
                         <div class="col-md-12">
                             <label class="form-label mb-1">Name</label>
-                            <input type="text" class="form-control py-2" name="name" placeholder="Input name"
-                                required>
+                            <input type="text" class="form-control py-2" name="name" placeholder="Input name" required>
+                            <div class="invalid-feedback">Nama partnership wajib diisi.</div>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label mb-1">Start Contract</label>
                             <input type="date" class="form-control py-2" name="start_contract" required>
+                            <div class="invalid-feedback">Tanggal mulai kontrak wajib diisi.</div>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label mb-1">End Contract</label>
                             <input type="date" class="form-control py-2" name="end_contract" required>
+                            <div class="invalid-feedback">Tanggal akhir kontrak wajib diisi.</div>
                         </div>
 
                         <div class="col-md-12">
                             <label class="form-label mb-1">Image</label>
                             <input type="file" class="form-control py-2" name="image" required>
+                            <div class="invalid-feedback">Gambar partnership wajib diunggah.</div>
                         </div>
                     </div>
                 </div>
@@ -45,3 +48,22 @@
         </div>
     </div>
 </div>
+
+<script>
+        (() => {
+            'use strict';
+            // Ambil semua form dengan class needs-validation
+            const forms = document.querySelectorAll('.needs-validation');
+
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+
+        })();
+    </script>

@@ -13,12 +13,12 @@ class HistoryApplicantController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
-    $jobApplicant = JobApply::where('user_id', Auth::id())->get(); // gunakan get()
-    $user = User::findOrFail(Auth::id());
+    {
+        $jobApplicant = JobApply::where('user_id', Auth::id())->get(); // gunakan get()
+        $user = User::findOrFail(Auth::id());
 
-    return view('customer.jobApply', compact('jobApplicant', 'user'));
-}
+        return view('customer.jobApply', compact('jobApplicant', 'user'));
+    }
 
 
     /**

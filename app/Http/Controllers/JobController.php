@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use App\Models\JobApply;
 use App\Exports\JobsExport;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\JobApplicantsExport;
 
 class JobController extends Controller
@@ -115,7 +115,6 @@ class JobController extends Controller
         return redirect()->route('jobs.index')->with('success', 'Job deleted successfully.');
     }
 
-    // Export data pekerjaan ke Excel
     public function exportExcel()
     {
         return Excel::download(new JobsExport, 'jobs.xlsx');

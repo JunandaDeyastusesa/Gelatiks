@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JobConnCategory;
+use App\Models\ReportInterview;
 use Illuminate\Http\Request;
 
-class JobConnCategoryController extends Controller
+class ReportInterviewController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function viewFormPCTL()
     {
-        //
+
     }
 
     /**
@@ -34,7 +34,7 @@ class JobConnCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JobConnCategory $jobConnCategory)
+    public function show(ReportInterview $reportInterview)
     {
         //
     }
@@ -42,7 +42,7 @@ class JobConnCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(JobConnCategory $jobConnCategory)
+    public function edit(ReportInterview $ReportInterview)
     {
         //
     }
@@ -50,7 +50,7 @@ class JobConnCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobConnCategory $jobConnCategory)
+    public function update(Request $request, ReportInterview $ReportInterview)
     {
         //
     }
@@ -58,7 +58,7 @@ class JobConnCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobConnCategory $jobConnCategory)
+    public function destroy(ReportInterview $ReportInterview)
     {
         //
     }

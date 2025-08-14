@@ -92,6 +92,15 @@
     color: #820000;
 }
 
+input[type="radio"] {
+    width: 14px;      /* Lebarnya */
+    height: 14px;     /* Tingginya */
+    transform: scale(1.3); /* Perbesar proporsinya */
+    accent-color: #fd0dd5; /* Ubah warna (opsional, browser support) */
+    cursor: pointer;
+}
+
+
 * {
     margin: 0;
     padding: 0;

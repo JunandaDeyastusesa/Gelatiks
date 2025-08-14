@@ -12,7 +12,16 @@
             @if ($jobApply->status == 'Interview')
                 <div class="d-flex mb-4">
                     <p class="fs-4 fw-semibold ">Data Pelamar</p>
-                    <a class="btn btn-primary ms-auto" href="">Form Penilaian</a>
+                    <div class="btn-group ms-auto" role="group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Form Penilaian
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('reportInterview') }}">Form Interview PC/TL</a></li>
+                            <li><a class="dropdown-item" href="#">Form Interview MD</a></li>
+                        </ul>
+                    </div>
                 </div>
             @else
                 <p class="fs-4 fw-semibold ">Data Pelamar</p>

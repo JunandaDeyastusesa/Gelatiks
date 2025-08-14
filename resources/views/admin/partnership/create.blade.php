@@ -4,43 +4,66 @@
         <div class="modal-content rounded-4">
             <div class="modal-header bg-pink text-white rounded-top-4 p-4">
                 <h5 class="modal-title fw-semibold" id="showModalLabel">
-                    <i class="bi bi-briefcase-fill me-2"></i>Add News Event
+                    <i class="pe-2 fs-5 bi bi-person-check"></i>Add partnership
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
 
-<form action="{{ route('partnership.store') }}" enctype="multipart/form-data" method="POST">
-    @csrf
-    <div class="modal-body">
-        <div class="row g-4 p-2">
-            <div class="col-md-12">
-                <label class="form-label mb-1">Name</label>
-                <input type="text" class="form-control py-2" name="name" placeholder="Input name" required>
-            </div>
+                        <form action="{{ route('partnership.store') }}" enctype="multipart/form-data" method="POST" class="needs-validation" novalidate>
+                @csrf
+                <div class="modal-body">
+                    <div class="row g-4 p-2">
+                        <div class="col-md-12">
+                            <label class="form-label mb-1">Name</label>
+                            <input type="text" class="form-control py-2" name="name" placeholder="Input name" required>
+                            <div class="invalid-feedback">Nama partnership wajib diisi.</div>
+                        </div>
 
-            <div class="col-md-6">
-                <label class="form-label mb-1">Start Contract</label>
-                <input type="date" class="form-control py-2" name="start_contract" required>
-            </div>
+                        <div class="col-md-6">
+                            <label class="form-label mb-1">Start Contract</label>
+                            <input type="date" class="form-control py-2" name="start_contract" required>
+                            <div class="invalid-feedback">Tanggal mulai kontrak wajib diisi.</div>
+                        </div>
 
-            <div class="col-md-6">
-                <label class="form-label mb-1">End Contract</label>
-                <input type="date" class="form-control py-2" name="end_contract" required>
-            </div>
+                        <div class="col-md-6">
+                            <label class="form-label mb-1">End Contract</label>
+                            <input type="date" class="form-control py-2" name="end_contract" required>
+                            <div class="invalid-feedback">Tanggal akhir kontrak wajib diisi.</div>
+                        </div>
 
-            <div class="col-md-12">
-                <label class="form-label mb-1">Image</label>
-                <input type="file" class="form-control py-2" name="image" required>
-            </div>
-        </div>
-    </div>
+                        <div class="col-md-12">
+                            <label class="form-label mb-1">Image</label>
+                            <input type="file" class="form-control py-2" name="image" required>
+                            <div class="invalid-feedback">Gambar partnership wajib diunggah.</div>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="modal-footer d-flex justify-content-between">
-        <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-    </div>
-</form>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
+<script>
+        (() => {
+            'use strict';
+            // Ambil semua form dengan class needs-validation
+            const forms = document.querySelectorAll('.needs-validation');
+
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+
+        })();
+    </script>

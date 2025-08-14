@@ -10,7 +10,7 @@
                     aria-label="Close"></button>
             </div>
 
-            <form action="{{ route('gallery.update', $gallery->id) }}" enctype="multipart/form-data" method="POST">
+            <form class="needs-validation" novalidate action="{{ route('gallery.update', $gallery->id) }}" enctype="multipart/form-data" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
@@ -18,6 +18,9 @@
                         <div class="col-md-12">
                             <label class="form-label mb-1">Name</label>
                             <input type="text" class="form-control py-2" name="title" value="{{ $gallery->title }}" required>
+                            <div class="invalid-feedback">
+                                Name wajib diisi.
+                            </div>
                         </div>
 
                         <div class="col-md-6">
@@ -29,17 +32,19 @@
                             @endif
                             <div class="input-group mt-2">
                                 <input type="file" class="form-control py-2" name="image">
+                                <!-- Tidak required, jadi tidak ada invalid-feedback -->
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label mb-1">Status</label>
                             <select class="form-select py-2" name="status" required>
-                                <option value="Published" {{ $gallery->status == 'Published' ? 'selected' : '' }}>
-                                    Published</option>
-                                <option value="Draft" {{ $gallery->status == 'Draft' ? 'selected' : '' }}>Draft
-                            </option>
+                                <option value="Published" {{ $gallery->status == 'Published' ? 'selected' : '' }}>Published</option>
+                                <option value="Draft" {{ $gallery->status == 'Draft' ? 'selected' : '' }}>Draft</option>
                             </select>
+                            <div class="invalid-feedback">
+                                Status wajib diisi.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -49,6 +54,23 @@
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
-        </div> 
+        </div>
     </div>
 </div>
+
+
+<script>
+(() => {
+    'use strict'
+    const forms = document.querySelectorAll('.needs-validation')
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})();
+</script>

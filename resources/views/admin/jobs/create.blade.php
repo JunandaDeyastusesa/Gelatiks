@@ -10,9 +10,9 @@
                     aria-label="Close"></button>
             </div>
 
-            <form action="{{ route('jobs.store') }}" method="POST">
-                @csrf
-                <div class="modal-body">
+            <div class="modal-body">
+                <form action="{{ route('jobs.store') }}" method="POST">
+                    @csrf
                     <div class="row g-4 p-2">
                         <div class="col-md-6">
                             <label class="form-label mb-1">Jobs name</label>
@@ -32,8 +32,8 @@
 
                         <div class="col-md-6">
                             <label class="form-label mb-1">City</label>
-                            <input type="text" class="form-control py-2" name="city"
-                                placeholder="Input your city" required>
+                            <input type="text" class="form-control py-2" name="city" placeholder="Input your city"
+                                required>
                         </div>
 
                         <div class="col-md-6">
@@ -55,7 +55,7 @@
                         <div class="col-md-4">
                             <label class="form-label mb-1">Quota</label>
                             <input type="number" class="form-control py-2" name="open_position"
-                                placeholder="Input min school" required>
+                                placeholder="Input min school" min="1" required>
                         </div>
 
                         <div class="col-md-4">
@@ -70,7 +70,7 @@
                         <div class="col-md-4">
                             <label class="form-label mb-1">Minimum experience</label>
                             <input type="number" class="form-control py-2" name="experience"
-                                placeholder="Input min experience">
+                                placeholder="Input min experience" min="0">
                         </div>
 
                         <div class="col-md-4">
@@ -94,13 +94,13 @@
                             <textarea class="form-control py-2" name="description" rows="3" placeholder="Input description"></textarea>
                         </div>
                     </div>
-                </div>
 
-                <div class="modal-footer d-flex justify-content-between">
-                    <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

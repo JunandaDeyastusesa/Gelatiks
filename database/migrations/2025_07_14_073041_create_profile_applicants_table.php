@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('telp');
             $table->string('pendidikan');
             $table->string('domisili');
+            $table->string('docCV');
+            $table->string('photo');
             $table->string('pengKerja1');
             $table->string('pengKerja2')->nullable();
             $table->string('pengKerja3')->nullable();

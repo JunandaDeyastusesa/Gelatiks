@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JobCategory;
+use App\Models\JobApply;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class JobCategoryController extends Controller
+class HistoryApplicantController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $jobApplicant = JobApply::where('user_id', Auth::id())->get(); // gunakan get()
+        $user = User::findOrFail(Auth::id());
+
+        return view('customer.jobApply', compact('jobApplicant', 'user'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,7 +40,7 @@ class JobCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JobCategory $jobsCategory)
+    public function show()
     {
         //
     }
@@ -42,7 +48,7 @@ class JobCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(JobCategory $jobsCategory)
+    public function edit()
     {
         //
     }
@@ -50,7 +56,7 @@ class JobCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobCategory $jobsCategory)
+    public function update(Request $request)
     {
         //
     }
@@ -58,7 +64,7 @@ class JobCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobCategory $jobsCategory)
+    public function destroy()
     {
         //
     }

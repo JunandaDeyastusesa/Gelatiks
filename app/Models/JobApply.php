@@ -2,23 +2,28 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class JobApply extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUlids;
     /**
      * The table associated with the model.
      *
      * @var string
      */
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $table = 'job_applies';
 
     protected $fillable = [
         'id',
         'job_id',
         'user_id',
+        'status',
+        'keterangan',
     ];
 
     public function job()

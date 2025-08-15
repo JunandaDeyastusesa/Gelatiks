@@ -10,24 +10,24 @@
                     aria-label="Close"></button>
             </div>
 
+            <div class="modal-body">
             <form action="{{ route('testimoni.update', $testimoni->id) }}" enctype="multipart/form-data" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="modal-body">
                     <div class="row g-4 p-2">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label class="form-label mb-1">Name</label>
                             <input type="text" class="form-control py-2" name="name" value="{{ $testimoni->name }}"
                                 required>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label class="form-label mb-1">Job Title</label>
                             <input type="text" class="form-control py-2" name="job_title" value="{{ $testimoni->job_title }}"
                                 required>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label class="form-label mb-1">Image</label>
                              @if (!empty($testimoni->image))
                                 <small class="text-muted"> saat ini:</small><br>
@@ -39,7 +39,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label class="form-label mb-1">Status</label>
                             <select class="form-select py-2" name="status" required>
                                 <option value="Published" {{ $testimoni->status == 'Published' ? 'selected' : '' }}>
@@ -54,13 +54,13 @@
                              <textarea class="form-control py-2" name="testimony" rows="5" placeholder="Input description">{{ $testimoni->testimony }}</textarea>
                         </div>
                     </div>
-                </div>
 
-                <div class="modal-footer d-flex justify-content-between">
-                    <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </div>
-            </form>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
 
         </div>
     </div>

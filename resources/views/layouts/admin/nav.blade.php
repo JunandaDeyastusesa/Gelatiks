@@ -6,9 +6,9 @@
             <ul class="navbar-nav">
                 <!-- Dropdown untuk User Logged In -->
                 <li class="nav-item dropdown">
-                    <a class="dropdown-toggle text-decoration-none text-dark" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Hi, Username
+                    <a class="dropdown-toggle text-decoration-none text-dark" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Hi, {{ Auth::user()->username }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
@@ -17,9 +17,10 @@
                     </ul>
 
                     <!-- Form Logout (disembunyikan) -->
-                    <form id="logout-form" action="#" method="POST" class="d-none">
-                        <!-- Tambahkan @csrf jika nanti ingin pakai di Laravel -->
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
                     </form>
+
                 </li>
 
             </ul>
@@ -27,7 +28,7 @@
     </div>
 </nav>
 
-{{-- <script>
+<script>
     function confirmLogout(event) {
         event.preventDefault();
         Swal.fire({
@@ -45,4 +46,4 @@
             }
         });
     }
-</script> --}}
+</script>

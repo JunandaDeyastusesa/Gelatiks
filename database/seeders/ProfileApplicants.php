@@ -37,6 +37,8 @@ class ProfileApplicants extends Seeder
                 'telp' => '1234567890',
                 'pendidikan' => $key == 0 ? 'S1 Marketing' : 'S2 Marketing',
                 'domisili' => $key == 0 ? 'Jakarta' : 'Surabaya',
+                'docCV' => $key == 0 ? 'doc-cv Ani' : 'doc-CV Antok',
+                'photo' => $key == 0 ? 'photo/ani' : 'photo/ani',
                 'pengKerja1' => 'Perusahaan A',
                 'pengKerja2' => 'Perusahaan B',
                 'pengKerja3' => 'Perusahaan C',

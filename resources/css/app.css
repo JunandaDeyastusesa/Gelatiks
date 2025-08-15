@@ -72,6 +72,35 @@
     background-color: var(--Red-5) !important;
 }
 
+.btn-review {
+    background-color: #EEF35E;
+    color: #784E00;
+}
+
+.btn-interview {
+    background-color: #F3BF5E;
+    color: #784E00;
+}
+
+.btn-accepted {
+    background-color: #5EF38B;
+    color: #007C25;
+}
+
+.btn-review {
+    background-color: #FF8080;
+    color: #820000;
+}
+
+input[type="radio"] {
+    width: 14px;      /* Lebarnya */
+    height: 14px;     /* Tingginya */
+    transform: scale(1.3); /* Perbesar proporsinya */
+    accent-color: #fd0dd5; /* Ubah warna (opsional, browser support) */
+    cursor: pointer;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -95,7 +124,7 @@ body {
         .navbar-nav {
             .nav-link {
                 transition: color 0.3s ease;
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
 
             .nav-link.active {
@@ -128,6 +157,28 @@ body {
 }
 
 .landingPage-content {
+
+    .bg-pink {
+        background-color: var(--Red-4) !important;
+    }
+
+    .btn-create {
+        display: flex;
+        /* width: 7.875rem; */
+        height: 2.75rem;
+        justify-content: center;
+        align-items: center;
+        gap: 0.77275rem;
+        background-color: var(--Red-6);
+        color: var(--White);
+        border-radius: 0.3rem;
+        transition: 0.3s ease-in-out;
+    }
+
+    .btn-create:hover {
+        background-color: var(--Red-7);
+        color: var(--White);
+    }
 
     .btn-login {
         display: flex;
@@ -167,6 +218,140 @@ body {
         background-color: var(--Red-5);
         color: var(--White);
     }
+
+    .btn-photo {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .btn-photo .overlay-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(24, 24, 24, 0.322);
+        /* semi transparan */
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        font-size: 1rem;
+        border-radius: 16px;
+        opacity: 0;
+        transition: 0.3s ease-in-out;
+        text-align: center;
+    }
+
+    .btn-photo .overlay-text-sm {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(27, 27, 27, 0.144);
+        /* semi transparan */
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        font-size: 1rem;
+        border-radius: 16px;
+        opacity: 1;
+        transition: 0.3s ease-in-out;
+        text-align: center;
+    }
+
+    .btn-photo:hover .overlay-text {
+        opacity: 1;
+    }
+
+    .btn-wait-review {
+        background-color: #EEF35E;
+        color: #784E00;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-wait-review:hover {
+        background-color: #d4db53;
+        color: #5a3700;
+    }
+
+    .btn-review {
+        background-color: #F3BF5E;
+        color: #784E00;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-review:hover {
+        background-color: #e2ae4e;
+        color: #5a3700;
+    }
+
+    .btn-interview {
+        background-color: #5EEEF3;
+        color: #006F7C;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-interview:hover {
+        background-color: #3fd6dc;
+        color: #005a63;
+    }
+
+    .btn-accepted {
+        background-color: #5EF38B;
+        color: #007C25;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-accepted:hover {
+        background-color: #45d774;
+        color: #005e1a;
+    }
+
+    .btn-rejected {
+        background-color: #FF8080;
+        color: #820000;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-rejected:hover {
+        background-color: #e66767;
+        color: #5a0000;
+    }
+
+    .text-primary {
+        color: var(--Red-6) !important;
+    }
+
+
+    /* STYLE STEP PENERIMAAN */
+    .step {
+        text-align: center;
+        z-index: 1;
+    }
+
+    .step-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    /* END */
+
+
 
     .hero-content {
 
@@ -233,6 +418,13 @@ body {
 
     .btn-outline-primary {
         color: var(--Red-6);
+        border-color: var(--Red-6);
+        transition: ease-in-out 0.3s;
+    }
+
+    .btn-outline-primary:hover {
+        color: var(--BG-Light);
+        background-color: var(--Red-6);
         border-color: var(--Red-6);
     }
 
@@ -356,9 +548,90 @@ body {
         background: linear-gradient(93deg, #FFE6FD -34.69%, #FFE2D2 148.07%);
         transition: transform 0.3s ease-in-out;
     }
+
+    /* History */
+
+    .head-table th {
+        border: 2.5px solid #fff;
+        background-color: var(--Red-2) !important;
+        color: var(--Red-10) !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        line-height: 1.125rem !important;
+        padding: 1rem 0px;
+    }
+
+    .body-table td {
+        /* background-color: var(--Gray-1); */
+        border: 2px solid var(--Gray-1);
+        color: #000;
+        font-family: Poppins;
+        font-size: 0.875rem;
+        font-style: normal;
+        /* font-weight: 500; */
+        line-height: 1.125rem;
+        white-space: normal !important;
+        word-break: break-word;
+        /* 128.571% */
+    }
 }
 
+.carrer-details {
+    padding-top: 120px;
 
+    .logo-companny {
+        width: 4rem;
+        height: 4rem;
+        flex-shrink: 0;
+        aspect-ratio: 1/1;
+    }
+
+    .requirement {
+        .mb-2 {
+            color: var(--Gray-10);
+        }
+    }
+
+    .deskripsi-jobs {
+        color: var(--Gray-10);
+        font-family: Poppins;
+        font-size: 0.95rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .hover-scale:hover {
+        transform: scale(1.2);
+        transition: 0.2s ease-in-out;
+    }
+
+    .btn.dropdown-toggle::after {
+        display: none !important;
+    }
+
+}
+
+.profile {
+    padding-top: 120px;
+
+    .logo-companny {
+        width: 4rem;
+        height: 4rem;
+        flex-shrink: 0;
+        aspect-ratio: 1/1;
+    }
+
+    .card {
+        border-radius: 1.25rem;
+        border: 0.5px solid #FFE8F5;
+        background: linear-gradient(93deg, #FFEFF9 -34.69%, #FFE2D2 148.07%);
+    }
+
+    .bg-pink {
+        background-color: var(--Red-4) !important;
+    }
+}
 
 /* ADMIN PAGE */
 .adminPage {
@@ -506,28 +779,64 @@ body {
         background-color: #cf5252;
     }
 
+    .btn-wait-review {
+        background-color: #EEF35E;
+        color: #784E00;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn-wait-review:hover {
+        background-color: #d4db53;
+        color: #5a3700;
+    }
+
     .btn-review {
         background-color: #F3BF5E;
         color: #784E00;
-        border: none !important;
+        font-weight: 500;
+        transition: all 0.3s ease;
     }
 
-    .btn-review:hover{
-        background-color: #e2ac47;
-        color: #784E00;
-        transition: 0.3s ease-in;
+    .btn-review:hover {
+        background-color: #e2ae4e;
+        color: #5a3700;
     }
 
     .btn-interview {
         background-color: #5EEEF3;
         color: #006F7C;
-        border: none !important;
+        font-weight: 500;
+        transition: all 0.3s ease;
     }
 
-    .btn-interview:hover{
-        background-color: #45dadf;
-        color: #006F7C;
-        transition: 0.3s ease-in;
+    .btn-interview:hover {
+        background-color: #3fd6dc;
+        color: #005a63;
+    }
+
+    .btn-accepted {
+        background-color: #5EF38B;
+        color: #007C25;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn-accepted:hover {
+        background-color: #45d774;
+        color: #005e1a;
+    }
+
+    .btn-rejected {
+        background-color: #FF8080;
+        color: #820000;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn-rejected:hover {
+        background-color: #e66767;
+        color: #5a0000;
     }
 
     .head-table th {
@@ -630,7 +939,8 @@ body {
         }
 
     }
-    .img-gallery-admin{
+
+    .img-gallery-admin {
         max-width: 150px;
     }
 

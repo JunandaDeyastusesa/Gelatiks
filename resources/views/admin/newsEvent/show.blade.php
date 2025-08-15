@@ -56,7 +56,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="modal-footer bg-light rounded-bottom-4">
                 <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">
                     Tutup

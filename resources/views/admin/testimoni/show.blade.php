@@ -4,7 +4,7 @@
         <div class="modal-content rounded-4 border-0 shadow-lg">
             <div class="modal-header bg-pink text-white rounded-top-4 p-4">
                 <h5 class="modal-title fw-semibold" id="showModalLabel">
-                    <i class="bi bi-briefcase-fill me-2"></i>Testimoni Details
+                    <i class="bi bi-chat-right-text me-2"></i>Testimoni Details
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                     aria-label="Close"></button>

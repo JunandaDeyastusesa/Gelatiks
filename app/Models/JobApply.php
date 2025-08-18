@@ -34,4 +34,13 @@ class JobApply extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function reportInterviewTCTL(){
+        return $this->hasMany(ReportInterview::class, 'job_apply_id');
+    }
+
+    public function reportInterviewMDSPG(){
+        return $this->hasMany(ReportInterviewSPGMD::class, 'job_apply_id');
+    }
+
 }

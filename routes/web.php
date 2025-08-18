@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReportInterviewController;
 use Illuminate\Support\Facades\Route;
 use App\Exports\JobsExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -69,7 +70,15 @@ Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
     Route::get('/jobs/export-excel', [JobController::class, 'exportExcel'])->name('jobs.exportExcel');
     Route::get('/jobs/{id}/export-applicants', [JobController::class, 'exportApplicants'])->name('jobs.exportApplicants');
 
-    Route::get('reportInterview', fn() => view('admin.reportInterview.create_PC_TL'))->name('reportInterview');
+    // PCTL
+    Route::get('reportInterview/{id}/form', [ReportInterviewController::class, 'viewFormPCTL'])->name('reportInterview.form');
+    Route::post('reportInterview/{id}', [ReportInterviewController::class, 'storeFormPCTL'])->name('reportInterviewPCTL.store');
+    Route::get('reportInterview/{id}', [ReportInterviewController::class, 'showFormPCTL'])->name('reportInterviewPCTL.show');
+
+    // SPGMD
+    Route::get('reportInterviewSPGMD/{id}/form', [ReportInterviewController::class, 'viewFormSPGMD'])->name('reportInterviewSPGMD.form');
+    Route::post('reportInterviewSPGMD/{id}', [ReportInterviewController::class, 'storeFormSPGMD'])->name('reportInterviewSPGMD.store');
+    Route::get('reportInterviewSPGMD/{id}', [ReportInterviewController::class, 'showFormSPGMD'])->name('reportInterviewSPGMD.show');
 
 
     Route::resource('jobs', JobController::class);

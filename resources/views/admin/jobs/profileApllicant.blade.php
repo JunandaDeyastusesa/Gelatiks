@@ -11,20 +11,40 @@
         <div class="card p-4 p-md-5 my-4 " style="background: #fff">
             @if ($jobApply->status == 'Interview')
                 <div class="d-flex mb-4">
-                    <p class="fs-4 fw-semibold ">Data Pelamar</p>
+                    <p class="fs-4 fw-semibold">Data Pelamar</p>
                     <div class="btn-group ms-auto" role="group">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Form Penilaian
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('reportInterview') }}">Form Interview PC/TL</a></li>
-                            <li><a class="dropdown-item" href="#">Form Interview MD</a></li>
-                        </ul>
+                        @if ($jobApply->reportInterviewMDSPG->isNotEmpty())
+                            <a class="btn btn-outline-primary"
+                                href="{{ route('reportInterviewSPGMD.show', $jobApply->reportInterviewMDSPG->first()->id) }}">
+                                Hasil Interview MD
+                            </a>
+                        @elseif ($jobApply->reportInterviewTCTL->isNotEmpty())
+                            <a class="btn btn-outline-primary"
+                                href="{{ route('reportInterviewPCTL.show', $jobApply->reportInterviewTCTL->first()->id) }}">
+                                Hasil Interview PC/TL
+                            </a>
+                        @else
+                            {{-- Belum ada penilaian --}}
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Form Penilaian
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('reportInterview.form', $jobApply->id) }}">
+                                        Form Interview PC/TL
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('reportInterviewSPGMD.form', $jobApply->id) }}">
+                                        Form Interview MD
+                                    </a>
+                                </li>
+                            </ul>
+                        @endif
+
                     </div>
                 </div>
-            @else
-                <p class="fs-4 fw-semibold ">Data Pelamar</p>
             @endif
             <div class="row g-4 align-items-center">
                 <div class="col-md-3 text-center text-md-start">

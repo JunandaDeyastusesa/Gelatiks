@@ -34,7 +34,7 @@ class TestimoniController extends Controller
             'name' => 'required|string|max:255',
             'job_title' => 'required|string|max:255',
             'testimony' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048', // <-- Ubah 'nullable' menjadi 'required'
+            'image' => 'required|image|mimes:jpeg,jpg,png|max:5120', // Perubahan di sini
             'status' => 'required|in:Published,Draft',
         ]);
 
@@ -46,6 +46,7 @@ class TestimoniController extends Controller
 
         return redirect()->route('testimoni.index')->with('success', 'Testimoni berhasil ditambahkan!');
     }
+
     /**
      * Display the specified resource.
      */
@@ -70,27 +71,22 @@ class TestimoniController extends Controller
             'name' => 'required|string|max:255',
             'job_title' => 'required|string|max:255',
             'testimony' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png|max:5120', // Perubahan di sini: 5120 KB = 5MB
             'status' => 'required|in:Published,Draft',
         ]);
 
         if ($request->hasFile('image')) {
-            // Hapus gambar lama (jika ada)
+            // Hapus gambar lama jika ada
             if ($testimoni->image && \Storage::disk('public')->exists($testimoni->image)) {
                 \Storage::disk('public')->delete($testimoni->image);
             }
 
             // Simpan gambar baru
-            $imagePath = $request->file('image')->store('testimoni_images', 'public');
-            $validated['image'] = $imagePath; // <--- Perbaikan di sini
-        } else {
-            // Jika tidak upload gambar baru, tetap gunakan gambar lama, tapi jangan hapus dari $validated jika tidak ada perubahan
-            // Anda bisa menghapus baris ini atau pastikan $validated tidak menimpa nilai 'image' jika tidak ada upload baru.
-            // Sebenarnya, jika tidak ada file baru, nilai 'image' dari $testimoni sebelumnya akan tetap ada di database,
-            // jadi tidak perlu unset jika tidak ada file baru yang diunggah.
+            $validated['image'] = $request->file('image')->store('testimonis', 'public');
         }
 
-        $testimoni->update($validated); // Ini akan menggunakan nilai $validated yang sudah diperbarui
+        // Update data
+        $testimoni->update($validated);
 
         return redirect()->route('testimoni.index')->with('success', 'Testimoni berhasil diperbarui!');
     }

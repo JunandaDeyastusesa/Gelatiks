@@ -34,9 +34,6 @@
                                             <a href="#" class="btn btn-sm btn-detail" data-id="{{ $applicant->id }}">
                                                 <i class="bi bi-info-square"></i>
                                             </a>
-                                            <a href="#" class="btn btn-sm btn-edit">
-                                                <i class="bi bi-pencil-square"></i>
-                                            </a>
                                         </div>
                                     </td>
                                 </tr>

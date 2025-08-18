@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('report_pc_tl_interviews', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->foreignUlid('hr_id')->constrained('hr')->onDelete('cascade');
+            $table->foreignUlid('hr_id')->constrained('users')->onDelete('cascade');
             $table->foreignUlid('job_apply_id')->constrained('job_applies')->onDelete('cascade');
 
             $table->string('no_tes');
@@ -44,6 +44,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('report_interviews');
+        Schema::dropIfExists('report_pc_tl_interviews');
     }
 };

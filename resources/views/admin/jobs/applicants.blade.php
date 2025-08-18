@@ -32,7 +32,6 @@
                     </div>
                 </div>
 
-                {{-- <a class="text-decoration-none text-secondary" href="{{ route('jobs.applicants', $viewApplicants->job->id) }}"><i class="bi bi-arrow-left"></i> Back to Applicant</a> --}}
                 <div class="table">
                     <table class="table table-borderless" id="applicantsTable">
                         <thead class="head-table">

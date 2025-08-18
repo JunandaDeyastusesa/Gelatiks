@@ -10,35 +10,40 @@
     @endphp
     <div class="container-fluid mb-5">
         <h5 class="text-center mb-3">Risalah Interview PC/TL</h5>
-        <form action="{{ route('partnership.store') }}" enctype="multipart/form-data" method="POST">
+        <form action="{{ route('reportInterviewPCTL.store', $jobApply->id) }}" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="biodata">
                 <table class="table table-borderless">
                     <tbody>
                         <tr>
                             <td class="align-middle pb-0 col-2 text-muted">Nama</td>
-                            <td class="align-middle pb-0 col-5 fw-medium">: Jhon Doe</td>
+                            <td class="align-middle pb-0 col-5 fw-medium">: {{ $jobApply->user->profile->namaLengkap }}</td>
                             <td class="align-middle pb-0 col-2 text-muted">No tes</td>
-                            <td class="align-middle pb-0"><input type="text" class="form-control"
+                            <td class="align-middle pb-0">
+                                <input type="text" name="no_tes" class="form-control"
                                     placeholder="Masukkan No tes disini" required>
                             </td>
                         </tr>
                         <tr>
                             <td class="align-middle pb-0 col-2 text-muted">Tgl Lahir / Usia</td>
-                            <td class="align-middle pb-0 col-5 fw-medium">: 32 Jul 1376 / 99 Tahun</td>
+                            <td class="align-middle pb-0 col-5 fw-medium">: {{ $jobApply->user->profile->kelahiran }} /
+                                {{ $jobApply->user->profile->kelahiran ? \Carbon\Carbon::parse($jobApply->user->profile->kelahiran)->age : '-' }}
+                                Tahun</td>
                             <td class="align-middle pb-0 col-2 text-muted">Tujuan Tes</td>
-                            <td class="align-middle pb-0"><input type="text" class="form-control"
+                            <td class="align-middle pb-0">
+                                <input type="text" name="tujuan_tes" class="form-control"
                                     placeholder="Masukkan Tujuan tes disini" required>
-
                             </td>
 
                         </tr>
                         <tr>
                             <td class="align-middle pb-0 col-2 text-muted">Pendiikan</td>
-                            <td class="align-middle pb-0 col-5 fw-medium">: S1 Informatika</td>
+                            <td class="align-middle pb-0 col-5 fw-medium">: {{ $jobApply->user->profile->pendidikan }}</td>
                             <td class="align-middle pb-0 col-2 text-muted">Tanggal Tes</td>
                             <td class="align-middle pb-0">
                                 <p>{{ $today->translatedFormat('d M Y') }}</p>
+                                <input type="date" name="tanggal_tes" id="tanggal" class="form-control d-none"
+                                    value="{{ $today->format('Y-m-d') }}" readonly>
                             </td>
                         </tr>
                     </tbody>
@@ -81,7 +86,8 @@
                                 serta menyikapi dan membuat keputusan.
                             </td>
                             @for ($i = 1; $i <= 10; $i++)
-                                <td><input type="radio" name="analytical_thinking" value="{{ $i }}" required></td>
+                                <td><input type="radio" name="analytical_thinking" value="{{ $i }}" required>
+                                </td>
                             @endfor
                         </tr>
 
@@ -91,7 +97,8 @@
                                 Upaya menyelesaikan tugas dengan tuntas dan mencapai standar kerja terbaik.
                             </td>
                             @for ($i = 1; $i <= 10; $i++)
-                                <td><input type="radio" name="achievement_orientation" value="{{ $i }}" required></td>
+                                <td><input type="radio" name="achievement_orientation" value="{{ $i }}"
+                                        required></td>
                             @endfor
                         </tr>
 
@@ -113,7 +120,8 @@
                                 dan kompetensi.
                             </td>
                             @for ($i = 1; $i <= 10; $i++)
-                                <td><input type="radio" name="willingness_to_learn" value="{{ $i }}" required></td>
+                                <td><input type="radio" name="willingness_to_learn" value="{{ $i }}" required>
+                                </td>
                             @endfor
                         </tr>
 
@@ -161,7 +169,8 @@
                                 menjalin hubungan dengan berbagai kalangan.
                             </td>
                             @for ($i = 1; $i <= 10; $i++)
-                                <td><input type="radio" name="interpersonal_skill" value="{{ $i }}" required></td>
+                                <td><input type="radio" name="interpersonal_skills" value="{{ $i }}" required>
+                                </td>
                             @endfor
                         </tr>
 
@@ -203,8 +212,8 @@
                         <!-- Notes -->
                         <tr>
                             <td class="border-0 pt-3" colspan="12">
-                                <label for="notes">Catatan (Bila ada):</label>
-                                <textarea name="notes" id="notes" rows="3" class="form-control"></textarea>
+                                <label for="catatan">Catatan (Bila ada):</label>
+                                <textarea name="catatan" id="catatan" rows="3" class="form-control"></textarea>
                             </td>
                         </tr>
 
@@ -238,18 +247,20 @@
                             <td class="align-middle" colspan="10">
                                 <div class="text-center">
                                     <div class="d-flex align-items-center justify-content-center">
-                                        <input type="text" name="kota_wawancara" class="form-control w-75"
+                                        <input type="text" name="kota_tes" class="form-control w-75"
                                             placeholder="Masukkan Kota Wawancara" required>
                                         <p>, {{ $today->translatedFormat('d M Y') }}</p>
-                                        <input type="hidden" name="tanggal" value="{{ $today->format('Y-m-d') }}">
+                                        <input type="hidden" name="tanggal_tes" value="{{ $today->format('Y-m-d') }}">
                                     </div>
 
                                     <div class="mt-4">
-                                        <p class="fw-semibold">Pewawancara: Junanda</p>
+                                        <p class="fw-semibold">Pewawancara: {{ Auth::user()->username }}</p>
                                         <div class="form-check mt-5">
-                                            <input class="form-check-input" type="checkbox" id="checkChecked"
+                                            <input class="form-check-input" name="ket" type="checkbox"
+                                                id="checkChecked"
                                                 value="Saya sebagai pewawancara menyatakan bahwa wawancara ini telah saya lakukan dengan penuh kesadaran, objektif, dan sesuai prosedur yang berlaku. Seluruh penilaian dan keterangan yang saya berikan adalah benar dan dapat dipertanggungjawabkan.">
-                                            <label class="form-check-label text-start" style="font-size: 14px" for="checkChecked">
+                                            <label class="form-check-label text-start" style="font-size: 14px"
+                                                for="checkChecked">
                                                 Saya sebagai pewawancara menyatakan bahwa wawancara ini telah saya lakukan
                                                 dengan penuh kesadaran, objektif, dan sesuai prosedur yang berlaku.
                                                 Seluruh penilaian dan keterangan yang saya berikan adalah benar
@@ -262,6 +273,8 @@
                         </tr>
                     </tbody>
                 </table>
+                <input type="hidden" name="job_apply_id" value="{{ $jobApply->id }}">
+
             </div>
 
             <div class="modal-footer d-flex mt-5">

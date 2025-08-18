@@ -37,6 +37,10 @@ class ReportInterview extends Model
         'ket',
     ];
 
+    protected $casts = [
+        'tanggal_tes' => 'date',
+    ];
+
     public function hr()
     {
         return $this->belongsTo(User::class, 'hr_id');

@@ -71,7 +71,7 @@
                                     <i class="bi bi-clock-history fs-1 me-2"></i>
                                     <h1 class="mb-0 text-pri fw-bold">23</h1>
                                 </div>
-                                <p class="mb-0">Province Coverage</p>
+                                <p class="mb-0">Years Experience</p>
                             </div>
                         </div>
                     </div>

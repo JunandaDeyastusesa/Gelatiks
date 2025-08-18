@@ -20,6 +20,9 @@
                             <div class="invalid-feedback">
                                 Name wajib diisi.
                             </div>
+                            @error('title')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <div class="col-md-6">
@@ -31,16 +34,20 @@
                             <div class="invalid-feedback">
                                 Status wajib diisi.
                             </div>
+                            @error('status')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <div class="col-md-12">
                             <label class="form-label mb-1">Photo</label>
                             <div class="input-group">
-                                <input type="file" class="form-control py-2" name="image" required>
-                                <div class="invalid-feedback">
-                                    Photo wajib diisi.
-                                </div>
+                                <input type="file" class="form-control py-2" name="image" id="addImageInput" required>
+                                <div class="invalid-feedback" id="addImageFeedback"></div>
                             </div>
+                            @error('image')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -54,19 +61,80 @@
     </div>
 </div>
 
-
 <script>
 (() => {
-    'use strict'
-    const forms = document.querySelectorAll('.needs-validation')
+    'use strict';
+    const forms = document.querySelectorAll('.needs-validation');
+    const imageInput = document.getElementById('addImageInput');
+    const feedback = document.getElementById('addImageFeedback');
+
+    const MAX_SIZE = 5 * 1024 * 1024; // 5MB dalam byte
+
+    // Realtime validasi saat pilih file
+    imageInput.addEventListener('change', () => {
+        if (!imageInput.files.length) {
+            feedback.textContent = "Harap upload gambar (PNG, JPG, atau JPEG).";
+            imageInput.setCustomValidity("required");
+            imageInput.classList.add('is-invalid');
+            imageInput.classList.remove('is-valid');
+        } else {
+            const file = imageInput.files[0];
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+
+            if (!allowedTypes.includes(file.type)) {
+                feedback.textContent = "File harus berupa PNG, JPG, atau JPEG.";
+                imageInput.value = ""; // reset input supaya file tidak nyangkut
+                imageInput.setCustomValidity("invalid");
+                imageInput.classList.add('is-invalid');
+                imageInput.classList.remove('is-valid');
+            } else if (file.size > MAX_SIZE) {
+                feedback.textContent = "Ukuran file maksimal 5MB.";
+                imageInput.value = ""; // reset input biar tidak bisa submit
+                imageInput.setCustomValidity("invalid");
+                imageInput.classList.add('is-invalid');
+                imageInput.classList.remove('is-valid');
+            } else {
+                imageInput.setCustomValidity("");
+                imageInput.classList.add('is-valid');
+                imageInput.classList.remove('is-invalid');
+                feedback.textContent = "";
+            }
+        }
+    });
+
+    // Validasi saat submit
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
+            let valid = true;
+
+            if (!imageInput.files.length) {
+                feedback.textContent = "Harap upload gambar (PNG, JPG, atau JPEG).";
+                imageInput.setCustomValidity("required");
+                valid = false;
+            } else {
+                const file = imageInput.files[0];
+                const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+
+                if (!allowedTypes.includes(file.type)) {
+                    feedback.textContent = "File harus berupa PNG, JPG, atau JPEG.";
+                    imageInput.setCustomValidity("invalid");
+                    valid = false;
+                } else if (file.size > MAX_SIZE) {
+                    feedback.textContent = "Ukuran file maksimal 5MB.";
+                    imageInput.setCustomValidity("invalid");
+                    valid = false;
+                } else {
+                    imageInput.setCustomValidity("");
+                }
             }
-            form.classList.add('was-validated')
-        }, false)
-    })
+
+            if (!valid || !form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            form.classList.add('was-validated');
+        }, false);
+    });
 })();
 </script>

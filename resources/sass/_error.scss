@@ -1,0 +1,99 @@
+.error-page {
+    background-color: #f791ce;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Pattern full-screen */
+.background-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.3;
+    background-size: cover;       /* stretch & responsive */
+    background-position: center;  /* posisikan di tengah */
+    background-repeat: no-repeat; /* tanpa pengulangan */
+}
+
+.error-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.307);
+    padding: 100px 140px;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    overflow: hidden;
+}
+
+.error-header {
+    background-color: #ec008c;
+    height: 40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: -100px -140px 60px -140px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.error-header .dot-container {
+    display: flex;
+    align-items: center;
+}
+
+.error-header .dot {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.error-header .dot:last-child {
+    margin-right: 0;
+}
+
+.error-content {
+    position: relative;
+}
+
+.error-content h1 {
+    font-size: 150px;
+    font-weight: 600;
+    color: #0f2c50;
+}
+
+.error-content p {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.error-content pa {
+    font-size: 20px;
+    color: #313131b3;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* Logo dekoratif */
+.error-content .error-logo {
+    position: absolute;
+    top: -10px;
+    right: -100px;
+    left: 380px;
+    bottom: 0;
+    width: 480px;
+    opacity: 0.5;
+    transform: scaleX(-1);
+}

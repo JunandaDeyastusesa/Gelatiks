@@ -6,6 +6,9 @@ use App\Models\User;
 use App\Models\UserRoles;
 use App\Models\Roles;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ApplicantsExport;
+
 
 class ApplicantsController extends Controller
 {
@@ -22,7 +25,6 @@ class ApplicantsController extends Controller
 
         return view('admin.applicants.index', compact('applys'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -49,6 +51,11 @@ class ApplicantsController extends Controller
         $applicant = User::with(['roles', 'profile'])->findOrFail($id);
 
         return view('admin.applicants.show', compact('applicant'));
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new ApplicantsExport, 'applicants.xlsx');
     }
 
 

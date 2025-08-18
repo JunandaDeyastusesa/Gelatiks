@@ -59,6 +59,9 @@ Route::get('reportInterview', fn() => view('admin.reportInterview.create'))->nam
 
 
 Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
+    Route::get('applicants/export-excel', [ApplicantsController::class, 'exportExcel'])
+        ->name('applicants.exportExcel');
+        
     Route::resource('applicants', ApplicantsController::class);
     Route::get('jobs/{id}/applicants', [JobController::class, 'showApplicants'])->name('jobs.applicants');
 

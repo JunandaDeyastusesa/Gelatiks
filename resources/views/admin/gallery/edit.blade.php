@@ -13,7 +13,9 @@
             <form class="needs-validation" novalidate action="{{ route('gallery.update', $gallery->id) }}" enctype="multipart/form-data" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="modal-body">
+
+                <!-- scrollable body -->
+                <div class="modal-body overflow-auto" style="max-height:70vh;">
                     <div class="row g-4 p-2">
                         <div class="col-md-12">
                             <label class="form-label mb-1">Name</label>
@@ -31,9 +33,9 @@
                                     class="img-fluid mt-2 rounded" width="240">
                             @endif
                             <div class="input-group mt-2">
-                                <input type="file" class="form-control py-2" name="image">
-                                <!-- Tidak required, jadi tidak ada invalid-feedback -->
+                                <input type="file" class="form-control py-2" name="image" id="editImageInput">
                             </div>
+                            <small class="text-danger d-none" id="editImageError"></small>
                         </div>
 
                         <div class="col-md-6">
@@ -49,7 +51,8 @@
                     </div>
                 </div>
 
-                <div class="modal-footer d-flex justify-content-between">
+                <!-- sticky footer -->
+                <div class="modal-footer d-flex justify-content-between p-1 sticky-bottom bg-white">
                     <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
@@ -72,5 +75,33 @@
             form.classList.add('was-validated')
         }, false)
     })
+
+    // Validasi file hanya jpg/jpeg/png + max 5MB di Edit
+    const editImageInput = document.getElementById('editImageInput');
+    const editErrorText = document.getElementById('editImageError');
+    const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+
+    if (editImageInput) {
+        editImageInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+                if (!allowedTypes.includes(file.type)) {
+                    editErrorText.textContent = "File harus berupa JPG, JPEG, atau PNG.";
+                    editErrorText.classList.remove('d-none');
+                    this.value = ''; // reset input
+                } else if (file.size > MAX_SIZE) {
+                    editErrorText.textContent = "Ukuran file maksimal 5MB.";
+                    editErrorText.classList.remove('d-none');
+                    this.value = ''; // reset input
+                } else {
+                    editErrorText.classList.add('d-none');
+                }
+            } else {
+                // kalau user batal pilih file, sembunyikan pesan error
+                editErrorText.classList.add('d-none');
+            }
+        });
+    }
 })();
 </script>

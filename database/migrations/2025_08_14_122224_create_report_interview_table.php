@@ -33,6 +33,7 @@ return new class extends Migration
             $table->integer('knowledge');
             $table->integer('skill');
 
+            $table->enum('hasil_seleksi', ['Sesuai', 'Dipertimbangkan', 'Ditolak']);
             $table->longText('catatan');
             $table->longText('ket');
             $table->timestamps();

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\JobApply;
 use App\Models\ReportInterview;
 use App\Models\ReportInterviewSPGMD;
+use App\Models\ReportInterviewPCTL;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use SebastianBergmann\CodeCoverage\Report\Xml\Report;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReportInterviewController extends Controller
 {
@@ -50,6 +52,7 @@ class ReportInterviewController extends Controller
             'knowledge'                => 'required|integer|min:1|max:10',
             'skill'                    => 'required|integer|min:1|max:10',
 
+            'hasil_seleksi'            => 'required|in:Sesuai,Dipertimbangkan,Ditolak',
             'catatan'                  => 'nullable|string',
             'ket'                      => 'nullable|string',
         ]);
@@ -158,5 +161,37 @@ class ReportInterviewController extends Controller
         $ReportInterview = ReportInterviewSPGMD::findOrFail($id);
 
         return view('admin.reportInterview.show_SPG_MD', compact('ReportInterview'));
+    }
+
+    public function downloadInterviewReportSPGMD($id)
+    {
+        $reportInterview = ReportInterviewSPGMD::with('jobApply.user.profile')->findOrFail($id);
+
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView(
+            'admin.reportInterview.export-SPG_MD',
+            [
+                'reportInterview' => $reportInterview,
+                'pewawancara' => \Illuminate\Support\Facades\Auth::user()->username,
+            ]
+        )->setPaper('a4', 'portrait');
+
+        return $pdf->download(
+            'Risalah_Interview_SPG_MD_' . $reportInterview->jobApply->user->profile->namaLengkap . '.pdf'
+        );
+    }
+
+    public function downloadInterviewReportPCTL($id)
+    {
+        $reportInterview = ReportInterview::with('jobApply.user.profile', 'hr')->findOrFail($id);
+        $pewawancara = Auth::user()->username;
+
+        $pdf = Pdf::loadView(
+            'admin.reportInterview.export-PC_TL',
+            compact('reportInterview', 'pewawancara')
+        )->setPaper('a4', 'portrait');
+
+        return $pdf->download(
+            'Risalah_Interview_PC_TL_' . $reportInterview->jobApply->user->profile->namaLengkap . '.pdf'
+        );
     }
 }

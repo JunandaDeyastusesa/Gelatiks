@@ -77,11 +77,15 @@ Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
     Route::get('reportInterview/{id}/form', [ReportInterviewController::class, 'viewFormPCTL'])->name('reportInterview.form');
     Route::post('reportInterview/{id}', [ReportInterviewController::class, 'storeFormPCTL'])->name('reportInterviewPCTL.store');
     Route::get('reportInterview/{id}', [ReportInterviewController::class, 'showFormPCTL'])->name('reportInterviewPCTL.show');
-
+    Route::get('/interview-report-pctl/{id}/download', [ReportInterviewController::class, 'downloadInterviewReportPCTL'])->name('interview.download-pctl');
+    
     // SPGMD
     Route::get('reportInterviewSPGMD/{id}/form', [ReportInterviewController::class, 'viewFormSPGMD'])->name('reportInterviewSPGMD.form');
     Route::post('reportInterviewSPGMD/{id}', [ReportInterviewController::class, 'storeFormSPGMD'])->name('reportInterviewSPGMD.store');
     Route::get('reportInterviewSPGMD/{id}', [ReportInterviewController::class, 'showFormSPGMD'])->name('reportInterviewSPGMD.show');
+    Route::get('/interview-report/{id}/download', [ReportInterviewController::class, 'downloadInterviewReportSPGMD'])->name('interview.download');
+
+
 
 
     Route::resource('jobs', JobController::class);

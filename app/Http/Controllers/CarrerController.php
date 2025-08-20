@@ -11,9 +11,11 @@ class CarrerController extends Controller
 {
     public function index()
     {
-        $viewCarrer = Job::all();
+        // tampil 6 job per halaman
+        $viewCarrer = Job::orderBy('created_at', 'desc')->paginate(12);
         return view('customer.carrer', compact('viewCarrer'));
     }
+
 
     public function show($id)
     {

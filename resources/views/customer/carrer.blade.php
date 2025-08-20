@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <section class="carrer bg-light mt-5 mt-md-0 mb-5">
+    <section class="carrer bg-light mt-5 mt-md-0">
         <div class="container py-3 pb-5">
             <div class="mb-2">
                 <h2 class="fw-bold text-gray mb-1">Featured Job Offers</h2>
@@ -17,7 +17,6 @@
                     </a>
                 </div>
                 <hr class="mt-3 mb-0" />
-
             </div>
 
             <div class="row row-cols-1 row-cols-md-3 mt-2 g-4">
@@ -52,6 +51,11 @@
                         </a>
                     </div>
                 @endforeach
+            </div>
+            <div class="container mt-4">
+                <div class="d-flex justify-content-end">
+                    {{ $viewCarrer->links('pagination::bootstrap-5') }}
+                </div>
             </div>
         </div>
     </section>

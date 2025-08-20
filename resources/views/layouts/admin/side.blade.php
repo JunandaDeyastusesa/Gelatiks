@@ -14,7 +14,8 @@
                 <p class="fw-medium mb-2">Manage Jobs</p>
                 <ul class="nav flex-column ms-1 me-4">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link {{ $currentRouteName == 'dashboard.index' ? 'active' : '' }}"
+                            href="{{ route('dashboard.index') }}">
                             <i class="pe-2 fs-5 bi bi-columns-gap"></i>
                             Dashboard
                         </a>

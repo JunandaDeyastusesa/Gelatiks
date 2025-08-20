@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReportInterviewController;
 use Illuminate\Support\Facades\Route;
 use App\Exports\JobsExport;
@@ -33,6 +34,7 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::get('about', fn() => view('customer.about'))->name('customer.about');
 
+// Route::get('dashboard', fn() => view('admin.dashboard'))->name('admin.dashboard');
 
 
 // Profile Applicant
@@ -59,7 +61,7 @@ Route::post('carrer/{id}/apply', [CarrerController::class, 'submitApplyNow'])->n
 Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
     Route::get('applicants/export-excel', [ApplicantsController::class, 'exportExcel'])
         ->name('applicants.exportExcel');
-        
+
     Route::resource('applicants', ApplicantsController::class);
     Route::get('jobs/{id}/applicants', [JobController::class, 'showApplicants'])->name('jobs.applicants');
 
@@ -78,17 +80,19 @@ Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
     Route::post('reportInterview/{id}', [ReportInterviewController::class, 'storeFormPCTL'])->name('reportInterviewPCTL.store');
     Route::get('reportInterview/{id}', [ReportInterviewController::class, 'showFormPCTL'])->name('reportInterviewPCTL.show');
     Route::get('/interview-report-pctl/{id}/download', [ReportInterviewController::class, 'downloadInterviewReportPCTL'])->name('interview.download-pctl');
-    
+
     // SPGMD
     Route::get('reportInterviewSPGMD/{id}/form', [ReportInterviewController::class, 'viewFormSPGMD'])->name('reportInterviewSPGMD.form');
     Route::post('reportInterviewSPGMD/{id}', [ReportInterviewController::class, 'storeFormSPGMD'])->name('reportInterviewSPGMD.store');
     Route::get('reportInterviewSPGMD/{id}', [ReportInterviewController::class, 'showFormSPGMD'])->name('reportInterviewSPGMD.show');
     Route::get('/interview-report/{id}/download', [ReportInterviewController::class, 'downloadInterviewReportSPGMD'])->name('interview.download');
 
-
-
-
     Route::resource('jobs', JobController::class);
+
+    // Dashboard
+    Route::resource('dashboard', DashboardController::class);
+    // Route::get('dashboard', [DashboardController::class, 'pieChart'])->name('pieChart');
+    // End Dashboard
 });
 
 // =================== ADMIN ONLY ===================

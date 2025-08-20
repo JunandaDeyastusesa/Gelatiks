@@ -36,6 +36,16 @@
                             Jobs
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ in_array($currentRouteName, ['admin.register.index']) ? 'active' : '' }}"
+                            href="{{ route('admin.register.index') }}">
+                            <i class="pe-2 fs-5 bi bi-person-lines-fill"></i>
+                            Registration
+                        </a>
+                    </li>
+
+
                 </ul>
             </div>
 

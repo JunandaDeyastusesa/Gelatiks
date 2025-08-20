@@ -106,7 +106,7 @@
             margin-left: 10mm;
             margin-right: 10mm;
         }
-        
+
     </style>
 </head>
 
@@ -397,7 +397,7 @@
 
         {{-- Kesimpulan + TTD --}}
         <tr>
-            <td colspan="3" style="font-size:12px;">
+            <td colspan="3" style="font-size:11px;">
                 <div class="heading">Kesimpulan</div>
                 @php
                     $hs = $reportInterview->hasil_seleksi;

@@ -34,7 +34,7 @@ return new class extends Migration
             $table->integer('skill');
 
             $table->enum('hasil_seleksi', ['Sesuai', 'Dipertimbangkan', 'Ditolak']);
-            $table->longText('catatan');
+            $table->longText('catatan')->nullable();
             $table->longText('ket');
             $table->timestamps();
         });

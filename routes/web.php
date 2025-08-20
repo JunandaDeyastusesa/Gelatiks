@@ -16,6 +16,7 @@ use App\Http\Controllers\CoverageController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\PartnershipController;
+use App\Http\Controllers\RegisterController;
 
 
 Route::get('/', function () {
@@ -59,7 +60,7 @@ Route::post('carrer/{id}/apply', [CarrerController::class, 'submitApplyNow'])->n
 Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
     Route::get('applicants/export-excel', [ApplicantsController::class, 'exportExcel'])
         ->name('applicants.exportExcel');
-        
+
     Route::resource('applicants', ApplicantsController::class);
     Route::get('jobs/{id}/applicants', [JobController::class, 'showApplicants'])->name('jobs.applicants');
 
@@ -78,7 +79,7 @@ Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
     Route::post('reportInterview/{id}', [ReportInterviewController::class, 'storeFormPCTL'])->name('reportInterviewPCTL.store');
     Route::get('reportInterview/{id}', [ReportInterviewController::class, 'showFormPCTL'])->name('reportInterviewPCTL.show');
     Route::get('/interview-report-pctl/{id}/download', [ReportInterviewController::class, 'downloadInterviewReportPCTL'])->name('interview.download-pctl');
-    
+
     // SPGMD
     Route::get('reportInterviewSPGMD/{id}/form', [ReportInterviewController::class, 'viewFormSPGMD'])->name('reportInterviewSPGMD.form');
     Route::post('reportInterviewSPGMD/{id}', [ReportInterviewController::class, 'storeFormSPGMD'])->name('reportInterviewSPGMD.store');
@@ -92,12 +93,17 @@ Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
 });
 
 // =================== ADMIN ONLY ===================
-Route::middleware(['auth', 'role:Admin'])->group(function () {
+Route::middleware(['auth', 'role:Admin'])->prefix('admin')->group(function () {
     Route::resource('newsEvent', NewsEventController::class);
     Route::resource('coverage', CoverageController::class);
     Route::resource('gallery', GalleryController::class);
     Route::resource('testimoni', TestimoniController::class);
     Route::resource('partnership', PartnershipController::class);
+
+    // Registration
+    Route::get('register', [RegisterController::class, 'index'])->name('admin.register.index');
+    Route::get('register/create', [RegisterController::class, 'create'])->name('admin.register.create'); // <--- ini buat modal
+    Route::post('register', [RegisterController::class, 'store'])->name('admin.register.store');
 });
 
 // =================== LOGOUT ===================

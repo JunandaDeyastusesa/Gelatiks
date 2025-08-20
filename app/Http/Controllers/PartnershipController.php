@@ -30,11 +30,18 @@ class PartnershipController extends Controller
     public function store(Request $request)
 {
     // Validasi input
-    $validated = $request->validate([
+    $validated = $request->validate
+    ([
         'name' => 'required|string',
         'start_contract' => 'required|date',
         'end_contract' => 'required|date',
-        'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048', // validasi file gambar
+        'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120', // validasi file gambar
+    ], [
+
+        'image.mimes' => 'File harus berupa JPG, JPEG, atau PNG.',
+        'image.max'   => 'Ukuran file maksimal 5MB.',
+    'image.required' => 'Photo wajib diisi.',
+
     ]);
 
     // Simpan image jika ada
@@ -58,20 +65,27 @@ class PartnershipController extends Controller
     }
 
     // Update data berdasarkan ID
-    public function update(Request $request, $id)
-    {
-        $partnership = Partnership::findOrFail($id);
+public function update(Request $request, $id)
+{
+    $partnership = Partnership::findOrFail($id);
 
-        $validated = $request->validate([
-            'name' => 'sometimes|required|string',
-            'start_contract' => 'sometimes|required|date',
-            'end_contract' => 'sometimes|required|date',
-            'image' => 'nullable|string',
-        ]);
+    $validated = $request->validate([
+        'name' => 'sometimes|required|string',
+        'start_contract' => 'sometimes|required|date',
+        'end_contract' => 'sometimes|required|date',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+    ]);
 
-        $partnership->update($validated);
-        return redirect()->route('partnership.index')->with('success', 'Partnership updated successfully.');
+    // Kalau ada file baru diupload
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('partnership_images', 'public');
+        $validated['image'] = $imagePath;
     }
+
+    $partnership->update($validated);
+
+    return redirect()->route('partnership.index')->with('success', 'Partnership updated successfully.');
+}
 
     // Hapus data berdasarkan ID
     public function destroy($id)

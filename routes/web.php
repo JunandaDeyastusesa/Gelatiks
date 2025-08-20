@@ -92,12 +92,11 @@ Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
 
     // Dashboard
     Route::resource('dashboard', DashboardController::class);
-    // Route::get('dashboard', [DashboardController::class, 'pieChart'])->name('pieChart');
     // End Dashboard
 });
 
 // =================== ADMIN ONLY ===================
-Route::middleware(['auth', 'role:Admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::resource('newsEvent', NewsEventController::class);
     Route::resource('coverage', CoverageController::class);
     Route::resource('gallery', GalleryController::class);

@@ -3,40 +3,72 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
+use App\Models\UserRoles;
 use Illuminate\Http\Request;
 use App\Models\User; // jangan lupa import model User
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
     public function index()
     {
-        return view('admin.register.index');
+        $EmployeeAccount = User::with('roles')
+            ->whereHas('roles', function ($query) {
+                $query->where('name', 'Admin')->orWhere('name', 'HRD');
+            })->get();
+        return view('admin.register.index', compact('EmployeeAccount'));
     }
 
     public function create()
     {
-        // ini return partial modal view (tanpa @extends)
-        return view('admin.register.create');
+        $EmployeeAccount = User::with('roles')
+            ->whereHas('roles', function ($query) {
+                $query->where('name', 'Admin')->orWhere('name', 'HRD');
+            })->get();
+        return view('admin.register.create', compact('EmployeeAccount'));
     }
 
     public function store(Request $request)
     {
+        // Validasi input dengan custom messages
         $validated = $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|string|email|max:255|unique:users',
-            'phone'    => 'required|string|max:15',
-            'role'     => 'required|in:admin,hr',
-            'password' => 'required|string|min:6',
+            'username' => 'required|string|max:255|unique:users,username',
+            'email'    => 'required|string|email|max:255|unique:users,email',
+            'role'     => 'required|in:Admin,HRD',
+            'password' => 'required|string|min:6|confirmed', // confirmed otomatis cek password_confirmation
+        ], [
+            'username.required' => 'Nama wajib diisi.',
+            'username.unique'   => 'Nama sudah terdaftar.',
+            'email.required'    => 'Email wajib diisi.',
+            'email.email'       => 'Format email tidak valid.',
+            'email.unique'      => 'Email sudah terdaftar.',
+            'role.required'     => 'Role wajib dipilih.',
+            'role.in'           => 'Role yang dipilih tidak valid.',
+            'password.required' => 'Password wajib diisi.',
+            'password.min'      => 'Password minimal 6 karakter.',
+            'password.confirmed' => 'Password dan konfirmasi password tidak cocok.',
         ]);
 
-        User::create([
-            'name'     => $validated['name'],
+        // Simpan user
+        $user = User::create([
+            'id'       => Str::ulid(),
+            'username' => $validated['username'],
             'email'    => $validated['email'],
-            'phone'    => $validated['phone'],
             'role'     => $validated['role'],
-            'password' => bcrypt($validated['password']),
+            'password' => Hash::make($validated['password']),
         ]);
 
-        return redirect()->back()->with('success', 'User berhasil didaftarkan.');
+        // Tambahkan role jika ada tabel roles
+        $role = Role::where('name', $validated['role'])->first();
+        if ($role) {
+            UserRoles::create([
+                'user_id' => $user->id,
+                'role_id' => $role->id,
+            ]);
+        }
+
+        return redirect()->route('admin.register.index')->with('success', 'User berhasil didaftarkan.');
     }
 }

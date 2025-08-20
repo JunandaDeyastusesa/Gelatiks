@@ -16,27 +16,26 @@
                         <thead class="head-table">
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">Applicant Name</th>
-                                <th class="text-center">Category</th>
-                                <th class="text-center">Phone</th>
+                                <th class="text-center">Employee Name</th>
                                 <th class="text-center">Email</th>
+                                <th class="text-center">Category</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- contoh dummy data --}}
-                            <tr>
-                                <td class="text-center">001</td>
-                                <td>Andi Saputra</td>
-                                <td>Admin</td>
-                                <td>0812-3456-7890</td>
-                                <td>andi@example.com</td>
-                                <td class="text-center">
-                                    <a href="#" class="btn btn-sm btn-detail" data-id="1">
-                                        <i class="bi bi-info-square"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            @foreach ($EmployeeAccount as $employee)
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td>{{ $employee->username }}</td>
+                                    <td>{{ $employee->email }}</td>
+                                    <td>{{ $employee->roles->pluck('name')->join(', ') }}</td>
+                                    <td class="text-center">
+                                        <a href="#" class="btn btn-sm btn-detail" data-id="{{ $employee->id }}">
+                                            <i class="bi bi-info-square"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -61,7 +60,7 @@
             $('.btn-create').on('click', function(e) {
                 e.preventDefault();
 
-                $.get('/admin/register/create', function(data) {
+                $.get('/register/create', function(data) {
                     $('#addModalContainer').html(data);
 
                     setTimeout(() => {
@@ -80,7 +79,7 @@
                 e.preventDefault();
                 let id = $(this).data('id');
 
-                $.get('/admin/register/' + id, function(data) {
+                $.get('/register/' + id, function(data) {
                     $('#showModalContainer').html(data);
 
                     setTimeout(() => {

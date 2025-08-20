@@ -11,7 +11,7 @@ class CoverageController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-  {
+    {
         $cover = Coverage::all();
         return view('admin.coverage.index',  compact('cover'));
     }
@@ -32,12 +32,12 @@ class CoverageController extends Controller
     /**
      * Display the specified resource.
      */
-    
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit($id)
-      {
+    {
         $cover = Coverage::findOrFail($id);
         return view('admin.coverage.edit', compact('cover'));
     }
@@ -47,23 +47,23 @@ class CoverageController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-{
-    // Validasi input dari form
-    $validated = $request->validate([
-        'qty_province' => 'required|string|max:255',
-        'qty_clients' => 'required|integer|min:0',
-        'qty_experience' => 'required|integer|min:0',
-    ]);
+    {
+        // Validasi input dari form
+        $validated = $request->validate([
+            'qty_province' => 'required|string|max:255',
+            'qty_clients' => 'required|integer|min:0',
+            'qty_experience' => 'required|integer|min:0',
+        ]);
 
-    // Temukan data Coverage berdasarkan ID
-    $coverage = Coverage::findOrFail($id);
+        // Temukan data Coverage berdasarkan ID
+        $coverage = Coverage::findOrFail($id);
 
-    // Update data ke database
-    $coverage->update($validated);
+        // Update data ke database
+        $coverage->update($validated);
 
-    // Redirect dengan pesan sukses
-    return redirect()->route('coverage.index')->with('success', 'Coverage updated successfully.');
-}
+        // Redirect dengan pesan sukses
+        return redirect()->route('coverage.index')->with('success', 'Coverage updated successfully.');
+    }
 
 
 

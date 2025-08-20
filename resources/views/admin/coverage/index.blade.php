@@ -18,20 +18,19 @@
                             </tr>
                         </thead>
                         <tbody>
-
-                             @foreach ($cover as $p)
-                            <tr>
-                                <td class="align-middle text-center">{{$p->qty_province}}</td>
-                                <td class="align-middle text-center">{{$p->qty_clients}}</td>
-                                <td class="align-middle text-center">{{$p->qty_experience}}</td>
-                                <td class="align-middle text-center px-1">
-                                    <div class="d-flex justify-content-center">
-                                        <a href="#" class="btn btn-sm btn-edit" data-id="{{ $p->id }}">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach ($cover as $p)
+                                <tr>
+                                    <td class="align-middle text-center">{{ $p->qty_province }}</td>
+                                    <td class="align-middle text-center">{{ $p->qty_clients }}</td>
+                                    <td class="align-middle text-center">{{ $p->qty_experience }}</td>
+                                    <td class="align-middle text-center px-1">
+                                        <div class="d-flex justify-content-center">
+                                            <a href="#" class="btn btn-sm btn-edit" data-id="{{ $p->id }}">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -40,9 +39,7 @@
         </div>
     </div>
 
-    <div id="showModalContainer"></div>
     <div id="editModalContainer"></div>
-
 
 @endsection
 
@@ -69,25 +66,6 @@
                     });
                 }).fail(function(xhr) {
                     alert("Gagal mengambil data!");
-                });
-            });
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $('.btn-detail').on('click', function(e) {
-                e.preventDefault();
-                let id = $(this).data('id');
-                $.get('/applicants/' + id, function(data) {
-                    $('#showModalContainer').html(data);
-                    setTimeout(() => {
-                        let modalElement = document.getElementById('showModal');
-                        if (modalElement) {
-                            let myModal = new bootstrap.Modal(modalElement);
-                            myModal.show();
-                        }
-                    });
                 });
             });
         });

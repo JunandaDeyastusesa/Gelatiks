@@ -38,17 +38,4 @@ class DashboardController extends Controller
             'applicants'
         ));
     }
-
-
-    // public function pieChart()
-    // {
-    //     $profilePieChart = JobApply::selectRaw('status, COUNT(*) as count')
-    //         ->groupBy('status')
-    //         ->pluck('count', 'status');
-
-    //     $labels = $profilePieChart->keys();
-    //     $values = $profilePieChart->values();
-
-    //     return view('admin.dashboard', compact('labels', 'values')); // Different view
-    // }
 }

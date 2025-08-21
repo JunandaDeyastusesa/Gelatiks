@@ -16,26 +16,6 @@ class CoverageController extends Controller
         return view('admin.coverage.index',  compact('cover'));
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-
-    /**
-     * Display the specified resource.
-     */
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         $cover = Coverage::findOrFail($id);
@@ -63,15 +43,5 @@ class CoverageController extends Controller
 
         // Redirect dengan pesan sukses
         return redirect()->route('coverage.index')->with('success', 'Coverage updated successfully.');
-    }
-
-
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Coverage $coverage)
-    {
-        //
     }
 }

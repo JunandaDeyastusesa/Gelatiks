@@ -7,8 +7,8 @@
     <section class="carrer bg-light mt-5 mt-md-0">
         <div class="container py-3 pb-5">
             <div class="mb-2">
-                <h2 class="fw-bold text-gray mb-1">Featured Job Offers</h2>
-                <p class="text-secondary mb-0">You can apply this jobs</p>
+                <h2 class="fw-bold text-gray mb-1">Our Gallery</h2>
+                <p class="text-secondary mb-0">Dokumentasi kegiatan dan pencapaian kami</p>
 
                 <div class="d-flex justify-content-end align-items-center">
                     <a href="{{ route('home') }}" class="text-decoration-none d-flex align-items-center text-dark">
@@ -19,44 +19,20 @@
                 <hr class="mt-3 mb-0" />
             </div>
 
-            <div class="row row-cols-1 row-cols-md-3 mt-2 g-4">
-                @foreach ($viewCarrer as $carrer)
-                    <div class="col">
-                        <a href="{{ route('carrer.show', $carrer->id) }}" class="text-decoration-none">
-                            <div class="job-card card py-4 px-4">
-                                <div class="row d-flex align-items-center">
-                                    <div class="">
-                                        <div>
-                                            <h5 class="fw-bold text-gray mb-1"> {{ $carrer->jobs_name }}</h5>
-                                            <p class="text-success fst-italic small mb-3"> Dibuat :
-                                                {{ \Carbon\Carbon::parse($carrer->created_at)->format('d M Y') }}
-                                            </p>
-                                            <p class="text-muted mb-1"><i class="bi bi-pin-map-fill pe-2"></i>
-                                                {{ $carrer->city }}</p>
-                                            <p class="text-muted mb-0"><i
-                                                    class="bi bi-person-add pe-2"></i>{{ $carrer->open_position }} Orang</p>
-                                        </div>
-                                        <div class="ps-md-0 d-flex justify-content-between align-items-center mt-2">
-                                            <span
-                                                class="badge bg-success px-3">{{ \Carbon\Carbon::parse($carrer->close_date)->format('d M Y') }}</span>
-                                            <div>
-                                                <img src="{{ asset('img/icon/logo-gelatik.svg') }}" alt=""
-                                                    class="logo-companny rounded-circle">
-                                            </div>
-                                        </div>
-                                    </div>
-
+            <section class="py-3 pb-5 bg-light gallery" id="gallery">
+                <div class="container">
+                    <div class="row row-cols-2 row-cols-md-4 g-4">
+                        @foreach ($gallery as $item)
+                            <div class="col">
+                                <div class="ratio ratio-4x3">
+                                    <img src="{{ asset('storage/' . $item->image) }}" alt="Gallery {{ $loop->index + 1 }}"
+                                        class="img-fluid object-fit-cover rounded-3">
                                 </div>
                             </div>
-                        </a>
+                        @endforeach
                     </div>
-                @endforeach
-            </div>
-            <div class="container mt-4">
-                <div class="d-flex justify-content-end">
-                    {{ $viewCarrer->links('pagination::bootstrap-5') }}
                 </div>
-            </div>
+            </section>
         </div>
     </section>
 
@@ -71,7 +47,8 @@
                             class="me-3">
                     </div>
                     <p class="mb-4 pe-md-5">
-                        PT. Gelatik Supra adalah mitra terpercaya dalam menyediakan solusi outsourcing profesional untuk
+                        PT. Gelatik Supra adalah mitra terpercaya dalam menyediakan solusi outsourcing profesional
+                        untuk
                         berbagai kebutuhan bisnis dengan pengalaman lebih dari 23 tahun.
                     </p>
                     <div class="d-flex gap-3">
@@ -85,7 +62,8 @@
                     <h6 class="fw-bold mb-4">Navigation</h6>
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Home</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Services</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Services</a>
+                        </li>
                         <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Career</a></li>
                         <li class="mb-2"><a href="#" class="text-gray text-decoration-none">News</a></li>
                         <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Gallery</a></li>
@@ -95,13 +73,15 @@
                 <div class="col-lg-2 col-md-3">
                     <h6 class="fw-bold mb-4">Services</h6>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Retail Services</a>
+                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Retail
+                                Services</a>
                         </li>
                         <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Event &
                                 Activation</a></li>
                         <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Building
                                 Material</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Outsourcing</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Outsourcing</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-6">

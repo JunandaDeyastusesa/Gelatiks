@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ReportInterviewController;
 use Illuminate\Support\Facades\Route;
 use App\Exports\JobsExport;
@@ -20,9 +21,11 @@ use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\RegisterController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
+
+Route::get('/', [LandingPageController::class, 'index'])->name('home');
 
 Route::get('login', function () {
     return view('auth.login');
@@ -57,7 +60,9 @@ Route::get('carrer/{id}/apply', [CarrerController::class, 'applyNow'])->name('ca
 Route::post('carrer/{id}/apply', [CarrerController::class, 'submitApplyNow'])->name('carrer.submit');
 // End Carrer
 
-
+// Gallery
+Route::get('gallery-all', [LandingPageController::class, 'showGallery'])->name('gallery.all');
+// End
 
 Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
     Route::get('applicants/export-excel', [ApplicantsController::class, 'exportExcel'])

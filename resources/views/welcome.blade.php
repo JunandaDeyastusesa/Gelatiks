@@ -9,13 +9,13 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-6 flex-column justify-content-center text-center text-md-start">
                     <h2 class="pb-2">Mitra <span style="color: #EC008C; font-weight: 700;"> Outsourcing Profesional </span>
-                        untuk Kebutuhan Bisnis Anda</h2>
+                        untuk Kebutuhan Bisnis Anda</h2>
                     <p class="desc">SPG, SPB, Beauty Consultant, &amp; Merchandiser terbaik siap membantu kesuksesan
-                        brand Anda.</p>
+                        brand Anda.</p>
 
                     <div class="d-flex justify-content-center justify-content-md-start gap-3">
-                        <a href="{{route('carrer.index')}}" class="btn btn-login">Lihat Karir</a>
-                        <a href="#" class="btn btn-readMore">Selengkapnya</a>
+                        <a href="{{ route('carrer.index') }}" class="btn btn-login">Lihat Karir</a>
+                        <a href="#coverage" class="btn btn-readMore">Selengkapnya</a>
                     </div>
                 </div>
 
@@ -26,11 +26,12 @@
         </div>
     </section>
 
-    <section class="coverage">
-        <div class="container">
+    <section class="coverage" >
+        <div class="container" >
             <div class="card border-0">
                 <div class="card-body">
-                    <img class="position-absolute top-0 end-0 d-none d-md-block" src="{{ asset('img/icon/top-right.png') }}" alt="">
+                    <img class="position-absolute top-0 end-0 d-none d-md-block" src="{{ asset('img/icon/top-right.png') }}"
+                        alt="">
 
                     <div class="row pb-3">
                         <div
@@ -49,7 +50,10 @@
                             <div class="text-start">
                                 <div class="d-flex justify-content-center justify-content-md-start align-items-center pb-2">
                                     <i class="bi bi-geo-fill fs-1 me-2"></i>
-                                    <h1 class="mb-0 text-pri fw-bold">34</h1>
+                                    @foreach ($coverage as $item)
+                                        <h1 class="mb-0 text-pri fw-bold">{{$item->qty_province}}</h1>
+                                    @endforeach
+                                    {{-- <h1 class="mb-0 text-pri fw-bold">{{$coverage->qty_province}}</h1> --}}
                                 </div>
                                 <p class="mb-0">Province Coverage</p>
                             </div>
@@ -59,7 +63,10 @@
                             <div class="text-start">
                                 <div class="d-flex justify-content-center justify-content-md-start align-items-center pb-2">
                                     <i class="bi bi-people-fill fs-1 me-2"></i>
-                                    <h1 class="mb-0 text-pri fw-bold">117</h1>
+                                    @foreach ($coverage as $item)
+                                        <h1 class="mb-0 text-pri fw-bold">{{$item->qty_clients}}</h1>
+                                    @endforeach
+                                    {{-- <h1 class="mb-0 text-pri fw-bold">{{$coverage->qty_clients}}</h1> --}}
                                 </div>
                                 <p class="mb-0">Happy Clients</p>
                             </div>
@@ -69,20 +76,22 @@
                             <div class="text-start">
                                 <div class="d-flex justify-content-center justify-content-md-start align-items-center pb-2">
                                     <i class="bi bi-clock-history fs-1 me-2"></i>
-                                    <h1 class="mb-0 text-pri fw-bold">23</h1>
+                                    @foreach ($coverage as $item)
+                                        <h1 class="mb-0 text-pri fw-bold">{{$item->qty_experience}}</h1>
+                                    @endforeach
+                                    {{-- <h1 class="mb-0 text-pri fw-bold">{{$coverage->qty_experience}}</h1> --}}
                                 </div>
                                 <p class="mb-0">Years Experience</p>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
 
 
-    <div class="about d-flex align-items-center pt-5 my-5 my-md-0">
+    <div class="about d-flex align-items-center pt-5 my-5 my-md-0" id="coverage">
         <div class="container my-5 my-md-0">
             <div class="row">
                 <div class="col-md-5 d-none d-md-block">
@@ -108,8 +117,7 @@
                             people are our ultimate important assets, thereby At Gelatik, we continuously seek ways to
                             develop our people in matters of their skill, knowledge and attitude while at the same time
                             maintaining a happy learning atmosphere.</p>
-
-                        <a class="btn btn-readMore" href="{{ route('customer.about')}}">Lihat Lanjut</a>
+                        <a class="btn btn-readMore" href="{{ route('customer.about') }}">Lihat Lanjut</a>
                     </div>
                 </div>
             </div>
@@ -194,88 +202,39 @@
                         </div>
                     </div>
 
-                    <a href="{{route('carrer.index')}}" class="btn btn-login text-center w-50 d-none d-md-block">Lihat Semua Lowongan</a>
+                    <a href="{{ route('carrer.index') }}" class="btn btn-login text-center w-50 d-none d-md-block">Lihat
+                        Semua Lowongan</a>
                 </div>
                 <div class="col-lg-6">
                     <div class="row g-3">
-                        <div class="col-12">
-                            <a href="#" class="text-decoration-none">
-                                <div class="job-card card py-3 px-4">
-                                    <div class="row d-flex align-items-center">
-                                        <div class="col-2">
-                                            <img src="{{ asset('img/ofice-3 1.png') }}" alt=""
-                                                class="rounded-circle me-3" width="75" height="75">
-                                        </div>
-                                        <div class="col-10 ps-4">
-                                            <div class="ps-3 ps-md-0 d-flex justify-content-between align-items-start">
-                                                <div>
-                                                    <h5 class="fw-bold text-gray mb-0"> Sales Manager</h5>
-                                                    <p class="text-success fst-italic small mb-2"> Dibuat : 15 Jul 2025
-                                                    </p>
-                                                    <p class="text-muted mb-0"><i class="bi bi-pin-map-fill pe-2"></i>
-                                                        Jakarta, Indonesia</p>
-                                                    <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> 3
-                                                        Orang</p>
+                        @foreach ($job as $item)
+                            <div class="col-12">
+                                <a href="{{ route('carrer.show', $item->id) }}" class="text-decoration-none">
+                                    <div class="job-card card py-4 px-4">
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-2">
+                                                <img src="{{ asset('img/icon/logo-gelatik.svg') }}" alt=""
+                                                    class="rounded-circle me-3" width="75" height="75">
+                                            </div>
+                                            <div class="col-10 ps-4">
+                                                <div class="ps-3 ps-md-0 d-flex justify-content-between align-items-start">
+                                                    <div>
+                                                        <h5 class="fw-bold text-gray mb-0"> {{$item->jobs_name}}</h5>
+                                                        <p class="text-success fst-italic small mb-2"> Dibuat : <span>{{ $item->created_at->format('d F Y') }}</span>
+                                                        </p>
+                                                        <p class="text-muted mb-0"><i class="bi bi-pin-map-fill pe-2"></i>
+                                                            {{ $item->store_name }}, {{ $item->city }}</p>
+                                                        <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> {{$item->open_position}}
+                                                            Orang</p>
+                                                    </div>
+                                                    <span class="badge bg-success">{{ $item->close_date->format('d M Y') }}</span>
                                                 </div>
-                                                <span class="badge bg-success">12 Ags 2025</span>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12">
-                            <a href="#" class="text-decoration-none">
-                                <div class="job-card card py-3 px-4">
-                                    <div class="row d-flex align-items-center">
-                                        <div class="col-2">
-                                            <img src="{{ asset('img/ofice-3 1.png') }}" alt=""
-                                                class="rounded-circle me-3" width="75" height="75">
-                                        </div>
-                                        <div class="col-10 ps-4">
-                                            <div class="ps-3 ps-md-0 d-flex justify-content-between align-items-start">
-                                                <div>
-                                                    <h5 class="fw-bold text-gray mb-0"> Sales Manager</h5>
-                                                    <p class="text-success fst-italic small  mb-2"> Dibuat : 15 Jul 2025
-                                                    </p>
-                                                    <p class="text-muted mb-0"><i class="bi bi-pin-map-fill pe-2"></i>
-                                                        Jakarta, Indonesia</p>
-                                                    <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> 3
-                                                        Orang</p>
-                                                </div>
-                                                <span class="badge bg-success">12 Ags 2025</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12">
-                            <a href="#" class="text-decoration-none">
-                                <div class="job-card card py-3 px-4">
-                                    <div class="row d-flex align-items-center">
-                                        <div class="col-2">
-                                            <img src="{{ asset('img/ofice-3 1.png') }}" alt=""
-                                                class="rounded-circle me-3" width="75" height="75">
-                                        </div>
-                                        <div class="col-10 ps-4">
-                                            <div class="ps-3 ps-md-0 d-flex justify-content-between align-items-start">
-                                                <div>
-                                                    <h5 class="fw-bold text-gray mb-0"> Sales Manager</h5>
-                                                    <p class="text-success fst-italic small  mb-2"> Dibuat : 15 Jul 2025
-                                                    </p>
-                                                    <p class="text-muted mb-0"><i class="bi bi-pin-map-fill pe-2"></i>
-                                                        Jakarta, Indonesia</p>
-                                                    <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> 3
-                                                        Orang</p>
-                                                </div>
-                                                <span class="badge bg-success">12 Ags 2025</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -296,45 +255,21 @@
             </div>
 
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="ratio ratio-16x9">
-                            <img src="{{ asset('img/news-1.webp') }}" alt="News 1" class="img-fluid object-fit-cover">
-                        </div>
-                        <div class="card-body">
-                            <p class="text-muted small mb-2">15 Juli 2024</p>
-                            <h5 class="fw-bold mb-3">Ekspansi Layanan ke Wilayah Timur Indonesia</h5>
-                            <p class="text-muted">PT. Gelatik Supra memperluas jangkauan layanan ke wilayah timur Indonesia
-                                untuk melayani klien yang semakin bertumbuh...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="ratio ratio-16x9">
-                            <img src="{{ asset('img/News-2.webp') }}" alt="News 2" class="img-fluid object-fit-cover">
-                        </div>
-                        <div class="card-body">
-                            <p class="text-muted small mb-2">10 Juli 2024</p>
-                            <h5 class="fw-bold mb-3">Pelatihan Keterampilan Digital untuk Karyawan</h5>
-                            <p class="text-muted">Program pelatihan intensif untuk meningkatkan keterampilan digital
-                                karyawan dalam menghadapi tantangan industri 4.0...</p>
+                @foreach ($newsEvent as $event)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="ratio ratio-16x9">
+                                <img src="{{ asset('storage/' . $event->image) }}" alt="News 1"
+                                    class="img-fluid object-fit-cover">
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted small mb-2">{{ $event->created_at->format('d F Y') }}</p>
+                                <h5 class="fw-bold mb-3">{{ $event->title }}</h5>
+                                <p class="text-muted">{{ $event->content }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="ratio ratio-16x9">
-                            <img src="{{ asset('img/news-3.avif') }}" alt="News 3" class="img-fluid object-fit-cover">
-                        </div>
-                        <div class="card-body">
-                            <p class="text-muted small mb-2">5 Juli 2024</p>
-                            <h5 class="fw-bold mb-3">Kemitraan Strategis dengan Perusahaan Retail Terkemuka</h5>
-                            <p class="text-muted">Menjalin kemitraan strategis dengan beberapa perusahaan retail terkemuka
-                                untuk memperkuat posisi di pasar...</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -348,57 +283,24 @@
             </div>
 
             <div class="row g-4">
-                <div class="col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm px-4 py-5">
-                        <div class="mb-3">
-                            <i class="bi bi-quote text-pink" style="font-size: 2rem;"></i>
-                        </div>
-                        <p class="mb-4">"Pelayanan yang sangat profesional dan tenaga kerja yang berkualitas. Sangat
-                            membantu dalam mengembangkan bisnis kami."</p>
-                        <div class="d-flex align-items-center pb-4">
-                            <img src="{{ asset('img/team 2.png') }}" alt="Client 1" class="rounded-circle me-3"
-                                width="50" height="50">
-                            <div>
-                                <h6 class="fw-bold mb-0">John Doe</h6>
-                                <small class="text-muted">CEO, Company A</small>
+                @foreach ($testimoni as $item)
+                    <div class="col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm px-4 py-5">
+                            <div class="mb-3">
+                                <i class="bi bi-quote text-pink" style="font-size: 2rem;"></i>
+                            </div>
+                            <p class="mb-4">{{ $item->testimony }}</p>
+                            <div class="d-flex align-items-center pb-4">
+                                <img src="{{ asset('storage/' . $item->image) }}" alt="Client 1"
+                                    class="rounded-circle me-3" width="50" height="50">
+                                <div>
+                                    <h6 class="fw-bold mb-0">{{ $item->name }}</h6>
+                                    <small class="text-muted">{{ $item->job_title }}</small>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm px-4 py-5">
-                        <div class="mb-3">
-                            <i class="bi bi-quote text-pink" style="font-size: 2rem;"></i>
-                        </div>
-                        <p class="mb-4">"Tim yang handal dan berpengalaman. Proses rekrutmen yang cepat dan sesuai dengan
-                            kebutuhan perusahaan."</p>
-                        <div class="d-flex align-items-center pb-4">
-                            <img src="{{ asset('img/team 2.png') }}" alt="Client 2" class="rounded-circle me-3"
-                                width="50" height="50">
-                            <div>
-                                <h6 class="fw-bold mb-0">Jane Smith</h6>
-                                <small class="text-muted">HR Manager, Company B</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm px-4 py-5">
-                        <div class="mb-3">
-                            <i class="bi bi-quote text-pink" style="font-size: 2rem;"></i>
-                        </div>
-                        <p class="mb-4">"Kemitraan yang sangat menguntungkan. Gelatik Supra selalu memberikan solusi
-                            terbaik untuk kebutuhan SDM kami."</p>
-                        <div class="d-flex align-items-center pb-4">
-                            <img src="{{ asset('img/team 2.png') }}" alt="Client 3" class="rounded-circle me-3"
-                                width="50" height="50">
-                            <div>
-                                <h6 class="fw-bold mb-0">Michael Johnson</h6>
-                                <small class="text-muted">Director, Company C</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -406,30 +308,22 @@
     <!-- Client Logos -->
     <section class="py-5 bg-white mt-5">
         <div class="px-4 px-md-0">
-            <div class="row g-4 align-items-center justify-content-center">
-                <div class=" col-md-2 col-4 text-center">
-                    <img src="{{ asset('img/icon/logo-gelatik-full.png') }}" alt="Client Logo" class="img-fluid"
-                        style="max-height: 60px;">
-                </div>
-                <div class=" col-md-2 col-4 text-center">
-                    <img src="{{ asset('img/icon/logo-gelatik-full.png') }}" alt="Client Logo" class="img-fluid"
-                        style="max-height: 60px;">
-                </div>
-                <div class=" col-md-2 col-4 text-center">
-                    <img src="{{ asset('img/icon/logo-gelatik-full.png') }}" alt="Client Logo" class="img-fluid"
-                        style="max-height: 60px;">
-                </div>
-                <div class=" col-md-2 col-4 text-center">
-                    <img src="{{ asset('img/icon/logo-gelatik-full.png') }}" alt="Client Logo" class="img-fluid"
-                        style="max-height: 60px;">
-                </div>
-                <div class=" col-md-2 col-4 text-center">
-                    <img src="{{ asset('img/icon/logo-gelatik-full.png') }}" alt="Client Logo" class="img-fluid"
-                        style="max-height: 60px;">
-                </div>
-                <div class=" col-md-2 col-4 text-center">
-                    <img src="{{ asset('img/icon/logo-gelatik-full.png') }}" alt="Client Logo" class="img-fluid"
-                        style="max-height: 60px;">
+            <!-- Wrapper Swiper -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    @foreach ($lgPartner as $partnership)
+                        <div class="swiper-slide text-center">
+                            <img src="{{ asset('storage/' . $partnership->image) }}" alt="Client Logo" class="img-fluid"
+                                style="max-height: 60px;">
+                        </div>
+                    @endforeach
+
+                    @foreach ($lgPartner as $partnership)
+                        <div class="swiper-slide text-center">
+                            <img src="{{ asset('storage/' . $partnership->image) }}" alt="Client Logo" class="img-fluid"
+                                style="max-height: 60px;">
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -444,43 +338,22 @@
             </div>
 
             <div class="row row-cols-2 row-cols-md-4 g-4">
-                <div class="col">
-                    <div class="ratio ratio-4x3">
-                        <img src="{{ asset('img/News-2.webp') }}" alt="Gallery 1"
-                            class="img-fluid object-fit-cover rounded-3">
+                @foreach ($gallery as $item)
+                    <div class="col">
+                        <div class="ratio ratio-4x3">
+                            <img src="{{ asset('storage/' . $item->image) }}" alt="Gallery {{ $loop->index + 1 }}"
+                                class="img-fluid object-fit-cover rounded-3">
+                        </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="ratio ratio-4x3">
-                        <img src="{{ asset('img/News-1.webp') }}" alt="Gallery 2"
-                            class="img-fluid object-fit-cover rounded-3">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="ratio ratio-4x3">
-                        <img src="{{ asset('img/news-3.avif') }}" alt="Gallery 3"
-                            class="img-fluid object-fit-cover rounded-3">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="ratio ratio-4x3">
-                        <img src="{{ asset('img/News-1.webp') }}" alt="Gallery 4"
-                            class="img-fluid object-fit-cover rounded-3">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="ratio ratio-4x3">
-                        <img src="{{ asset('img/News-2.webp') }}" alt="Gallery 5"
-                            class="img-fluid object-fit-cover rounded-3">
-                    </div>
-                </div>
+                @endforeach
+
                 <div class="col">
                     <div class="card h-100 border-0 shadow-sm d-flex align-items-center justify-content-center text-center"
                         style="min-height: 90px;">
                         <div class="card-body">
                             <i class="bi bi-images text-pink mb-3 d-none d-md-block" style="font-size: 3rem;"></i>
                             <h5 class="fw-bold mb-3">View All</h5>
-                            <a href="#" class="btn btn-primary">Lihat Semua</a>
+                            <a href="{{route('gallery.all')}}" class="btn btn-primary">Lihat Semua</a>
                         </div>
                     </div>
                 </div>
@@ -492,8 +365,8 @@
     <section class="py-5 bg-white">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <h2 class="fw-bold text-gray mb-3">Frequently Asked Questions (FAQ)</h2>
-                <p class="lead">Pertanyaan yang sering diajukan tentang layanan kami</p>
+                <h2 class="fw-bold text-gray mb-2">Frequently Asked Questions (FAQ)</h2>
+                <p class="text-muted">Pertanyaan yang sering diajukan tentang layanan kami</p>
             </div>
 
             <div class="row justify-content-center">
@@ -658,3 +531,35 @@
     </div>
 
 @endsection
+@push('scripts')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 5,
+            spaceBetween: 30,
+            loop: true,
+            loopedSlides: 10, // duplikat agar cukup untuk loop
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+            speed: 3000,
+            breakpoints: {
+                320: {
+                    slidesPerView: 2
+                },
+                768: {
+                    slidesPerView: 3
+                },
+                992: {
+                    slidesPerView: 4
+                },
+                1200: {
+                    slidesPerView: 5
+                }
+            }
+        });
+    </script>
+@endpush

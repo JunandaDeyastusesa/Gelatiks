@@ -5,6 +5,29 @@
             <img src="{{ asset('img/icon/logo-gelatik-full.png') }}" alt="Logo" style="height: 40px;">
         </a>
 
+        {{-- <!-- Search & Filter hanya muncul di halaman Career Index -->
+        @if (request()->routeIs('carrer.index'))
+            <form method="GET" action="{{ route('carrer.index') }}" class="d-flex me-auto">
+                <input type="text" name="search" value="{{ request('search') }}" class="form-control me-2"
+                    placeholder="Cari pekerjaan...">
+                <select name="location" class="form-select me-2">
+                    <option value="">Semua Lokasi</option>
+
+                    @isset($locations)
+                        @foreach ($locations as $loc)
+                            <option value="{{ $loc }}" {{ request('location') == $loc ? 'selected' : '' }}>
+                                {{ $loc }}
+                            </option>
+                        @endforeach
+                    @endisset
+                </select>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+        @endif
+        <!-- End Career Search --> --}}
+
         <!-- Toggle button -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
             aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">

@@ -13,7 +13,7 @@
                 <div class="d-md-flex justify-content-end align-items-center d-none">
                     <a href="{{ route('carrer.index') }}" class="text-decoration-none d-flex align-items-center text-dark">
                         <i class="bi bi-arrow-left-short fs-5 me-1"></i>
-                        Carrer
+                        Career
                     </a>
                 </div>
                 <hr class="mt-3 mb-0" />

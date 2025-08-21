@@ -11,37 +11,32 @@ class CarrerController extends Controller
 {
     public function index(Request $request)
     {
-
-        // ambil query search & lokasi dari request
         $search   = $request->input('search');
         $location = $request->input('location');
 
-        // query dasar
         $query = Job::query();
 
-        // filter berdasarkan search (nama pekerjaan)
         if (!empty($search)) {
             $query->where('jobs_name', 'like', '%' . $search . '%');
         }
 
-        // filter berdasarkan lokasi (city)
         if (!empty($location)) {
             $query->where('city', $location);
         }
 
-        // ambil data job setelah difilter
-        $viewCarrer = $query->get();
+        // paginate dengan 12 item per halaman
+        $viewCarrer = $query->orderBy('created_at', 'desc')->paginate(12);
 
-        // ambil daftar lokasi unik untuk dropdown filter
+        // simpan parameter search & filter di pagination
+        $viewCarrer->appends($request->all());
+
+        // ambil lokasi unik untuk filter
         $locations = Job::select('city')->distinct()->pluck('city');
 
-        
-        // tampil 6 job per halaman
-        $viewCarrer = Job::orderBy('created_at', 'desc')->paginate(12);
-      
         return view('customer.carrer', compact('viewCarrer', 'locations'));
-
     }
+
+
 
 
     public function show($id)

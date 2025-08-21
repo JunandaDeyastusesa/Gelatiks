@@ -19,7 +19,7 @@
                                 <th class="text-center">Employee Name</th>
                                 <th class="text-center">Email</th>
                                 <th class="text-center">Category</th>
-                                <th class="text-center">Aksi</th>
+                                {{-- <th class="text-center">Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -29,11 +29,11 @@
                                     <td>{{ $employee->username }}</td>
                                     <td>{{ $employee->email }}</td>
                                     <td>{{ $employee->roles->pluck('name')->join(', ') }}</td>
-                                    <td class="text-center">
+                                    {{-- <td class="text-center">
                                         <a href="#" class="btn btn-sm btn-detail" data-id="{{ $employee->id }}">
                                             <i class="bi bi-info-square"></i>
                                         </a>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

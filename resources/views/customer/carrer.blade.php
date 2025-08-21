@@ -17,40 +17,88 @@
                     </a>
                 </div>
                 <hr class="mt-3 mb-0" />
+                <!-- Search & Filter hanya muncul di halaman Career Index -->
+                @if (request()->routeIs('carrer.index'))
+                    <form method="GET" action="{{ route('carrer.index') }}" class=" mt-3 w-50 d-none d-md-flex me-auto">
+                        <input type="text" name="search" value="{{ request('search') }}" class="form-control me-2"
+                            placeholder="Cari pekerjaan...">
+                        <select name="location" class="form-select me-2">
+                            <option value="">Semua Lokasi</option>
+
+                            @isset($locations)
+                                @foreach ($locations as $loc)
+                                    <option value="{{ $loc }}" {{ request('location') == $loc ? 'selected' : '' }}>
+                                        {{ $loc }}
+                                    </option>
+                                @endforeach
+                            @endisset
+                        </select>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
+                    <form method="GET" action="{{ route('carrer.index') }}" class="d-flex d-md-none me-auto mt-3">
+                        <input type="text" name="search" value="{{ request('search') }}" class="form-control me-2"
+                            placeholder="Cari pekerjaan...">
+                        <select name="location" class="form-select me-2">
+                            <option value="">Semua Lokasi</option>
+
+                            @isset($locations)
+                                @foreach ($locations as $loc)
+                                    <option value="{{ $loc }}" {{ request('location') == $loc ? 'selected' : '' }}>
+                                        {{ $loc }}
+                                    </option>
+                                @endforeach
+                            @endisset
+                        </select>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
+                @endif
+                <!-- End Career Search -->
             </div>
 
             <div class="row row-cols-1 row-cols-md-3 mt-2 g-4">
-                @foreach ($viewCarrer as $carrer)
-                    <div class="col">
-                        <a href="{{ route('carrer.show', $carrer->id) }}" class="text-decoration-none">
-                            <div class="job-card card py-4 px-4">
-                                <div class="row d-flex align-items-center">
-                                    <div class="">
-                                        <div>
-                                            <h5 class="fw-bold text-gray mb-1"> {{ $carrer->jobs_name }}</h5>
-                                            <p class="text-success fst-italic small mb-3"> Dibuat :
-                                                {{ \Carbon\Carbon::parse($carrer->created_at)->format('d M Y') }}
-                                            </p>
-                                            <p class="text-muted mb-1"><i class="bi bi-pin-map-fill pe-2"></i>
-                                                {{ $carrer->city }}</p>
-                                            <p class="text-muted mb-0"><i
-                                                    class="bi bi-person-add pe-2"></i>{{ $carrer->open_position }} Orang</p>
-                                        </div>
-                                        <div class="ps-md-0 d-flex justify-content-between align-items-center mt-2">
-                                            <span
-                                                class="badge bg-success px-3">{{ \Carbon\Carbon::parse($carrer->close_date)->format('d M Y') }}</span>
+                @if ($viewCarrer->isEmpty())
+                    <div class="col-12 text-center my-5">
+                        <h6 class="text-muted">Pekerjaan tidak ditemukan.</h6>
+                    </div>
+                @else
+                    @foreach ($viewCarrer as $carrer)
+                        <div class="col">
+                            <a href="{{ route('carrer.show', $carrer->id) }}" class="text-decoration-none">
+                                <div class="job-card card py-4 px-4">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="">
                                             <div>
-                                                <img src="{{ asset('img/icon/logo-gelatik.svg') }}" alt=""
+
+                                                <h5 class="fw-bold text-gray mb-1"> {{ $carrer->jobs_name }}</h5>
+                                                <p class="text-success fst-italic small mb-3"> Dibuat :
+                                                    {{ \Carbon\Carbon::parse($carrer->created_at)->format('d M Y') }}
+                                                </p>
+                                                <p class="text-muted mb-1"><i class="bi bi-pin-map-fill pe-2"></i>
+                                                    {{ $carrer->city }}</p>
+                                                <p class="text-muted mb-0"><i
+                                                        class="bi bi-person-add pe-2"></i>{{ $carrer->open_position }}
+                                                    Orang</p>
+                                            </div>
+                                            <div class="ps-md-0 d-flex justify-content-between align-items-center mt-2">
+                                                <span
+                                                    class="badge bg-success px-3">{{ \Carbon\Carbon::parse($carrer->close_date)->format('d M Y') }}</span>
+                                                <div>
+                                                    <img src="{{ asset('img/icon/logo-gelatik.svg') }}" alt=""
                                                     class="logo-companny rounded-circle">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
             </div>
             <div class="container mt-4">
                 <div class="d-flex justify-content-end">

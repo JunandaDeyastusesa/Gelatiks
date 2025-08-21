@@ -60,7 +60,7 @@
             $('.btn-create').on('click', function(e) {
                 e.preventDefault();
 
-                $.get('/register/create', function(data) {
+                $.get('/Employee/create', function(data) {
                     $('#addModalContainer').html(data);
 
                     setTimeout(() => {
@@ -72,23 +72,6 @@
                     });
                 }).fail(function() {
                     alert('Gagal memuat modal. Coba lagi.');
-                });
-            });
-
-            $('.btn-detail').on('click', function(e) {
-                e.preventDefault();
-                let id = $(this).data('id');
-
-                $.get('/register/' + id, function(data) {
-                    $('#showModalContainer').html(data);
-
-                    setTimeout(() => {
-                        let modalElement = document.getElementById('showModal');
-                        if (modalElement) {
-                            let myModal = new bootstrap.Modal(modalElement);
-                            myModal.show();
-                        }
-                    });
                 });
             });
         });

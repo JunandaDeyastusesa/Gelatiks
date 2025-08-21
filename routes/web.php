@@ -109,9 +109,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::resource('partnership', PartnershipController::class);
 
     // Registration
-    Route::get('register', [RegisterController::class, 'index'])->name('admin.register.index');
-    Route::get('register/create', [RegisterController::class, 'create'])->name('admin.register.create'); // <--- ini buat modal
-    Route::post('register', [RegisterController::class, 'store'])->name('admin.register.store');
+    Route::get('Employee', [RegisterController::class, 'index'])->name('admin.register.index');
+    Route::get('Employee/create', [RegisterController::class, 'create'])->name('admin.register.create'); // <--- ini buat modal
+    Route::post('Employee', [RegisterController::class, 'store'])->name('admin.register.store');
 });
 
 // =================== LOGOUT ===================

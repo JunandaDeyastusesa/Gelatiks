@@ -53,41 +53,43 @@ class AuthController extends Controller
     }
 
     public function register(Request $request)
-    {
-        // ✅ Validasi register dengan format email
-        $request->validate([
-            'username' => 'required|string|max:255',
-            'email'    => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ], [
-            'username.required' => 'Username wajib diisi.',
-            'username.max'      => 'Username maksimal 255 karakter.',
-            'email.required'    => 'Email wajib diisi.',
-            'email.email'       => 'Format email tidak valid.',
-            'email.unique'      => 'Email sudah terdaftar.',
-            'password.required' => 'Password wajib diisi.',
-            'password.min'      => 'Password minimal 6 karakter.',
-            'password.confirmed'=> 'Konfirmasi password tidak sesuai.',
-        ]);
+{
+    // ✅ Validasi register dengan format email & username unik
+    $request->validate([
+        'username' => 'required|string|max:255|unique:users,username',
+        'email'    => 'required|string|email|max:255|unique:users,email',
+        'password' => 'required|string|min:6|confirmed',
+    ], [
+        'username.required' => 'Username wajib diisi.',
+        'username.max'      => 'Username maksimal 255 karakter.',
+        'username.unique'   => 'Username sudah digunakan.', // ⚡ tambahan pesan error
+        'email.required'    => 'Email wajib diisi.',
+        'email.email'       => 'Format email tidak valid.',
+        'email.unique'      => 'Email sudah terdaftar.',
+        'password.required' => 'Password wajib diisi.',
+        'password.min'      => 'Password minimal 6 karakter.',
+        'password.confirmed'=> 'Konfirmasi password tidak sesuai.',
+    ]);
 
-        $user = User::create([
-            'id'       => Str::ulid(),
-            'username' => $request->username,
-            'email'    => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+    $user = User::create([
+        'id'       => Str::ulid(),
+        'username' => $request->username,
+        'email'    => $request->email,
+        'password' => Hash::make($request->password),
+    ]);
 
-        $role = Role::where('name', 'Applicants')->first();
+    $role = Role::where('name', 'Applicants')->first();
 
-        UserRoles::create([
-            'user_id' => $user->id,
-            'role_id' => $role->id,
-        ]);
+    UserRoles::create([
+        'user_id' => $user->id,
+        'role_id' => $role->id,
+    ]);
 
-        Auth::login($user);
+    Auth::login($user);
 
-        return redirect('/profile?edit=' . $user->id);
-    }
+    return redirect('/profile?edit=' . $user->id);
+}
+
 
     public function logout(Request $request)
     {

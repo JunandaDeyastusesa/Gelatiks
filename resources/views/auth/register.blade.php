@@ -80,7 +80,7 @@
     </div>
 </body>
 
-@if ($errors->any())
+{{-- @if ($errors->any())
     <div class="alert alert-danger mt-2">
         <ul class="mb-0">
             @foreach ($errors->all() as $error)
@@ -88,7 +88,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 
 <script>
 (() => {

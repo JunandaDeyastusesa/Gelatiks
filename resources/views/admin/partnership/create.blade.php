@@ -10,7 +10,7 @@
                     aria-label="Close"></button>
             </div>
 
-                        <form action="{{ route('partnership.store') }}" enctype="multipart/form-data" method="POST" class="needs-validation" novalidate>
+            <form action="{{ route('partnership.store') }}" enctype="multipart/form-data" method="POST" class="needs-validation" novalidate>
                 @csrf
                 <div class="modal-body">
                     <div class="row g-4 p-2">
@@ -34,8 +34,8 @@
 
                         <div class="col-md-12">
                             <label class="form-label mb-1">Image</label>
-                            <input type="file" class="form-control py-2" name="image" required>
-                            <div class="invalid-feedback">Gambar partnership wajib diunggah.</div>
+                            <input type="file" class="form-control py-2" name="image" id="imageInput" required>
+                            <div class="invalid-feedback" id="imageFeedback">Gambar partnership wajib diunggah.</div>
                         </div>
                     </div>
                 </div>
@@ -50,20 +50,75 @@
 </div>
 
 <script>
-        (() => {
-            'use strict';
-            // Ambil semua form dengan class needs-validation
-            const forms = document.querySelectorAll('.needs-validation');
+(() => {
+    'use strict';
+    const forms = document.querySelectorAll('.needs-validation');
+    const imageInput = document.getElementById('imageInput');
+    const imageFeedback = document.getElementById('imageFeedback');
+    const MAX_SIZE = 5 * 1024 * 1024; // 5MB
 
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault();
-                        event.stopPropagation();
+    if (imageInput) {
+        imageInput.addEventListener('change', () => {
+            if (!imageInput.files.length) {
+                imageFeedback.textContent = "Gambar partnership wajib diunggah.";
+                imageInput.setCustomValidity("required");
+                imageInput.classList.add('is-invalid');
+                imageInput.classList.remove('is-valid');
+            } else {
+                const file = imageInput.files[0];
+                const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+                if (!allowedTypes.includes(file.type)) {
+                    imageFeedback.textContent = "File harus berupa JPG, JPEG, PNG, atau WEBP. File PDF tidak diperbolehkan.";
+                    imageInput.value = "";
+                    imageInput.setCustomValidity("invalid");
+                    imageInput.classList.add('is-invalid');
+                    imageInput.classList.remove('is-valid');
+                } else if (file.size > MAX_SIZE) {
+                    imageFeedback.textContent = "Ukuran file maksimal 5MB.";
+                    imageInput.value = "";
+                    imageInput.setCustomValidity("invalid");
+                    imageInput.classList.add('is-invalid');
+                    imageInput.classList.remove('is-valid');
+                } else {
+                    imageInput.setCustomValidity("");
+                    imageInput.classList.add('is-valid');
+                    imageInput.classList.remove('is-invalid');
+                    imageFeedback.textContent = "";
+                }
+            }
+        });
+    }
+
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            let valid = true;
+            if (imageInput) {
+                if (!imageInput.files.length) {
+                    imageFeedback.textContent = "Gambar partnership wajib diunggah.";
+                    imageInput.setCustomValidity("required");
+                    valid = false;
+                } else {
+                    const file = imageInput.files[0];
+                    const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+                    if (!allowedTypes.includes(file.type)) {
+                        imageFeedback.textContent = "File harus berupa JPG, JPEG, PNG, atau WEBP. File PDF tidak diperbolehkan.";
+                        imageInput.setCustomValidity("invalid");
+                        valid = false;
+                    } else if (file.size > MAX_SIZE) {
+                        imageFeedback.textContent = "Ukuran file maksimal 5MB.";
+                        imageInput.setCustomValidity("invalid");
+                        valid = false;
+                    } else {
+                        imageInput.setCustomValidity("");
                     }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-
-        })();
-    </script>
+                }
+            }
+            if (!valid || !form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
+})();
+</script>

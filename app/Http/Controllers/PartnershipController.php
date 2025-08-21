@@ -14,13 +14,13 @@ class PartnershipController extends Controller
         $partnerships = Partnership::all();
         return view('admin.partnership.index',  compact('partnerships'));
     }
-    
-        public function create()
+
+    public function create()
     {
         return view('admin.partnership.create');
     }
 
-      public function edit($id)
+    public function edit($id)
     {
         $partnership = Partnership::findOrFail($id);
         return view('admin.partnership.edit', compact('partnership'));
@@ -28,26 +28,32 @@ class PartnershipController extends Controller
 
     // Simpan data baru
     public function store(Request $request)
-{
-    // Validasi input
-    $validated = $request->validate([
-        'name' => 'required|string',
-        'start_contract' => 'required|date',
-        'end_contract' => 'required|date',
-        'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048', // validasi file gambar
-    ]);
+    {
+        // Validasi input
+        $validated = $request->validate([
+                'name' => 'required|string',
+                'start_contract' => 'required|date',
+                'end_contract' => 'required|date',
+                'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120', // validasi file gambar
+            ], [
 
-    // Simpan image jika ada
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('partnership_images', 'public');
-        $validated['image'] = $imagePath;
+                'image.mimes' => 'File harus berupa JPG, JPEG, atau PNG.',
+                'image.max'   => 'Ukuran file maksimal 5MB.',
+                'image.required' => 'Photo wajib diisi.',
+
+            ]);
+
+        // Simpan image jika ada
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('partnership_images', 'public');
+            $validated['image'] = $imagePath;
+        }
+
+        // Simpan ke database
+        Partnership::create($validated);
+
+        return redirect()->route('partnership.index')->with('success', 'Partnership created successfully.');
     }
-
-    // Simpan ke database
-    Partnership::create($validated);
-
-    return redirect()->route('partnership.index')->with('success', 'Partnership created successfully.');
-}
 
 
     // Tampilkan satu data berdasarkan ID
@@ -66,10 +72,17 @@ class PartnershipController extends Controller
             'name' => 'sometimes|required|string',
             'start_contract' => 'sometimes|required|date',
             'end_contract' => 'sometimes|required|date',
-            'image' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
+        // Kalau ada file baru diupload
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('partnership_images', 'public');
+            $validated['image'] = $imagePath;
+        }
+
         $partnership->update($validated);
+
         return redirect()->route('partnership.index')->with('success', 'Partnership updated successfully.');
     }
 

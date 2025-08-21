@@ -12,6 +12,9 @@
         <a class="text-decoration-none text-secondary"
             href="{{ route('jobApplies.show', $ReportInterview->jobApply->id) }}"><i class="bi bi-arrow-left"></i> Back to
             Applicant</a>
+        <div style="display: flex; justify-content: flex-end;">
+            <a href="{{ route('interview.download', $ReportInterview->id) }}" class="btn btn-primary">Download PDF</a>
+        </div>
         <h5 class="text-center mb-3">RISALAH INTERVIEW SPG / MD</h5>
         <div class="biodata">
             <table class="table table-borderless">

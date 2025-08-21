@@ -11,6 +11,7 @@ class CarrerController extends Controller
 {
     public function index(Request $request)
     {
+
         // ambil query search & lokasi dari request
         $search   = $request->input('search');
         $location = $request->input('location');
@@ -34,8 +35,14 @@ class CarrerController extends Controller
         // ambil daftar lokasi unik untuk dropdown filter
         $locations = Job::select('city')->distinct()->pluck('city');
 
+        
+        // tampil 6 job per halaman
+        $viewCarrer = Job::orderBy('created_at', 'desc')->paginate(12);
+      
         return view('customer.carrer', compact('viewCarrer', 'locations'));
+
     }
+
 
     public function show($id)
     {

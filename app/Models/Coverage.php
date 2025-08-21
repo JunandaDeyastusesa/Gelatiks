@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coverage extends Model
 {
-        protected $table = 'coverages';
+    protected $table = 'coverages';
 
     protected $fillable = [
         'qty_province',
@@ -15,4 +15,3 @@ class Coverage extends Model
         'qty_experience',
     ];
 }
-

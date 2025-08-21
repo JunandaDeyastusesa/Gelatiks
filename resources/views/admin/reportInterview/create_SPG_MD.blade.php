@@ -405,21 +405,21 @@
                                     <div class="mb-3">
                                         <label class="form-label fw-bold">Kesimpulan</label>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="hasil_seleksi"
+                                            <input type="radio" name="hasil_seleksi"
                                                 id="sesuai" value="Sesuai" required>
                                             <label class="form-check-label" for="sesuai">
                                                 Kualifikasi yang dimiliki sudah sesuai dengan kriterian yang dibutuhkan
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="hasil_seleksi"
+                                            <input type="radio" name="hasil_seleksi"
                                                 id="dipertimbangkan" value="Dipertimbangkan">
                                             <label class="form-check-label" for="dipertimbangkan">
                                                 Masih dapat dipertimbangkan
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="hasil_seleksi"
+                                            <input type="radio" name="hasil_seleksi"
                                                 id="ditolak" value="Ditolak">
                                             <label class="form-check-label" for="ditolak">
                                                 Ditolak

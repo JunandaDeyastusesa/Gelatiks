@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <section class="carrer bg-light mt-5 mt-md-0 mb-5">
+    <section class="carrer bg-light mt-5 mt-md-0">
         <div class="container py-3 pb-5">
             <div class="mb-2">
                 <h2 class="fw-bold text-gray mb-1">Featured Job Offers</h2>
@@ -57,7 +57,6 @@
                     </form>
                 @endif
                 <!-- End Career Search -->
-
             </div>
 
             <div class="row row-cols-1 row-cols-md-3 mt-2 g-4">
@@ -73,6 +72,7 @@
                                     <div class="row d-flex align-items-center">
                                         <div class="">
                                             <div>
+
                                                 <h5 class="fw-bold text-gray mb-1"> {{ $carrer->jobs_name }}</h5>
                                                 <p class="text-success fst-italic small mb-3"> Dibuat :
                                                     {{ \Carbon\Carbon::parse($carrer->created_at)->format('d M Y') }}
@@ -87,8 +87,8 @@
                                                 <span
                                                     class="badge bg-success px-3">{{ \Carbon\Carbon::parse($carrer->close_date)->format('d M Y') }}</span>
                                                 <div>
-                                                    <img src="{{ asset('img/ofice-3 1.png') }}" alt=""
-                                                        class="logo-companny rounded-circle">
+                                                    <img src="{{ asset('img/icon/logo-gelatik.svg') }}" alt=""
+                                                    class="logo-companny rounded-circle">
                                                 </div>
                                             </div>
                                         </div>
@@ -99,6 +99,11 @@
                         </div>
                     @endforeach
                 @endif
+            </div>
+            <div class="container mt-4">
+                <div class="d-flex justify-content-end">
+                    {{ $viewCarrer->links('pagination::bootstrap-5') }}
+                </div>
             </div>
         </div>
     </section>

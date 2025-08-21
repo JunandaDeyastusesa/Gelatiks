@@ -4,7 +4,7 @@
         <div class="modal-content rounded-4">
             <div class="modal-header bg-pink text-white rounded-top-4 p-4">
                 <h5 class="modal-title fw-semibold" id="showModalLabel">
-                    <i class="bi bi-briefcase-fill me-2"></i>Add News Event
+                    <i class="pe-2 fs-5 bi bi-newspaper"></i>Add News Event
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                     aria-label="Close"></button>

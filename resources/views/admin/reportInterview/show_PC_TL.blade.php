@@ -12,6 +12,10 @@
         <a class="text-decoration-none text-secondary"
             href="{{ route('jobApplies.show', $ReportInterview->jobApply->id) }}"><i class="bi bi-arrow-left"></i> Back to
             Applicant</a>
+        <div style="display: flex; justify-content: flex-end;">
+            {{-- Di tampilan web PC/TL, perbarui tautannya --}}
+            <a href="{{ route('interview.download-pctl', $ReportInterview->id) }}" class="btn btn-primary">Download PDF</a>
+        </div>
         <h5 class="text-center mb-3">Risalah Interview PC/TL</h5>
         <div class="biodata">
             <table class="table table-borderless">
@@ -56,6 +60,7 @@
                         <th class="align-middle">Competency</th>
                         <th class="align-middle">Definisi</th>
                         <th>Skor</th>
+                    </tr>
                 </thead>
 
                 <tbody>
@@ -201,12 +206,25 @@
                     <!-- Kesimpulan & Pewawancara -->
                     <tr>
                         <td colspan="2" style="font-size: 14px">
-                            <div class="kesimpulan">
-                                <p class="fw-semibold">Kesimpulan</p>
-                                <p>
-                                    Kualifikasi sesuai kriteria, masih dapat dipertimbangkan, atau ditolak.
-                                </p>
+                            <div class="hasil_seleksi">
+                                <div class="mb-3">
+                                    <p class="form-label fw-bold">Kesimpulan</p>
+                                    @if ($ReportInterview->hasil_seleksi == 'Sesuai')
+                                        <label class="form-check-label" for="sesuai">
+                                            Kualifikasi yang dimiliki sudah sesuai dengan kriterian yang dibutuhkan
+                                        </label>
+                                    @elseif ($ReportInterview->hasil_seleksi == 'Dipertimbangkan')
+                                        <label class="form-check-label" for="dipertimbangkan">
+                                            Masih dapat dipertimbangkan
+                                        </label>
+                                    @else
+                                        <label class="form-check-label" for="ditolak">
+                                            Ditolak
+                                        </label>
+                                    @endif
+                                </div>
                             </div>
+
                             <div class="note pt-3">
                                 <p class="fw-semibold">Note</p>
                                 <p>1. Poor (1-4) = Potensi di bawah kapasitas yang dibutuhkan</p>
@@ -248,3 +266,4 @@
     </div>
 
 @endsection
+

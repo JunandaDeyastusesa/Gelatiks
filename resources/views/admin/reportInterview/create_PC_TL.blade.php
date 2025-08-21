@@ -37,7 +37,7 @@
 
                         </tr>
                         <tr>
-                            <td class="align-middle pb-0 col-2 text-muted">Pendiikan</td>
+                            <td class="align-middle pb-0 col-2 text-muted">Pendidikan</td>
                             <td class="align-middle pb-0 col-5 fw-medium">: {{ $jobApply->user->profile->pendidikan }}</td>
                             <td class="align-middle pb-0 col-2 text-muted">Tanggal Tes</td>
                             <td class="align-middle pb-0">
@@ -220,11 +220,31 @@
                         <!-- Kesimpulan & Pewawancara -->
                         <tr>
                             <td colspan="2" style="font-size: 14px">
-                                <div class="kesimpulan">
-                                    <p class="fw-semibold">Kesimpulan</p>
-                                    <p>
-                                        Kualifikasi sesuai kriteria, masih dapat dipertimbangkan, atau ditolak.
-                                    </p>
+                                <div class="hasil_seleksi">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Kesimpulan</label>
+                                        <div class="form-check">
+                                            <input type="radio" name="hasil_seleksi"
+                                                id="sesuai" value="Sesuai" required>
+                                            <label class="form-check-label" for="sesuai">
+                                                Kualifikasi yang dimiliki sudah sesuai dengan kriterian yang dibutuhkan
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="radio" name="hasil_seleksi"
+                                                id="dipertimbangkan" value="Dipertimbangkan">
+                                            <label class="form-check-label" for="dipertimbangkan">
+                                                Masih dapat dipertimbangkan
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="radio" name="hasil_seleksi"
+                                                id="ditolak" value="Ditolak">
+                                            <label class="form-check-label" for="ditolak">
+                                                Ditolak
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="note pt-3">
                                     <p class="fw-semibold">Note</p>
@@ -256,9 +276,11 @@
                                     <div class="mt-4">
                                         <p class="fw-semibold">Pewawancara: {{ Auth::user()->username }}</p>
                                         <div class="form-check mt-5">
+                                            {{-- Removed d-none class to make the checkbox visible and clickable --}}
                                             <input class="form-check-input" name="ket" type="checkbox"
                                                 id="checkChecked"
-                                                value="Saya sebagai pewawancara menyatakan bahwa wawancara ini telah saya lakukan dengan penuh kesadaran, objektif, dan sesuai prosedur yang berlaku. Seluruh penilaian dan keterangan yang saya berikan adalah benar dan dapat dipertanggungjawabkan.">
+                                                value="Saya sebagai pewawancara menyatakan bahwa wawancara ini telah saya lakukan dengan penuh kesadaran, objektif, dan sesuai prosedur yang berlaku. Seluruh penilaian dan keterangan yang saya berikan adalah benar dan dapat dipertanggungjawabkan."
+                                                required> {{-- Added required for the checkbox --}}
                                             <label class="form-check-label text-start" style="font-size: 14px"
                                                 for="checkChecked">
                                                 Saya sebagai pewawancara menyatakan bahwa wawancara ini telah saya lakukan

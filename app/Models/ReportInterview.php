@@ -34,8 +34,10 @@ class ReportInterview extends Model
         'knowledge',
         'skill',
         'catatan',
+        'hasil_seleksi',
         'ket',
     ];
+
 
     protected $casts = [
         'tanggal_tes' => 'date',

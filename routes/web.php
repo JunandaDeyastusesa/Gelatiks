@@ -64,7 +64,7 @@ Route::post('carrer/{id}/apply', [CarrerController::class, 'submitApplyNow'])->n
 Route::get('gallery-all', [LandingPageController::class, 'showGallery'])->name('gallery.all');
 // End
 
-Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
+Route::middleware(['auth', 'role:Admin,HRD,Super Admin'])->group(function () {
     Route::get('applicants/export-excel', [ApplicantsController::class, 'exportExcel'])
         ->name('applicants.exportExcel');
 
@@ -101,14 +101,16 @@ Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
 });
 
 // =================== ADMIN ONLY ===================
-Route::middleware(['auth', 'role:Admin'])->group(function () {
+Route::middleware(['auth', 'role:Admin,Super Admin'])->group(function () {
     Route::resource('newsEvent', NewsEventController::class);
     Route::resource('coverage', CoverageController::class);
     Route::resource('gallery', GalleryController::class);
     Route::resource('testimoni', TestimoniController::class);
     Route::resource('partnership', PartnershipController::class);
 
-    // Registration
+});
+
+Route::middleware(['auth', 'role:Super Admin'])->group(function () {
     Route::get('Employee', [RegisterController::class, 'index'])->name('admin.register.index');
     Route::get('Employee/create', [RegisterController::class, 'create'])->name('admin.register.create'); // <--- ini buat modal
     Route::post('Employee', [RegisterController::class, 'store'])->name('admin.register.store');

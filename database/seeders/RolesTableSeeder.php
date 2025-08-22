@@ -16,6 +16,7 @@ class RolesTableSeeder extends Seeder
             'name' => 'Admin',
         ]);
 
+
         Role::create([
             'id'   => Str::ulid(),
             'no'   => 2,
@@ -26,6 +27,12 @@ class RolesTableSeeder extends Seeder
             'id'   => Str::ulid(),
             'no'   => 3,
             'name' => 'HRD',
+        ]);
+
+        Role::create([
+            'id'   => Str::ulid(),
+            'no'   => 4,
+            'name' => 'Super Admin',
         ]);
     }
 }

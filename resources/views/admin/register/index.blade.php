@@ -1,14 +1,14 @@
 @extends('layouts.admin.app')
 
 @section('title', 'Gelatik Supra')
-@section('nav-title', 'Registration')
+@section('nav-title', 'Employee Account')
 
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <main class="col-md-12 ms-sm-auto col-lg-12 py-1">
                 <div class="d-flex justify-content-end mb-3">
-                    <a class="btn btn-create"><i class="bi bi-plus-square-fill"></i> Register</a>
+                    <a class="btn btn-create"><i class="bi bi-plus-square-fill"></i> Account</a>
                 </div>
 
                 <div class="table-responsive">
@@ -18,7 +18,7 @@
                                 <th class="text-center">No</th>
                                 <th class="text-center">Employee Name</th>
                                 <th class="text-center">Email</th>
-                                <th class="text-center">Category</th>
+                                <th class="text-center">Role</th>
                                 {{-- <th class="text-center">Aksi</th> --}}
                             </tr>
                         </thead>

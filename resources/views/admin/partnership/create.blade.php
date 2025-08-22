@@ -10,9 +10,9 @@
                     aria-label="Close"></button>
             </div>
 
+            <div class="modal-body">
             <form action="{{ route('partnership.store') }}" enctype="multipart/form-data" method="POST" class="needs-validation" novalidate>
                 @csrf
-                <div class="modal-body">
                     <div class="row g-4 p-2">
                         <div class="col-md-12">
                             <label class="form-label mb-1">Name</label>

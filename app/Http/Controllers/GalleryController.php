@@ -18,7 +18,7 @@ class GalleryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource. 
+     * Show the form for creating a new resource.
      */
     public function create()
     {
@@ -31,9 +31,13 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'image' => 'required|file|mimes:png,jpg,jpeg|max:10240', // 10MB
+            'title'  => 'required|string|max:255',
+            'image'  => 'required|file|mimes:png,jpg,jpeg|max:5120', // 5MB
             'status' => 'required|string|max:255',
+        ], [
+            'image.mimes' => 'File harus berupa JPG, JPEG, atau PNG.',
+            'image.max'   => 'Ukuran file maksimal 5MB.',
+            'image.required' => 'Photo wajib diisi.',
         ]);
 
         if ($request->hasFile('image')) {
@@ -70,9 +74,12 @@ class GalleryController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'image' => 'nullable|file|mimes:png,jpg,jpeg|max:10240',
+            'title'  => 'required|string|max:255',
+            'image'  => 'nullable|file|mimes:png,jpg,jpeg|max:5120',
             'status' => 'required|string|max:255',
+        ], [
+            'image.mimes' => 'File harus berupa JPG, JPEG, atau PNG.',
+            'image.max'   => 'Ukuran file maksimal 5MB.',
         ]);
 
         $gallery = Gallery::findOrFail($id);

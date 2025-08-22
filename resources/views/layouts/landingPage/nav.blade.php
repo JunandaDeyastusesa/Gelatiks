@@ -1,9 +1,32 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top py-3">
     <div class="container-fluid px-3 px-md-5">
         <!-- Logo -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset('img/icon/logo-gelatik-full.png') }}" alt="Logo" style="height: 40px;">
         </a>
+
+        {{-- <!-- Search & Filter hanya muncul di halaman Career Index -->
+        @if (request()->routeIs('carrer.index'))
+            <form method="GET" action="{{ route('carrer.index') }}" class="d-flex me-auto">
+                <input type="text" name="search" value="{{ request('search') }}" class="form-control me-2"
+                    placeholder="Cari pekerjaan...">
+                <select name="location" class="form-select me-2">
+                    <option value="">Semua Lokasi</option>
+
+                    @isset($locations)
+                        @foreach ($locations as $loc)
+                            <option value="{{ $loc }}" {{ request('location') == $loc ? 'selected' : '' }}>
+                                {{ $loc }}
+                            </option>
+                        @endforeach
+                    @endisset
+                </select>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+        @endif
+        <!-- End Career Search --> --}}
 
         <!-- Toggle button -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
@@ -16,20 +39,20 @@
             <ul class="navbar-nav ms-auto align-items-center gap-2 gap-md-1">
                 <!-- Links -->
                 @php
+                    $onHome = request()->routeIs('home'); // cek apakah sedang di halaman home
                     $navLinks = [
-                        '/' => 'Home',
-                        '#what-we-offer' => 'Services',
-                        '#career' => 'Career',
-                        '#news-event' => 'News',
-                        '#gallery' => 'Gallery',
-                        '#contact' => 'Contact',
+                        $onHome ? '/' : route('home') => 'Home',
+                        $onHome ? '#what-we-offer' : route('home') . '#what-we-offer' => 'Services',
+                        $onHome ? '#career' : route('home') . '#career' => 'Career',
+                        $onHome ? '#news-event' : route('home') . '#news-event' => 'News',
+                        $onHome ? '#gallery' : route('home') . '#gallery' => 'Gallery',
+                        $onHome ? '#contact' : route('home') . '#contact' => 'Contact',
                     ];
                 @endphp
 
                 @foreach ($navLinks as $link => $label)
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is(ltrim($link, '#')) ? 'active fw-semibold text-pri' : '' }}"
-                            href="{{ $link }}" onclick="setActive(this)">
+                        <a class="nav-link" href="{{ $link }}">
                             {{ $label }}
                         </a>
                     </li>
@@ -84,11 +107,20 @@
 </nav>
 
 <script>
-    function setActive(element) {
-        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active', 'fw-semibold',
-            'text-pri'));
-        element.classList.add('active', 'fw-semibold', 'text-pri');
+    // highlight nav aktif sesuai URL
+    function highlightNav() {
+        const current = window.location.href;
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (current === link.href) {
+                link.classList.add('active', 'fw-semibold', 'text-pri');
+            } else {
+                link.classList.remove('active', 'fw-semibold', 'text-pri');
+            }
+        });
     }
+
+    document.addEventListener("DOMContentLoaded", highlightNav);
+    window.addEventListener("hashchange", highlightNav);
 
     function confirmLogout(event) {
         event.preventDefault();
@@ -108,3 +140,9 @@
         });
     }
 </script>
+
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+</style>

@@ -35,7 +35,7 @@ class NewsEventController extends Controller
         $validate = $request->validate([
             'title' => 'required|string|max:255',
             'event_date' => 'required|date',
-            'image' => 'required|file|mimes:png,jpg,jpeg|max:10240', // 10MB = 10240 KB
+            'image' => 'required|file|mimes:png,jpg,jpeg|max:5120', // 5MB
             'content' => 'required|string',
             'status' => 'required|string|max:255'
         ]);
@@ -78,7 +78,7 @@ class NewsEventController extends Controller
         $validate = $request->validate([
             'title' => 'required|string|max:255',
             'event_date' => 'required|date',
-            'image' => 'nullable|file|mimes:png,jpg,jpeg|max:10240', // Boleh kosong saat update
+            'image' => 'nullable|file|mimes:png,jpg,jpeg|max:5120',
             'content' => 'required|string',
             'status' => 'required|string|max:255'
         ]);

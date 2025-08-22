@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-                <div class="modal-footer d-flex justify-content-between p-1 sticky-bottom bg-white">
+                <div class="modal-footer d-flex justify-content-between p-3 sticky-bottom bg-white">
                     <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>

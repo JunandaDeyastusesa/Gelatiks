@@ -28,16 +28,22 @@
                 <h2 class="login-title">Login</h2>
                 <p class="login-subtitle pb-2">You can login for apply</p>
 
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login') }}" class="need-validation" novalidate>
                     @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger text-center">
+                            {{ $errors->first() }}
+                        </div>
+                    @endif
+
                     <div class="mb-5">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" id="email" value="jhondoe@gmail.com" />
+                        <input type="email" name="email" class="mb-0 form-control" id="email" placeholder="Masukkan Email" required/>
                     </div>
 
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" value="••••••••••••" />
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Password" required/>
                     </div>
 
                     <div class="register-link">

@@ -7,7 +7,11 @@
     <div class="container-fluid">
         <div class="row">
             <main class="col-md-12 ms-sm-auto col-lg-12 py-1">
-
+                <div class="d-flex justify-content-end mb-3">
+                    <a href="{{ route('applicants.exportExcel') }}" class="btn btn-outline-success ms-2">
+                        <i class="bi bi-download me-1"></i> Export Excel
+                    </a>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-borderless my-2" id="applicantsTable">
                         <thead class="head-table">
@@ -33,9 +37,6 @@
                                         <div class="d-flex justify-content-center">
                                             <a href="#" class="btn btn-sm btn-detail" data-id="{{ $applicant->id }}">
                                                 <i class="bi bi-info-square"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-sm btn-edit">
-                                                <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </div>
                                     </td>

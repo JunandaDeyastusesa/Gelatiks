@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\ReportInterviewController;
 use Illuminate\Support\Facades\Route;
 use App\Exports\JobsExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -15,11 +18,14 @@ use App\Http\Controllers\CoverageController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\PartnershipController;
+use App\Http\Controllers\RegisterController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
+
+Route::get('/', [LandingPageController::class, 'index'])->name('home');
 
 Route::get('login', function () {
     return view('auth.login');
@@ -27,12 +33,13 @@ Route::get('login', function () {
 
 Route::post('login', [AuthController::class, 'login'])->name('login');
 
-
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::get('about', fn() => view('customer.about'))->name('customer.about');
-// Route::get('profile', fn() => view('customer.profile'))->name('customer.profile');
+
+// Route::get('dashboard', fn() => view('admin.dashboard'))->name('admin.dashboard');
+
 
 // Profile Applicant
 Route::resource('profile', ProfileApplicantController::class);
@@ -53,12 +60,14 @@ Route::get('carrer/{id}/apply', [CarrerController::class, 'applyNow'])->name('ca
 Route::post('carrer/{id}/apply', [CarrerController::class, 'submitApplyNow'])->name('carrer.submit');
 // End Carrer
 
-// Report Interview
-Route::get('reportInterview', fn() => view('admin.reportInterview.create'))->name('admin.reportInterview');
-//END
-
+// Gallery
+Route::get('gallery-all', [LandingPageController::class, 'showGallery'])->name('gallery.all');
+// End
 
 Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
+    Route::get('applicants/export-excel', [ApplicantsController::class, 'exportExcel'])
+        ->name('applicants.exportExcel');
+
     Route::resource('applicants', ApplicantsController::class);
     Route::get('jobs/{id}/applicants', [JobController::class, 'showApplicants'])->name('jobs.applicants');
 
@@ -72,20 +81,37 @@ Route::middleware(['auth', 'role:Admin,HRD'])->group(function () {
     Route::get('/jobs/export-excel', [JobController::class, 'exportExcel'])->name('jobs.exportExcel');
     Route::get('/jobs/{id}/export-applicants', [JobController::class, 'exportApplicants'])->name('jobs.exportApplicants');
 
+    // PCTL
+    Route::get('reportInterview/{id}/form', [ReportInterviewController::class, 'viewFormPCTL'])->name('reportInterview.form');
+    Route::post('reportInterview/{id}', [ReportInterviewController::class, 'storeFormPCTL'])->name('reportInterviewPCTL.store');
+    Route::get('reportInterview/{id}', [ReportInterviewController::class, 'showFormPCTL'])->name('reportInterviewPCTL.show');
+    Route::get('/interview-report-pctl/{id}/download', [ReportInterviewController::class, 'downloadInterviewReportPCTL'])->name('interview.download-pctl');
+
+    // SPGMD
+    Route::get('reportInterviewSPGMD/{id}/form', [ReportInterviewController::class, 'viewFormSPGMD'])->name('reportInterviewSPGMD.form');
+    Route::post('reportInterviewSPGMD/{id}', [ReportInterviewController::class, 'storeFormSPGMD'])->name('reportInterviewSPGMD.store');
+    Route::get('reportInterviewSPGMD/{id}', [ReportInterviewController::class, 'showFormSPGMD'])->name('reportInterviewSPGMD.show');
+    Route::get('/interview-report/{id}/download', [ReportInterviewController::class, 'downloadInterviewReportSPGMD'])->name('interview.download');
+
     Route::resource('jobs', JobController::class);
+
+    // Dashboard
+    Route::resource('dashboard', DashboardController::class);
+    // End Dashboard
 });
 
 // =================== ADMIN ONLY ===================
 Route::middleware(['auth', 'role:Admin'])->group(function () {
-    // Route::get('coverage', fn() => view('admin.coverage.index'))->name('admin.coverage');
-    // Route::get('gallery', fn() => view('admin.gallery.index'))->name('admin.gallery');
-    // Route::get('testimoni', fn() => view('admin.testimoni.index'))->name('admin.testimoni');
-    // Route::get('partnership', fn() => view('admin.partnership.index'))->name('admin.partnership');
     Route::resource('newsEvent', NewsEventController::class);
     Route::resource('coverage', CoverageController::class);
     Route::resource('gallery', GalleryController::class);
     Route::resource('testimoni', TestimoniController::class);
     Route::resource('partnership', PartnershipController::class);
+
+    // Registration
+    Route::get('Employee', [RegisterController::class, 'index'])->name('admin.register.index');
+    Route::get('Employee/create', [RegisterController::class, 'create'])->name('admin.register.create'); // <--- ini buat modal
+    Route::post('Employee', [RegisterController::class, 'store'])->name('admin.register.store');
 });
 
 // =================== LOGOUT ===================

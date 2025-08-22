@@ -9,11 +9,35 @@ use Illuminate\Support\Facades\Auth;
 
 class CarrerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $viewCarrer = Job::all();
-        return view('customer.carrer', compact('viewCarrer'));
+        $search   = $request->input('search');
+        $location = $request->input('location');
+
+        $query = Job::query();
+
+        if (!empty($search)) {
+            $query->where('jobs_name', 'like', '%' . $search . '%');
+        }
+
+        if (!empty($location)) {
+            $query->where('city', $location);
+        }
+
+        // paginate dengan 12 item per halaman
+        $viewCarrer = $query->orderBy('created_at', 'desc')->paginate(12);
+
+        // simpan parameter search & filter di pagination
+        $viewCarrer->appends($request->all());
+
+        // ambil lokasi unik untuk filter
+        $locations = Job::select('city')->distinct()->pluck('city');
+
+        return view('customer.carrer', compact('viewCarrer', 'locations'));
     }
+
+
+
 
     public function show($id)
     {
@@ -32,7 +56,6 @@ class CarrerController extends Controller
         return view('customer.carrer.apply', compact('showcarrer', 'showProfile'));
     }
 
-
     public function submitApplyNow(Request $request, $id)
     {
         $request->validate([
@@ -40,7 +63,6 @@ class CarrerController extends Controller
         ]);
 
         $user = Auth::user();
-
         $profile = $user->profile;
 
         if (

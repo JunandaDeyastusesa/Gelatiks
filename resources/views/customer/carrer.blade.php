@@ -88,7 +88,7 @@
                                                     class="badge bg-success px-3">{{ \Carbon\Carbon::parse($carrer->close_date)->format('d M Y') }}</span>
                                                 <div>
                                                     <img src="{{ asset('img/icon/logo-gelatik.svg') }}" alt=""
-                                                    class="logo-companny rounded-circle">
+                                                        class="logo-companny rounded-circle">
                                                 </div>
                                             </div>
                                         </div>
@@ -132,12 +132,29 @@
                 <div class="col-lg-2 col-md-3">
                     <h6 class="fw-bold mb-4">Navigation</h6>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Home</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Services</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Career</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">News</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Gallery</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Contact</a></li>
+                        <li class="mb-2">
+                            <a href="{{ route('home') }}" class="text-gray text-decoration-none">Home</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#what-we-offer' : route('home') . '#what-we-offer' }}"
+                                class="text-gray text-decoration-none">Services</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#career' : route('home') . '#career' }}"
+                                class="text-gray text-decoration-none">Career</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#news-event' : route('home') . '#news-event' }}"
+                                class="text-gray text-decoration-none">News</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#gallery' : route('home') . '#gallery' }}"
+                                class="text-gray text-decoration-none">Gallery</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#contact' : route('home') . '#contact' }}"
+                                class="text-gray text-decoration-none">Contact</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-3">

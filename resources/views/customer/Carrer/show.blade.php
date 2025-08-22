@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <section class="carrer-details bg-light  mt-md-0 mb-5">
+    <section class="carrer-details bg-light  mt-md-0">
         <div class="container py-3 pb-5">
             <div class="mb-2">
                 <h2 class="fw-bold text-gray mb-1">Job Details</h2>
@@ -161,12 +161,29 @@
                 <div class="col-lg-2 col-md-3">
                     <h6 class="fw-bold mb-4">Navigation</h6>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Home</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Services</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Career</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">News</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Gallery</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Contact</a></li>
+                        <li class="mb-2">
+                            <a href="{{ route('home') }}" class="text-gray text-decoration-none">Home</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#what-we-offer' : route('home') . '#what-we-offer' }}"
+                                class="text-gray text-decoration-none">Services</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#career' : route('home') . '#career' }}"
+                                class="text-gray text-decoration-none">Career</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#news-event' : route('home') . '#news-event' }}"
+                                class="text-gray text-decoration-none">News</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#gallery' : route('home') . '#gallery' }}"
+                                class="text-gray text-decoration-none">Gallery</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#contact' : route('home') . '#contact' }}"
+                                class="text-gray text-decoration-none">Contact</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-3">

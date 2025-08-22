@@ -2,9 +2,10 @@
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content rounded-4">
-            <div class="modal-header text-white rounded-top-4 p-4" style="background-color:#d63384;">
-                <h5 class="modal-title fw-semibold" id="editModalLabel">
-                    <i class="bi bi-chat-right-text me-2"></i>Edit Testimoni
+            <div class="modal-header bg-pink text-white rounded-top-4 p-4">
+                <h5 class="modal-title
+                fw-semibold" id="editModalLabel">
+                <i class="bi bi-chat-right-text me-2"></i>Edit Testimoni
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                     aria-label="Close"></button>

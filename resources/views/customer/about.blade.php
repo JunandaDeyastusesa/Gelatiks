@@ -81,19 +81,19 @@
                     </p>
                     <div class="d-flex gap-3 mb-4 mb-lg-0">
                         <a href="#" class="text-gray fs-5 d-flex align-items-center justify-content-center"
-                           style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.1);">
+                            style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.1);">
                             <i class="bi bi-facebook"></i>
                         </a>
                         <a href="#" class="text-gray fs-5 d-flex align-items-center justify-content-center"
-                           style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.1);">
+                            style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.1);">
                             <i class="bi bi-instagram"></i>
                         </a>
                         <a href="#" class="text-gray fs-5 d-flex align-items-center justify-content-center"
-                           style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.1);">
+                            style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.1);">
                             <i class="bi bi-linkedin"></i>
                         </a>
                         <a href="#" class="text-gray fs-5 d-flex align-items-center justify-content-center"
-                           style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.1);">
+                            style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.1);">
                             <i class="bi bi-twitter"></i>
                         </a>
                     </div>
@@ -109,15 +109,32 @@
                         <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-3 col-6">
-                    <h6 class="fw-bold mb-4">Services</h6>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold mb-4">Navigation</h6>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Retail Services</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Event & Activation</a>
+                        <li class="mb-2">
+                            <a href="{{ route('home') }}" class="text-gray text-decoration-none">Home</a>
                         </li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Building Material</a>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#what-we-offer' : route('home') . '#what-we-offer' }}"
+                                class="text-gray text-decoration-none">Services</a>
                         </li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Outsourcing</a></li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#career' : route('home') . '#career' }}"
+                                class="text-gray text-decoration-none">Career</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#news-event' : route('home') . '#news-event' }}"
+                                class="text-gray text-decoration-none">News</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#gallery' : route('home') . '#gallery' }}"
+                                class="text-gray text-decoration-none">Gallery</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#contact' : route('home') . '#contact' }}"
+                                class="text-gray text-decoration-none">Contact</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12">
@@ -134,7 +151,8 @@
                     </div>
                     <div class="d-flex align-items-center mb-3">
                         <i class="bi bi-envelope me-3 text-primary"></i>
-                        <a href="mailto:info@gelatiksupra.com" class="text-gray text-decoration-none">info@gelatiksupra.com</a>
+                        <a href="mailto:info@gelatiksupra.com"
+                            class="text-gray text-decoration-none">info@gelatiksupra.com</a>
                     </div>
                     <div class="d-flex align-items-center">
                         <i class="bi bi-clock me-3 text-primary"></i>

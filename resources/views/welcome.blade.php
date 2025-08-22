@@ -26,8 +26,8 @@
         </div>
     </section>
 
-    <section class="coverage" >
-        <div class="container" >
+    <section class="coverage">
+        <div class="container">
             <div class="card border-0">
                 <div class="card-body">
                     <img class="position-absolute top-0 end-0 d-none d-md-block" src="{{ asset('img/icon/top-right.png') }}"
@@ -51,7 +51,7 @@
                                 <div class="d-flex justify-content-center justify-content-md-start align-items-center pb-2">
                                     <i class="bi bi-geo-fill fs-1 me-2"></i>
                                     @foreach ($coverage as $item)
-                                        <h1 class="mb-0 text-pri fw-bold">{{$item->qty_province}}</h1>
+                                        <h1 class="mb-0 text-pri fw-bold">{{ $item->qty_province }}</h1>
                                     @endforeach
                                     {{-- <h1 class="mb-0 text-pri fw-bold">{{$coverage->qty_province}}</h1> --}}
                                 </div>
@@ -64,7 +64,7 @@
                                 <div class="d-flex justify-content-center justify-content-md-start align-items-center pb-2">
                                     <i class="bi bi-people-fill fs-1 me-2"></i>
                                     @foreach ($coverage as $item)
-                                        <h1 class="mb-0 text-pri fw-bold">{{$item->qty_clients}}</h1>
+                                        <h1 class="mb-0 text-pri fw-bold">{{ $item->qty_clients }}</h1>
                                     @endforeach
                                     {{-- <h1 class="mb-0 text-pri fw-bold">{{$coverage->qty_clients}}</h1> --}}
                                 </div>
@@ -77,7 +77,7 @@
                                 <div class="d-flex justify-content-center justify-content-md-start align-items-center pb-2">
                                     <i class="bi bi-clock-history fs-1 me-2"></i>
                                     @foreach ($coverage as $item)
-                                        <h1 class="mb-0 text-pri fw-bold">{{$item->qty_experience}}</h1>
+                                        <h1 class="mb-0 text-pri fw-bold">{{ $item->qty_experience }}</h1>
                                     @endforeach
                                     {{-- <h1 class="mb-0 text-pri fw-bold">{{$coverage->qty_experience}}</h1> --}}
                                 </div>
@@ -219,15 +219,18 @@
                                             <div class="col-10 ps-4">
                                                 <div class="ps-3 ps-md-0 d-flex justify-content-between align-items-start">
                                                     <div>
-                                                        <h5 class="fw-bold text-gray mb-0"> {{$item->jobs_name}}</h5>
-                                                        <p class="text-success fst-italic small mb-2"> Dibuat : <span>{{ $item->created_at->format('d F Y') }}</span>
+                                                        <h5 class="fw-bold text-gray mb-0"> {{ $item->jobs_name }}</h5>
+                                                        <p class="text-success fst-italic small mb-2"> Dibuat :
+                                                            <span>{{ $item->created_at->format('d F Y') }}</span>
                                                         </p>
                                                         <p class="text-muted mb-0"><i class="bi bi-pin-map-fill pe-2"></i>
                                                             {{ $item->store_name }}, {{ $item->city }}</p>
-                                                        <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> {{$item->open_position}}
+                                                        <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i>
+                                                            {{ $item->open_position }}
                                                             Orang</p>
                                                     </div>
-                                                    <span class="badge bg-success">{{ $item->close_date->format('d M Y') }}</span>
+                                                    <span
+                                                        class="badge bg-success">{{ $item->close_date->format('d M Y') }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -353,7 +356,7 @@
                         <div class="card-body">
                             <i class="bi bi-images text-pink mb-3 d-none d-md-block" style="font-size: 3rem;"></i>
                             <h5 class="fw-bold mb-3">View All</h5>
-                            <a href="{{route('gallery.all')}}" class="btn btn-primary">Lihat Semua</a>
+                            <a href="{{ route('gallery.all') }}" class="btn btn-primary">Lihat Semua</a>
                         </div>
                     </div>
                 </div>
@@ -473,14 +476,32 @@
                 <div class="col-lg-2 col-md-3">
                     <h6 class="fw-bold mb-4">Navigation</h6>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Home</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Services</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Career</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">News</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Gallery</a></li>
-                        <li class="mb-2"><a href="#" class="text-gray text-decoration-none">Contact</a></li>
+                        <li class="mb-2">
+                            <a href="{{ route('home') }}" class="text-gray text-decoration-none">Home</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#what-we-offer' : route('home') . '#what-we-offer' }}"
+                                class="text-gray text-decoration-none">Services</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#career' : route('home') . '#career' }}"
+                                class="text-gray text-decoration-none">Career</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#news-event' : route('home') . '#news-event' }}"
+                                class="text-gray text-decoration-none">News</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#gallery' : route('home') . '#gallery' }}"
+                                class="text-gray text-decoration-none">Gallery</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ request()->routeIs('home') ? '#contact' : route('home') . '#contact' }}"
+                                class="text-gray text-decoration-none">Contact</a>
+                        </li>
                     </ul>
                 </div>
+
                 <div class="col-lg-2 col-md-3">
                     <h6 class="fw-bold mb-4">Services</h6>
                     <ul class="list-unstyled">

@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JobCategory;
+use App\Models\User;
+use App\Models\UserRoles;
+use App\Models\Roles;
 use Illuminate\Http\Request;
 
-class JobCategoryController extends Controller
+class ApplicantsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $applys = User::with(['roles', 'profile'])
+            ->whereHas('roles', function ($query) {
+                $query->where('name', 'Applicants');
+            })
+            ->get();
+
+        return view('admin.applicants.index', compact('applys'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,15 +43,19 @@ class JobCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JobCategory $jobsCategory)
+    public function show(string $id)
     {
-        //
+        // Ambil user berdasarkan ID dan relasi roles + profile
+        $applicant = User::with(['roles', 'profile'])->findOrFail($id);
+
+        return view('admin.applicants.show', compact('applicant'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(JobCategory $jobsCategory)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +63,7 @@ class JobCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobCategory $jobsCategory)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +71,7 @@ class JobCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobCategory $jobsCategory)
+    public function destroy(string $id)
     {
         //
     }

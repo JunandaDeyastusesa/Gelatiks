@@ -6,15 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
+    /** 
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('job_category', function (Blueprint $table) {
-            $table->ulid('id')->primary();
-            $table->integer('no');
-            $table->string('category_name')->unique();
+Schema::create('partnerships', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->date('start_contract');
+            $table->date('end_contract');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_category');
+        Schema::dropIfExists('partnerships');
     }
 };

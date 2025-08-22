@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignUlid('user_id')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignUlid('role_id')->constrained('roles')->onDelete('restrict');
-            // $table->foreignUuid('category_id')->nullable()->constrained('job_category')->onDelete('set null');
             $table->timestamps();
         });
     }

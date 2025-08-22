@@ -15,6 +15,7 @@ class NewsEvent extends Model
         'title',
         'content',
         'image',
+        'status',
         'event_date',
     ];
 }

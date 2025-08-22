@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coverage extends Model
 {
-    use HasFactory;
+        protected $table = 'coverages';
+
+    protected $fillable = [
+        'qty_province',
+        'qty_clients',
+        'qty_experience',
+    ];
 }
+

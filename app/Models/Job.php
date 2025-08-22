@@ -14,15 +14,17 @@ class Job extends Model
     protected $keyType = 'string';
 
     protected $fillable = [
+        'id',
         'jobs_name',
         'store_name',
         'type_work',
         'gender',
         'city',
-        'qty',
+        'open_position',
         'experience',
         'education',
         'close_date',
+        'category',
         'status',
         'description',
     ];
@@ -30,4 +32,14 @@ class Job extends Model
     protected $casts = [
         'close_date' => 'date',
     ];
+
+    public function applies()
+    {
+        return $this->hasMany(JobApply::class);
+    }
+
+    public function applicants()
+    {
+        return $this->belongsToMany(User::class, 'job_applies', 'job_id', 'user_id');
+    }
 }

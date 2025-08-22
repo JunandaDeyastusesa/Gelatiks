@@ -3,107 +3,120 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\JobApply;
+use App\Exports\JobsExport;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\JobApplicantsExport;
 
 class JobController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function exportApplicants(Request $request, $id)
+    {
+        $status = $request->get('status'); // Ambil status dari query string
+        return Excel::download(new JobApplicantsExport($id, $status), 'job_applicants_' . $status . '.xlsx');
+    }
+
+
     public function index()
     {
-        // Mengambil semua job terbaru
-        $jobs = Job::latest()->get();
-        return response()->json($jobs, 200);
+        $jobs = Job::withCount('applies')->get();
+        return view('admin.jobs.index', compact('jobs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    // public function create()
-    // {
-    //     // Jika aplikasi menggunakan Blade, kembalikan view di sini.
-    //     // return view('jobs.create');
-    //     return response()->json(['message' => 'Form create tidak diimplementasikan'], 501);
-    // }
-    public function create(Request $request)
+    // Tampilkan form create
+    public function create()
     {
-        return $this->store($request);
+        return view('admin.jobs.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Simpan data pekerjaan baru
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'jobs_name'   => 'required|string|max:255',
-            'store_name'  => 'required|string|max:255',
-            'type_work'   => 'nullable|string|max:255',
-            'gender'      => 'required|in:Pria,Wanita',
-            'city'        => 'required|string|max:255',
-            'qty'         => 'required|integer|min:1',
-            'experience'  => 'nullable|string|max:255',
-            'education'   => 'nullable|string|max:255',
-            'close_date'  => 'required|date|after:today',
-            'status'      => 'nullable|string|max:50',
+            'jobs_name' => 'required|string|max:255',
+            'store_name' => 'required|string|max:255',
+            'type_work' => 'nullable|string|max:255',
+            'gender' => 'required|in:Pria,Wanita',
+            'city' => 'required|string|max:255',
+            'open_position' => 'required|integer',
+            'experience' => 'nullable|string|max:255',
+            'education' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'close_date' => 'required|date',
+            'status' => 'nullable|string|max:255',
             'description' => 'nullable|string',
         ]);
 
-        $job = Job::create($validated);
+        $validated['id'] = (string) Str::ulid();
 
-        return response()->json($job, 201);
+        Job::create($validated);
+
+        return redirect()->route('jobs.index')->with('success', 'Job created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Job $job)
+    // Tampilkan detail pekerjaan
+    public function show($id)
     {
-        return response()->json($job, 200);
+        $job = Job::findOrFail($id);
+        return view('admin.jobs.show', compact('job'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Job $job)
+    public function showApplicants($id)
     {
-        // Jika aplikasi menggunakan Blade, kembalikan view di sini.
-        // return view('jobs.edit', compact('job'));
-        return response()->json(['message' => 'Form edit tidak diimplementasikan'], 501);
+        $viewApplicants = JobApply::with(['user.profile'])
+            ->where('job_id', $id) // $jobId bisa didapat dari route param atau lainnya
+            ->get();
+        $navTitle = Job::find($id);
+
+        return view('admin.jobs.applicants', compact('viewApplicants', 'navTitle'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Job $job)
+
+    // Tampilkan form edit
+    public function edit($id)
+    {
+        $job = Job::findOrFail($id);
+        return view('admin.jobs.edit', compact('job'));
+    }
+
+    // Update data pekerjaan
+    public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'jobs_name'   => 'sometimes|required|string|max:255',
-            'store_name'  => 'sometimes|required|string|max:255',
-            'type_work'   => 'sometimes|nullable|string|max:255',
-            'gender'      => 'sometimes|required|in:Pria,Wanita',
-            'city'        => 'sometimes|required|string|max:255',
-            'qty'         => 'sometimes|required|integer|min:1',
-            'experience'  => 'sometimes|nullable|string|max:255',
-            'education'   => 'sometimes|nullable|string|max:255',
-            'close_date'  => 'sometimes|required|date|after:today',
-            'status'      => 'sometimes|nullable|string|max:50',
-            'description' => 'sometimes|nullable|string',
+            'jobs_name' => 'required|string|max:255',
+            'store_name' => 'required|string|max:255',
+            'type_work' => 'nullable|string|max:255',
+            'gender' => 'required|in:Pria,Wanita',
+            'city' => 'required|string|max:255',
+            'open_position' => 'required|integer',
+            'experience' => 'nullable|string|max:255',
+            'education' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'close_date' => 'required|date',
+            'status' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
         ]);
 
+        $job = Job::findOrFail($id);
         $job->update($validated);
 
-        return response()->json($job, 200);
+        return redirect()->route('jobs.index')->with('success', 'Job updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Job $job)
+    // Hapus data pekerjaan
+    public function destroy($id)
     {
+        $job = Job::findOrFail($id);
         $job->delete();
 
-        return response()->json(['message' => 'Job deleted'], 204);
+        return redirect()->route('jobs.index')->with('success', 'Job deleted successfully.');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new JobsExport, 'jobs.xlsx');
     }
 }

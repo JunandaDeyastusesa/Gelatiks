@@ -17,14 +17,23 @@ class UserRoles extends Model
     ];
 
     // Relasi ke User (nullable)
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class, 'user_id');
+    // }
+
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
-    // Relasi ke Role
     public function role()
     {
-        return $this->belongsTo(Role::class, 'role_id');
+        return $this->belongsTo(Role::class);
+    }
+
+    public function profile()
+    {
+        return -$this->hasOne(ProfileApplicant::class);
     }
 }

@@ -1,0 +1,223 @@
+/* style.css */
+
+/* ===== Body ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 85px;
+    /* Sesuaikan tinggi navbar */
+    margin: 0;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+.navbar .form-control {
+    box-shadow: none !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: #000000;
+    background-color: #fde6f4;
+}
+
+.navbar .input-group .form-control {
+    height: 40px;
+}
+
+.navbar .btn-pink {
+    background-color: #ef2ea1;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .btn-pink:hover {
+    background-color: #e14e69;
+    color: white;
+}
+
+.navbar .btn-outline-dark {
+    border-color: #6c757d;
+    color: #6c757d;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    margin-left: 1.5rem !important;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .btn-outline-dark:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* ===== About Section ===== */
+.about-section-header {
+    position: relative;
+}
+
+.about-section-header hr {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    opacity: 0.5;
+    margin-top: 2rem;
+}
+
+.homepage-link {
+    display: flex;
+    align-items: center;
+    /* ⬅️ bikin svg & teks rata tengah vertikal */
+    color: #ec008c;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+
+.about-section-header .homepage-link:hover {
+    text-decoration: underline;
+}
+
+.homepage-link svg {
+    transform: scaleX(-1);
+    /* ini opsional jika ingin panah menghadap kiri */
+    margin-right: 6px;
+    vertical-align: middle;
+    /* ⬅️ ini yang bikin svg sejajar teks */
+}
+
+
+.about-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+.col-md-8 {
+    text-align: justify;
+}
+
+/* ===== Image Box ===== */
+.img-box {
+    background-color: #FFE0E6;
+    border-radius: 1.25rem;
+    padding: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+}
+
+.img-box img {
+    border-radius: 1rem;
+}
+
+/* ===== Headings ===== */
+h2 {
+    font-weight: 700;
+    font-size: 2.25rem;
+    color: #343a40;
+}
+
+/* ===== Footer Section ===== */
+.footer-section {
+    background-color: #fde6f4;
+    position: relative;
+    overflow: hidden;
+    padding-top: 4rem !important;
+    padding-bottom: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000;
+    text-align: left;
+    margin-bottom: 3rem;
+    padding-right: 15px;
+}
+
+.footer-section h6 {
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+}
+
+.footer-section ul {
+    padding-left: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.70rem;
+}
+
+.footer-section ul li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #FF5E79;
+    text-decoration: underline;
+}
+
+.footer-section .small {
+    font-size: 0.85rem;
+    color: #000;
+    line-height: 1.6;
+}
+
+.footer-section .col-md-4:first-child p {
+    max-width: 85%;
+}
+
+.footer-logo-full {
+    width: 120px !important;
+    height: auto;
+}
+
+/* ===== Footer Bottom ===== */
+.footer-bottom {
+    font-size: 20px;
+    background-color: #ec008c;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== Footer Image (Bird) ===== */
+.footer-img {
+    position: absolute;
+    top: 0;
+    padding-top: 3.5rem;
+    right: -190px;
+    max-height: 500px;
+    opacity: 0.3;
+    z-index: 0;
+    transform: scaleX(-1);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}

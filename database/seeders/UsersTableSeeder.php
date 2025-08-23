@@ -13,6 +13,13 @@ class UsersTableSeeder extends Seeder
     {
         User::create([
             'id'   => Str::ulid(),
+            'username' => 'superadmin',
+            'email'    => 'superadmin@gelatik.com',
+            'password' => Hash::make('123123123'),
+        ]);
+
+        User::create([
+            'id'   => Str::ulid(),
             'username' => 'admin',
             'email'    => 'admin@gelatik.com',
             'password' => Hash::make('123123123'),

@@ -25,19 +25,19 @@
                             <label class="form-label mb-1">Category</label>
                             <select class="form-select py-2" name="category" required>
                                 <option value="" selected disabled>Choose category</option>
-                                <option value="spg_inclined">SPG Inclined</option>
-                                <option value="spg_reguler">SPG Reguler</option>
-                                <option value="spg_event">SPG Event</option>
-                                <option value="md_merchandiser">MD (Merchandiser)</option>
-                                <option value="smd">SMD (Sales Merchandiser)</option>
-                                <option value="team_leader">Team Leader (Supervisor)</option>
-                                <option value="arco">Arco (Area Coordinator)</option>
-                                <option value="stl">STL (Senior Team Leader)</option>
-                                <option value="tl_corporate">TL Corporate</option>
-                                <option value="cbs">CBS (Corporate Business Support)</option>
-                                <option value="npc">National Project Coordinator (NPC)</option>
-                                <option value="project_manager">Project Manager</option>
-                                <option value="operation_manager">Operation Manager</option>
+                                <option value="SPG Inclined">SPG Inclined</option>
+                                <option value="SPG Reguler">SPG Reguler</option>
+                                <option value="SPG Event">SPG Event</option>
+                                <option value="MD (Merchandiser)">MD (Merchandiser)</option>
+                                <option value="SMD (Sales Merchandiser)">SMD (Sales Merchandiser)</option>
+                                <option value="Team Leader (Supervisor)">Team Leader (Supervisor)</option>
+                                <option value="Arco (Area Coordinator)">Arco (Area Coordinator)</option>
+                                <option value="STL (Senior Team Leader)">STL (Senior Team Leader)</option>
+                                <option value="TL Corporate">TL Corporate</option>
+                                <option value="CBS (Corporate Business Support)">CBS (Corporate Business Support)</option>
+                                <option value="National Project Coordinator (NPC)">National Project Coordinator (NPC)</option>
+                                <option value="Project Manager">Project Manager</option>
+                                <option value="Operation Manager">Operation Manager</option>
                             </select>
                             <div class="invalid-feedback">Kategori wajib dipilih.</div>
                         </div>
@@ -99,7 +99,6 @@
                                 <option value="Pria">Pria</option>
                                 <option value="Wanita">Wanita</option>
                                 <option value="Pria dan Wanita">Pria dan Wanita</option>
-
                             </select>
                             <div class="invalid-feedback">Gender wajib dipilih.</div>
                         </div>
@@ -112,10 +111,20 @@
                             </div>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-8">
                             <label class="form-label mb-1">Description</label>
                             <textarea class="form-control py-2" name="description" rows="3" placeholder="Input description"></textarea>
                             <!-- <div class="invalid-feedback">Deskripsi wajib diisi</div> -->
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label mb-1">Status</label>
+                            <select class="form-select py-2" name="status" required>
+                                <option value="" selected disabled>Choose status</option>
+                                <option value="Open">Open</option>
+                                <option value="Closed">Closed</option>
+                            </select>
+                            <div class="invalid-feedback">Status wajib dipilih.</div>
                         </div>
                     </div>
 

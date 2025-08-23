@@ -39,7 +39,7 @@ class JobController extends Controller
             'jobs_name' => 'required|string|max:255',
             'store_name' => 'required|string|max:255',
             'type_work' => 'nullable|string|max:255',
-            'gender' => 'required|in:Pria,Wanita',
+            'gender' => 'required|in:Pria,Wanita,Pria dan Wanita',
             'city' => 'required|string|max:255',
             'open_position' => 'required|integer',
             'experience' => 'nullable|string|max:255',

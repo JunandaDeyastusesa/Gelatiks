@@ -37,19 +37,20 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link {{ in_array($currentRouteName, ['admin.register.index']) ? 'active' : '' }}"
-                            href="{{ route('admin.register.index') }}">
-                            <i class="pe-2 fs-5 bi bi-person-lines-fill"></i>
-                            Registration
-                        </a>
-                    </li>
-
+                    @if (auth()->user()->userRole?->name === 'Super Admin')
+                        <li class="nav-item">
+                            <a class="nav-link {{ in_array($currentRouteName, ['admin.register.index']) ? 'active' : '' }}"
+                                href="{{ route('admin.register.index') }}">
+                                <i class="pe-2 fs-5 bi bi-person-lines-fill"></i>
+                                Registration
+                            </a>
+                        </li>
+                    @endif
 
                 </ul>
             </div>
 
-            @if (auth()->user()->userRole?->name === 'Admin')
+            @if (auth()->user()->userRole?->name === 'Admin' or auth()->user()->userRole?->name === 'Super Admin')
                 <div class="managae-landingPage mt-3">
                     <p class="fw-medium mb-2">Manage Landing Page</p>
                     <ul class="nav flex-column ms-1 me-4">

@@ -32,6 +32,7 @@ class UserRolesTableSeeder extends Seeder
     public function run()
     {
         $roleMap = [
+            'superadmin@gelatik.com' => 'Super Admin',
             'admin@gelatik.com'     => 'Admin',
             'hrd@gelatik.com'       => 'HRD',
             'ani@gmail.com' => 'Applicants',

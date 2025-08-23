@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use App\Models\JobApply;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,6 +16,10 @@ class CarrerController extends Controller
         $location = $request->input('location');
 
         $query = Job::query();
+
+        // hanya ambil job yang status = Open dan close_date >= hari ini
+        $query->where('status', 'Open')
+            ->whereDate('close_date', '>',  Carbon::today());
 
         if (!empty($search)) {
             $query->where('jobs_name', 'like', '%' . $search . '%');
@@ -35,6 +40,7 @@ class CarrerController extends Controller
 
         return view('customer.carrer', compact('viewCarrer', 'locations'));
     }
+
 
 
 

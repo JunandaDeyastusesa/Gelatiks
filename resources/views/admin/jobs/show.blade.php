@@ -58,23 +58,28 @@
                     </div>
 
                     <!-- Min Experience -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label mb-1 text-muted">Min Experience</label>
                         <div class="fw-semibold">{{ $job->experience ?? '-' }}</div>
                     </div>
 
                     <!-- Gender -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label mb-1 text-muted">Gender</label>
                         <div class="fw-semibold">{{ $job->gender ?? '-' }}</div>
                     </div>
 
                     <!-- Close Date -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label mb-1 text-muted">Close Date</label>
                         <div class="fw-semibold"><i
                                 class="bi bi-calendar-event me-1 text-muted"></i>{{ \Carbon\Carbon::parse($job->close_date)->format('d M Y') }}
                         </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label mb-1 text-muted">Status</label>
+                        <div class="fw-semibold">{{ $job->status ?? '-' }}</div>
                     </div>
 
                     <!-- Description -->

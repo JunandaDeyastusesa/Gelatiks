@@ -38,13 +38,13 @@
                             <div class="invalid-feedback" id="imageFeedback">Gambar partnership wajib diunggah.</div>
                         </div>
                     </div>
-                </div>
 
-                <div class="modal-footer d-flex justify-content-between">
-                    <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-outline-none" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

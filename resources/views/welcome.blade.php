@@ -450,7 +450,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer-gradient text-gray position-relative overflow-hidden">
+    <footer id="contact" class="footer-gradient text-gray position-relative overflow-hidden">
         <div class="container py-5">
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">

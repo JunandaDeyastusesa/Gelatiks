@@ -39,7 +39,7 @@
                             <h2 class="title text-center text-md-start">Kami Berkontribusi dalam <span
                                     style="color: #EC008C; font-weight: 700; line-height: 2rem;">
                                     Meningkatkan Produktivitas & Efisiensi </span> Organisasi di Indonesia</h2>
-                            <p class="text-center text-md-start">GELATIK mengembangkan SDM andal untuk solusi terbaik.</p>
+                            <p class="text-center text-md-start">Solusi sales marketing bagi bisnis anda</p>
                         </div>
                         <div class="col-md-3 d-flex justify-content-center justify-content-md-start">
                         </div>
@@ -109,14 +109,10 @@
                     </div>
 
                     <div class="content mb-5 mb-md-0">
-                        <p class="mb-5">Since it was founded by Hadi and Susie Suprapto, in 1995, our vision remain
-                            unchanged that is to
-                            serve our clients as their extended arms, giving the best value of money through its best
-                            operating systems and most importantly highly dedicated qualified people. <br> <br> We firmly
-                            believe that
-                            people are our ultimate important assets, thereby At Gelatik, we continuously seek ways to
-                            develop our people in matters of their skill, knowledge and attitude while at the same time
-                            maintaining a happy learning atmosphere.</p>
+                        <p class="mb-5">Sejak didirikan pada tahun 1995, visi kami adalah melayani klien kami sebagai perpanjangan tangan mereka, memberikan nilai terbaik uang melalui sistem operasi terbaiknya dan yang paling penting orang yang sangat berdedikasi.<br> 
+                        <br>Sumber Daya Manusia adalah aset penting utama bagi Gelatik, kami berkontribusi pada pengembangan orang-orang kami dalam hal keterampilan, pengetahuan dan sikap sementara pada saat yang sama menjaga suasana belajar bahagia.</br>
+                        <br>hasil terbaik adalah sumber daya fisik yang tepat serta peningkatan konstan melalui sistem operasi kami untuk beradaptasi dengan praktek bisnis yang berubah cepat. 
+                        Kami mendapatkan kepercayaan dari klien setia kami untuk reputasi Anda dalam memberikan tanggung jawab dan komitmen.</p>
                         <a class="btn btn-readMore" href="{{ route('customer.about') }}">Lihat Lanjut</a>
                     </div>
                 </div>
@@ -140,8 +136,8 @@
                             <i class="bi bi-shop"></i>
                         </div>
                         <h5 class="fw-bold mb-3">Retail Services</h5>
-                        <p class="text-muted">Penyediaan tenaga kerja profesional untuk kebutuhan retail dan penjualan
-                            dengan standar pelayanan terbaik.</p>
+                        <p class="text-muted">layanan profesional yang mendukung pertumbuhan, efisiensi, dan keberhasilan bisnis di berbagai sektor industri.
+</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -150,8 +146,8 @@
                             <i class="bi bi-calendar-event"></i>
                         </div>
                         <h5 class="fw-bold mb-3">Event & Activation</h5>
-                        <p class="text-muted">Tim profesional untuk mendukung event dan aktivasi brand dengan pengalaman
-                            yang luas di berbagai industri.</p>
+                        <p class="text-muted">tenaga kerja profesional yang siap meningkatkan kinerja operasional dan penjualan di sektor retail.
+</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -160,8 +156,8 @@
                             <i class="bi bi-building"></i>
                         </div>
                         <h5 class="fw-bold mb-3">Building Material Services</h5>
-                        <p class="text-muted">Solusi tenaga kerja untuk industri material bangunan dengan keahlian teknis
-                            yang mumpuni.</p>
+                        <p class="text-muted">mengeksekusi setiap kegiatan promosi dan aktivasi merek dengan strategi yang terukur, tim ahli, dan standar eksekusi tinggi.
+</p>
                     </div>
                 </div>
             </div>
@@ -460,7 +456,7 @@
                             class="me-3">
                     </div>
                     <p class="mb-4 pe-md-5">
-                        PT. Gelatik Supra adalah mitra terpercaya dalam menyediakan solusi outsourcing profesional untuk
+                        mitra terpercaya anda dalam menyediakan solusi outsourcing profesional untuk
                         berbagai kebutuhan bisnis dengan pengalaman lebih dari 23 tahun.
                     </p>
                     <div class="d-flex gap-3">

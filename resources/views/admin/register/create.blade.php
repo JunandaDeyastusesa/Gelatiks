@@ -10,6 +10,7 @@
                     aria-label="Close"></button>
             </div>
 
+
             <div class="modal-body">
                 <form action="{{ route('admin.register.store') }}" method="POST" class="needs-validation" novalidate>
                     @csrf

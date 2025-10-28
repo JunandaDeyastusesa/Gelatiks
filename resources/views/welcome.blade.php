@@ -8,8 +8,10 @@
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-6 flex-column justify-content-center text-center text-md-start">
-                    <h2 class="pb-2">Mitra <span style="color: #EC008C; font-weight: 700;"> Outsourcing Profesional </span>
-                        untuk Kebutuhan Bisnis Anda</h2>
+                    <h1 class="pb-2">
+                        Mitra <span class="text-pink fw-bold">Outsourcing Profesional</span> Gelatik Supra untuk Kebutuhan
+                        Bisnis Anda
+                    </h1>
                     <p class="desc">SPG, SPB, Beauty Consultant, &amp; Merchandiser terbaik siap membantu kesuksesan
                         brand Anda.</p>
 
@@ -26,8 +28,8 @@
         </div>
     </section>
 
-    <section class="coverage" >
-        <div class="container" >
+    <section class="coverage">
+        <div class="container">
             <div class="card border-0">
                 <div class="card-body">
                     <img class="position-absolute top-0 end-0 d-none d-md-block" src="{{ asset('img/icon/top-right.png') }}"
@@ -51,7 +53,7 @@
                                 <div class="d-flex justify-content-center justify-content-md-start align-items-center pb-2">
                                     <i class="bi bi-geo-fill fs-1 me-2"></i>
                                     @foreach ($coverage as $item)
-                                        <h1 class="mb-0 text-pri fw-bold">{{$item->qty_province}}</h1>
+                                        <h1 class="mb-0 text-pri fw-bold">{{ $item->qty_province }}</h1>
                                     @endforeach
                                     {{-- <h1 class="mb-0 text-pri fw-bold">{{$coverage->qty_province}}</h1> --}}
                                 </div>
@@ -64,7 +66,7 @@
                                 <div class="d-flex justify-content-center justify-content-md-start align-items-center pb-2">
                                     <i class="bi bi-people-fill fs-1 me-2"></i>
                                     @foreach ($coverage as $item)
-                                        <h1 class="mb-0 text-pri fw-bold">{{$item->qty_clients}}</h1>
+                                        <h1 class="mb-0 text-pri fw-bold">{{ $item->qty_clients }}</h1>
                                     @endforeach
                                     {{-- <h1 class="mb-0 text-pri fw-bold">{{$coverage->qty_clients}}</h1> --}}
                                 </div>
@@ -77,7 +79,7 @@
                                 <div class="d-flex justify-content-center justify-content-md-start align-items-center pb-2">
                                     <i class="bi bi-clock-history fs-1 me-2"></i>
                                     @foreach ($coverage as $item)
-                                        <h1 class="mb-0 text-pri fw-bold">{{$item->qty_experience}}</h1>
+                                        <h1 class="mb-0 text-pri fw-bold">{{ $item->qty_experience }}</h1>
                                     @endforeach
                                     {{-- <h1 class="mb-0 text-pri fw-bold">{{$coverage->qty_experience}}</h1> --}}
                                 </div>
@@ -100,8 +102,8 @@
 
                 <div class="col-md-7 px-5">
                     <div class="header pb-4">
-                        <p class="fs-5 mb-0 text-pri fw-medium">Tentang Kami</p>
-                        <h2 class="fw-bold">PT. Gelatik Supra</h2>
+                        <h2 class="fs-5 mb-0 text-pri fw-medium">Tentang Kami</h2>
+                        <h3 class="fw-bold">PT. Gelatik Supra</h3>
                     </div>
 
                     <div class="col-md-5 pb-4 d-md-none">
@@ -109,10 +111,17 @@
                     </div>
 
                     <div class="content mb-5 mb-md-0">
-                        <p class="mb-5">Sejak didirikan pada tahun 1995, visi kami adalah melayani klien kami sebagai perpanjangan tangan mereka, memberikan nilai terbaik uang melalui sistem operasi terbaiknya dan yang paling penting orang yang sangat berdedikasi.<br> 
-                        <br>Sumber Daya Manusia adalah aset penting utama bagi Gelatik, kami berkontribusi pada pengembangan orang-orang kami dalam hal keterampilan, pengetahuan dan sikap sementara pada saat yang sama menjaga suasana belajar bahagia.</br>
-                        <br>hasil terbaik adalah sumber daya fisik yang tepat serta peningkatan konstan melalui sistem operasi kami untuk beradaptasi dengan praktek bisnis yang berubah cepat. 
-                        Kami mendapatkan kepercayaan dari klien setia kami untuk reputasi Anda dalam memberikan tanggung jawab dan komitmen.</p>
+                        <p class="mb-5">Sejak didirikan pada tahun 1995, visi kami adalah melayani klien kami sebagai
+                            perpanjangan tangan mereka, memberikan nilai terbaik uang melalui sistem operasi terbaiknya dan
+                            yang paling penting orang yang sangat berdedikasi.<br>
+                            <br>Sumber Daya Manusia adalah aset penting utama bagi Gelatik, kami berkontribusi pada
+                            pengembangan orang-orang kami dalam hal keterampilan, pengetahuan dan sikap sementara pada saat
+                            yang sama menjaga suasana belajar bahagia.</br>
+                            <br>hasil terbaik adalah sumber daya fisik yang tepat serta peningkatan konstan melalui sistem
+                            operasi kami untuk beradaptasi dengan praktek bisnis yang berubah cepat.
+                            Kami mendapatkan kepercayaan dari klien setia kami untuk reputasi Anda dalam memberikan tanggung
+                            jawab dan komitmen.
+                        </p>
                         <a class="btn btn-readMore" href="{{ route('customer.about') }}">Lihat Lanjut</a>
                     </div>
                 </div>
@@ -135,9 +144,10 @@
                         <div class="offer-icon mx-auto mb-4">
                             <i class="bi bi-shop"></i>
                         </div>
-                        <h5 class="fw-bold mb-3">Retail Services</h5>
-                        <p class="text-muted">layanan profesional yang mendukung pertumbuhan, efisiensi, dan keberhasilan bisnis di berbagai sektor industri.
-</p>
+                        <h3 class="fw-bold mb-3 fs-5">Retail Services</h3>
+                        <p class="text-muted">layanan profesional yang mendukung pertumbuhan, efisiensi, dan keberhasilan
+                            bisnis di berbagai sektor industri.
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -145,9 +155,10 @@
                         <div class="offer-icon mx-auto mb-4">
                             <i class="bi bi-calendar-event"></i>
                         </div>
-                        <h5 class="fw-bold mb-3">Event & Activation</h5>
-                        <p class="text-muted">tenaga kerja profesional yang siap meningkatkan kinerja operasional dan penjualan di sektor retail.
-</p>
+                        <h3 class="fw-bold mb-3 fs-5">Event & Activation</h3>
+                        <p class="text-muted">tenaga kerja profesional yang siap meningkatkan kinerja operasional dan
+                            penjualan di sektor retail.
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -155,9 +166,10 @@
                         <div class="offer-icon mx-auto mb-4">
                             <i class="bi bi-building"></i>
                         </div>
-                        <h5 class="fw-bold mb-3">Building Material Services</h5>
-                        <p class="text-muted">mengeksekusi setiap kegiatan promosi dan aktivasi merek dengan strategi yang terukur, tim ahli, dan standar eksekusi tinggi.
-</p>
+                        <h3 class="fw-bold mb-3 fs-5">Building Material Services</h3>
+                        <p class="text-muted">mengeksekusi setiap kegiatan promosi dan aktivasi merek dengan strategi yang
+                            terukur, tim ahli, dan standar eksekusi tinggi.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -215,15 +227,18 @@
                                             <div class="col-10 ps-4">
                                                 <div class="ps-3 ps-md-0 d-flex justify-content-between align-items-start">
                                                     <div>
-                                                        <h5 class="fw-bold text-gray mb-0"> {{$item->jobs_name}}</h5>
-                                                        <p class="text-success fst-italic small mb-2"> Dibuat : <span>{{ $item->created_at->format('d F Y') }}</span>
+                                                        <h5 class="fw-bold text-gray mb-0"> {{ $item->jobs_name }}</h5>
+                                                        <p class="text-success fst-italic small mb-2"> Dibuat :
+                                                            <span>{{ $item->created_at->format('d F Y') }}</span>
                                                         </p>
                                                         <p class="text-muted mb-0"><i class="bi bi-pin-map-fill pe-2"></i>
                                                             {{ $item->store_name }}, {{ $item->city }}</p>
-                                                        <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i> {{$item->open_position}}
+                                                        <p class="text-muted mb-0"><i class="bi bi-person-add pe-2"></i>
+                                                            {{ $item->open_position }}
                                                             Orang</p>
                                                     </div>
-                                                    <span class="badge bg-success">{{ $item->close_date->format('d M Y') }}</span>
+                                                    <span
+                                                        class="badge bg-success">{{ $item->close_date->format('d M Y') }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -349,7 +364,7 @@
                         <div class="card-body">
                             <i class="bi bi-images text-pink mb-3 d-none d-md-block" style="font-size: 3rem;"></i>
                             <h5 class="fw-bold mb-3">View All</h5>
-                            <a href="{{route('gallery.all')}}" class="btn btn-primary">Lihat Semua</a>
+                            <a href="{{ route('gallery.all') }}" class="btn btn-primary">Lihat Semua</a>
                         </div>
                     </div>
                 </div>
@@ -450,7 +465,7 @@
         <div class="container py-5">
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <h3 class="fw-bolder text-dark mb-3">Let’s Connect There</h3>
+                    <h4 class="fw-bolder text-dark mb-3">Let’s Connect There</h4>
                     <div class="d-flex align-items-center mb-4">
                         <img src="{{ asset('img/icon/logo-gelatik-full.png') }}" alt="Gelatik Supra" height="40"
                             class="me-3">
@@ -558,4 +573,5 @@
             }
         });
     </script>
+
 @endpush
